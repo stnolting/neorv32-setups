@@ -1,5 +1,5 @@
 -- #################################################################################################
--- # << NEORV32 - Example setup for the tinyVision.ai Inc. "UPduino v3" (c) Board >>               #
+-- # << NEORV32 - Example minimal setup for the iCEBreaker >>                                      #
 -- # ********************************************************************************************* #
 -- # BSD 3-Clause License                                                                          #
 -- #                                                                                               #
