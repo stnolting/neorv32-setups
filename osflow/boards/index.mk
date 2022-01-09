@@ -85,8 +85,8 @@ IMPL        ?= neorv32_$(BOARD)_$(OrangeCrab_REV)_$(ID)
 
 endif
 
-ifeq ($(BOARD),AlhambraII)
-$(info Setting constraints and implementation args for BOARD AlhambraII)
+ifeq ($(BOARD),IceZumAlhambraII)
+$(info Setting constraints and implementation args for BOARD IceZumAlhambraII)
 
 CONSTRAINTS ?= $(PCF_PATH)/$(BOARD).pcf
 PNRFLAGS    ?= --hx8k --package tq144:4k --ignore-loops --timing-allow-fail

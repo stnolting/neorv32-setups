@@ -1,5 +1,5 @@
 -- #################################################################################################
--- # << NEORV32 - Example setup including the bootloader, for the AlhambraII (c) Board >>            #
+-- # << NEORV32 - Example setup including the bootloader, for the IceZumAlhambraII (c) Board >>    #
 -- # ********************************************************************************************* #
 -- # BSD 3-Clause License                                                                          #
 -- #                                                                                               #
@@ -39,38 +39,38 @@ use ieee.numeric_std.all;
 library iCE40;
 use iCE40.components.all; -- for device primitives and macros
 
-entity neorv32_AlhambraII_BoardTop_MinimalBoot is
+entity neorv32_IceZumAlhambraII_BoardTop_MinimalBoot is
   port (
     -- external clock (12 MHz)
-    AlhambraII_CLK : in std_logic;
+    IceZumAlhambraII_CLK : in std_logic;
     -- LED outputs
-    AlhambraII_LED0 : out std_logic;
-    AlhambraII_LED1 : out std_logic;
-    AlhambraII_LED2 : out std_logic;
-    AlhambraII_LED3 : out std_logic;
-    AlhambraII_LED4 : out std_logic;
-    AlhambraII_LED5 : out std_logic;
-    AlhambraII_LED6 : out std_logic;
-    AlhambraII_LED7 : out std_logic;
+    IceZumAlhambraII_LED0 : out std_logic;
+    IceZumAlhambraII_LED1 : out std_logic;
+    IceZumAlhambraII_LED2 : out std_logic;
+    IceZumAlhambraII_LED3 : out std_logic;
+    IceZumAlhambraII_LED4 : out std_logic;
+    IceZumAlhambraII_LED5 : out std_logic;
+    IceZumAlhambraII_LED6 : out std_logic;
+    IceZumAlhambraII_LED7 : out std_logic;
     -- UART0
-    AlhambraII_RX : in  std_logic;
-    AlhambraII_TX : out std_logic
+    IceZumAlhambraII_RX : in  std_logic;
+    IceZumAlhambraII_TX : out std_logic
   );
 end entity;
 
-architecture neorv32_AlhambraII_BoardTop_MinimalBoot_rtl of neorv32_AlhambraII_BoardTop_MinimalBoot is
+architecture neorv32_IceZumAlhambraII_BoardTop_MinimalBoot_rtl of neorv32_IceZumAlhambraII_BoardTop_MinimalBoot is
 
-  alias BOARD_CLK: std_logic is AlhambraII_CLK;
-  alias BOARD_LED0: std_logic is AlhambraII_LED0;
-  alias BOARD_LED1: std_logic is AlhambraII_LED1;
-  alias BOARD_LED2: std_logic is AlhambraII_LED2;
-  alias BOARD_LED3: std_logic is AlhambraII_LED3;
-  alias BOARD_LED4: std_logic is AlhambraII_LED4;
-  alias BOARD_LED5: std_logic is AlhambraII_LED5;
-  alias BOARD_LED6: std_logic is AlhambraII_LED6;
-  alias BOARD_LED7: std_logic is AlhambraII_LED7;
-  alias BOARD_RX: std_logic is AlhambraII_RX;
-  alias BOARD_TX: std_logic is AlhambraII_TX;
+  alias BOARD_CLK: std_logic is IceZumAlhambraII_CLK;
+  alias BOARD_LED0: std_logic is IceZumAlhambraII_LED0;
+  alias BOARD_LED1: std_logic is IceZumAlhambraII_LED1;
+  alias BOARD_LED2: std_logic is IceZumAlhambraII_LED2;
+  alias BOARD_LED3: std_logic is IceZumAlhambraII_LED3;
+  alias BOARD_LED4: std_logic is IceZumAlhambraII_LED4;
+  alias BOARD_LED5: std_logic is IceZumAlhambraII_LED5;
+  alias BOARD_LED6: std_logic is IceZumAlhambraII_LED6;
+  alias BOARD_LED7: std_logic is IceZumAlhambraII_LED7;
+  alias BOARD_RX: std_logic is IceZumAlhambraII_RX;
+  alias BOARD_TX: std_logic is IceZumAlhambraII_TX;
 
   -- configuration --
   constant f_clock_c : natural := 12000000; -- clock frequency in Hz

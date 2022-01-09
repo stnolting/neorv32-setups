@@ -46,9 +46,9 @@ print('::set-output name=matrix::' + str([
   'design': 'MinimalBoot',
   'bitstream': 'neorv32_OrangeCrab_r02-25F_MinimalBoot.bit'
 }, {
-  'board': 'AlhambraII',
+  'board': 'IceZumAlhambraII',
   'design': 'MinimalBoot',
-  'bitstream': 'neorv32_AlhambraII_MinimalBoot.bit'
+  'bitstream': 'neorv32_IceZumAlhambraII_MinimalBoot.bit'
 }, {
   'board': 'ULX3S',
   'design': 'MinimalBoot',
