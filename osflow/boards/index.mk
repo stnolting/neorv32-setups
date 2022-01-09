@@ -1,3 +1,4 @@
+CONSTRAINTS_BOARD_PATH ?= ../constraints/board
 PCF_PATH ?= constraints
 
 
@@ -88,7 +89,7 @@ endif
 ifeq ($(BOARD),IceZumAlhambraII)
 $(info Setting constraints and implementation args for BOARD IceZumAlhambraII)
 
-CONSTRAINTS ?= $(PCF_PATH)/$(BOARD).pcf
+CONSTRAINTS ?= $(CONSTRAINTS_BOARD_PATH)/$(BOARD)/constraints.pcf
 PNRFLAGS    ?= --hx8k --package tq144:4k --ignore-loops --timing-allow-fail
 IMPL        ?= neorv32_$(BOARD)_$(ID)
 
