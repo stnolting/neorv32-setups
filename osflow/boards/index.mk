@@ -44,7 +44,7 @@ endif
 ifeq ($(BOARD),iCESugar-v1.5)
 $(info Setting constraints and implementation args for BOARD iCESugar-v1.5)
 
-CONSTRAINTS ?= $(PCF_PATH)/$(BOARD).pcf
+CONSTRAINTS ?= $(CONSTRAINTS_BOARD_PATH)/$(BOARD)/constraints.pcf
 PNRFLAGS    ?= --up5k --package sg48 --ignore-loops --timing-allow-fail
 IMPL        ?= neorv32_$(BOARD)_$(ID)
 
