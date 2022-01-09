@@ -39,7 +39,7 @@ use ieee.numeric_std.all;
 library iCE40;
 use iCE40.components.all; -- for device primitives and macros
 
-entity neorv32_iCESugar_BoardTop_MinimalBoot is
+entity neorv32_iCESugarv15_BoardTop_MinimalBoot is
   port (
     -- LED outputs
     iCESugarv15_LED_R : out std_logic;
@@ -55,7 +55,7 @@ entity neorv32_iCESugar_BoardTop_MinimalBoot is
   );
 end entity;
 
-architecture neorv32_iCESugar_BoardTop_MinimalBoot_rtl of neorv32_iCESugar_BoardTop_MinimalBoot is
+architecture neorv32_iCESugarv15_BoardTop_MinimalBoot_rtl of neorv32_iCESugarv15_BoardTop_MinimalBoot is
 
   -- configuration --
   constant f_clock_c : natural := 18000000; -- PLL output clock frequency in Hz

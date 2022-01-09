@@ -34,13 +34,13 @@ print('::set-output name=matrix::' + str([
   'design': 'UP5KDemo',
   'bitstream': 'neorv32_iCEBreaker_UP5KDemo.bit'
 }, {
-  'board': 'iCESugar',
+  'board': 'iCESugar-v1.5',
   'design': 'Minimal',
-  'bitstream': 'neorv32_iCESugar_Minimal.bit'
+  'bitstream': 'neorv32_iCESugar-v1.5_Minimal.bit'
 }, {
-  'board': 'iCESugar',
+  'board': 'iCESugar-v1.5',
   'design': 'MinimalBoot',
-  'bitstream': 'neorv32_iCESugar_MinimalBoot.bit'
+  'bitstream': 'neorv32_iCESugar-v1.5_MinimalBoot.bit'
 }, {
   'board': 'OrangeCrab',
   'design': 'MinimalBoot',

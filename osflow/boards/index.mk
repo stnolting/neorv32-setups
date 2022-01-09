@@ -41,8 +41,8 @@ IMPL := neorv32_Fomu_$(FOMU_REV)_$(ID)
 endif
 
 
-ifeq ($(BOARD),iCESugar)
-$(info Setting constraints and implementation args for BOARD iCESugar)
+ifeq ($(BOARD),iCESugar-v1.5)
+$(info Setting constraints and implementation args for BOARD iCESugar-v1.5)
 
 CONSTRAINTS ?= $(PCF_PATH)/$(BOARD).pcf
 PNRFLAGS    ?= --up5k --package sg48 --ignore-loops --timing-allow-fail

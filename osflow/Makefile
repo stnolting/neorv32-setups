@@ -11,15 +11,16 @@ OrangeCrab_REV ?= r02-25F
 UPduino_REV ?= v3
 
 #ifndef BOARD
-#$(error BOARD needs to be set to 'Fomu', 'iCESugar', 'UPDuino', 'iCEBreaker' or 'OrangeCrab' !)
+#$(error BOARD needs to be set to 'Fomu', 'iCESugar-v1.5', 'UPDuino', 'iCEBreaker' or 'OrangeCrab' !)
 #endif
 
 run:
 	$(eval TASK ?= clean $(BITSTREAM))
+	$(eval TOP ?= neorv32_$(BOARD)_BoardTop_$(DESIGN))
 	$(MAKE) -f common.mk \
 	  BOARD_SRC=./board_tops/neorv32_$(BOARD)_BoardTop_$(DESIGN).vhd \
-	  TOP=neorv32_$(BOARD)_BoardTop_$(DESIGN) \
-	  ID=$(DESIGN) \
+	  TOP="$(TOP)" \
+	  ID="$(DESIGN)" \
 	  $(TASK)
 	IMPL="$${BITSTREAM%%.*}"; for item in ".bit" ".svf"; do \
 	  if [ -f "./$$IMPL$$item" ]; then \
@@ -42,12 +43,14 @@ endif
 	  NEORV32_MEM_SRC="$(NEORV32_MEM_SRC)" \
 	  run
 
-iCESugar:
+iCESugar-v1.5:
 	$(eval BITSTREAM ?= neorv32_$(BOARD)_$(DESIGN).bit)
 	$(eval NEORV32_MEM_SRC ?= devices/ice40/neorv32_imem.ice40up_spram.vhd devices/ice40/neorv32_dmem.ice40up_spram.vhd)
+	$(eval TOP ?= neorv32_iCESugarv15_BoardTop_$(DESIGN))
 	$(MAKE) \
 	  BITSTREAM="$(BITSTREAM)" \
 	  NEORV32_MEM_SRC="$(NEORV32_MEM_SRC)" \
+	  TOP="$(TOP)" \
 	  run
 
 UPduino:
