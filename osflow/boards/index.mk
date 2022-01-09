@@ -35,6 +35,16 @@ IMPL        ?= neorv32_$(BOARD)_$(ID)
 endif
 
 
+ifeq ($(BOARD),UPDuino-v3.0)
+$(info Setting constraints and implementation args for BOARD UPDuino-v3.0)
+
+CONSTRAINTS ?= $(CONSTRAINTS_BOARD_PATH)/$(BOARD)/constraints.pcf
+PNRFLAGS    ?= --up5k --package sg48 --ignore-loops --timing-allow-fail
+IMPL        ?= neorv32_$(BOARD)_$(ID)
+
+endif
+
+
 #
 # Local constraints files
 #
@@ -102,18 +112,6 @@ DEVICE_SERIES = ecp5
 
 CONSTRAINTS ?= $(PCF_PATH)/$(BOARD).lpf
 PNRFLAGS    ?= --85k --freq 25 --package CABGA381 --ignore-loops --timing-allow-fail
-IMPL        ?= neorv32_$(BOARD)_$(ID)
-
-endif
-
-
-ifeq ($(BOARD),UPDuino-v3.0)
-$(info Setting constraints and implementation args for BOARD UPDuino-v3.0)
-
-UPduino_REV ?= v3
-
-CONSTRAINTS ?= $(PCF_PATH)/$(BOARD).pcf
-PNRFLAGS    ?= --up5k --package sg48 --ignore-loops --timing-allow-fail
 IMPL        ?= neorv32_$(BOARD)_$(ID)
 
 endif
