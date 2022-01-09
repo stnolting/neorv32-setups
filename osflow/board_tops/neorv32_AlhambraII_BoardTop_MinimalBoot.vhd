@@ -60,6 +60,18 @@ end entity;
 
 architecture neorv32_AlhambraII_BoardTop_MinimalBoot_rtl of neorv32_AlhambraII_BoardTop_MinimalBoot is
 
+  alias BOARD_CLK: std_logic is AlhambraII_CLK;
+  alias BOARD_LED0: std_logic is AlhambraII_LED0;
+  alias BOARD_LED1: std_logic is AlhambraII_LED1;
+  alias BOARD_LED2: std_logic is AlhambraII_LED2;
+  alias BOARD_LED3: std_logic is AlhambraII_LED3;
+  alias BOARD_LED4: std_logic is AlhambraII_LED4;
+  alias BOARD_LED5: std_logic is AlhambraII_LED5;
+  alias BOARD_LED6: std_logic is AlhambraII_LED6;
+  alias BOARD_LED7: std_logic is AlhambraII_LED7;
+  alias BOARD_RX: std_logic is AlhambraII_RX;
+  alias BOARD_TX: std_logic is AlhambraII_TX;
+
   -- configuration --
   constant f_clock_c : natural := 12000000; -- clock frequency in Hz
 
@@ -75,9 +87,9 @@ begin
 
   -- Reset Generator ------------------------------------------------------------------------
   -- -------------------------------------------------------------------------------------------
-  reset_generator: process(AlhambraII_CLK)
+  reset_generator: process(BOARD_CLK)
   begin
-    if rising_edge(AlhambraII_CLK) then
+    if rising_edge(BOARD_CLK) then
       if (rst_cnt(rst_cnt'left) = '0') then
         rst_cnt <= std_logic_vector(unsigned(rst_cnt) + 1);
       end if;
@@ -97,15 +109,15 @@ begin
   )
   port map (
     -- Global control --
-    clk_i      => std_ulogic(AlhambraII_CLK),
+    clk_i      => std_ulogic(BOARD_CLK),
     rstn_i     => std_ulogic(sys_rstn),
 
     -- GPIO --
     gpio_o     => con_gpio_o,
 
     -- primary UART --
-    uart_txd_o => AlhambraII_TX, -- UART0 send data
-    uart_rxd_i => AlhambraII_RX, -- UART0 receive data
+    uart_txd_o => BOARD_TX, -- UART0 send data
+    uart_rxd_i => BOARD_RX, -- UART0 receive data
     uart_rts_o => open, -- hw flow control: UART0.RX ready to receive ("RTR"), low-active, optional
     uart_cts_i => '0',  -- hw flow control: UART0.TX allowed to transmit, low-active, optional
 
@@ -115,14 +127,13 @@ begin
 
   -- IO Connection --------------------------------------------------------------------------
   -- -------------------------------------------------------------------------------------------
-  AlhambraII_LED0 <= con_gpio_o(0);
-  AlhambraII_LED1 <= con_gpio_o(1);
-  AlhambraII_LED2 <= con_gpio_o(2);
-  AlhambraII_LED3 <= con_gpio_o(3);
-  AlhambraII_LED4 <= '0'; -- unused
-  AlhambraII_LED5 <= con_pwm(0);
-  AlhambraII_LED6 <= con_pwm(1);
-  AlhambraII_LED7 <= con_pwm(2);
-
+  BOARD_LED0 <= con_gpio_o(0);
+  BOARD_LED1 <= con_gpio_o(1);
+  BOARD_LED2 <= con_gpio_o(2);
+  BOARD_LED3 <= con_gpio_o(3);
+  BOARD_LED4 <= '0'; -- unused
+  BOARD_LED5 <= con_pwm(0);
+  BOARD_LED6 <= con_pwm(1);
+  BOARD_LED7 <= con_pwm(2);
 
 end architecture;
