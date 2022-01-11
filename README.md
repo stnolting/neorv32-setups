@@ -1,2 +1,5 @@
 # neorv32-setups
-:file_folder: Exemplary NEORV32 setups targeting various FPGA boards and toolchains.
+
+:construction: Work in Progress :construction:
+
+This will be a "spin-off" of the NEORV32 `setups` folder.
