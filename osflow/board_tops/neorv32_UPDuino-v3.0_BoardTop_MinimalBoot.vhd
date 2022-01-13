@@ -39,33 +39,21 @@ use ieee.numeric_std.all;
 library iCE40;
 use iCE40.components.all; -- for device primitives and macros
 
-entity neorv32_UPduino_BoardTop_UP5KDemo is
+entity neorv32_UPDuinov30_BoardTop_MinimalBoot is
   port (
     -- UART (uart0) --
-    uart_txd_o  : out std_ulogic;
-    uart_rxd_i  : in  std_ulogic;
-    -- SPI to on-board flash --
-    flash_sck_o : out std_ulogic;
-    flash_sdo_o : out std_ulogic;
-    flash_sdi_i : in  std_ulogic;
-    flash_csn_o : out std_ulogic; -- NEORV32.SPI_CS(0)
-    -- SPI to IO pins --
-    spi_sck_o   : out std_ulogic;
-    spi_sdo_o   : out std_ulogic;
-    spi_sdi_i   : in  std_ulogic;
-    spi_csn_o   : out std_ulogic; -- NEORV32.SPI_CS(1)
-    -- TWI --
-    twi_sda_io  : inout std_logic;
-    twi_scl_io  : inout std_logic;
+    UPDuinov30_TX     : out std_ulogic;
+    UPDuinov30_RX     : in  std_ulogic;
     -- GPIO --
-    gpio_i      : in  std_ulogic_vector(3 downto 0);
-    gpio_o      : out std_ulogic_vector(3 downto 0);
+    UPDuinov30_GPIO_O : out std_ulogic_vector(3 downto 0);
     -- PWM (to on-board RGB power LED) --
-    pwm_o       : out std_ulogic_vector(2 downto 0)
+    UPDuinov30_LED_R  : out std_logic;
+    UPDuinov30_LED_G  : out std_logic;
+    UPDuinov30_LED_B  : out std_logic
   );
 end entity;
 
-architecture neorv32_UPduino_BoardTop_UP5KDemo_rtl of neorv32_UPduino_BoardTop_UP5KDemo is
+architecture neorv32_UPDuinov30_BoardTop_MinimalBoot_rtl of neorv32_UPDuinov30_BoardTop_MinimalBoot is
 
   -- configuration --
   constant f_clock_c : natural := 18000000; -- PLL output clock frequency in Hz
@@ -78,9 +66,7 @@ architecture neorv32_UPduino_BoardTop_UP5KDemo_rtl of neorv32_UPduino_BoardTop_U
   signal pll_clk  : std_logic;
 
   -- internal IO connection --
-  signal con_pwm     : std_ulogic_vector(2 downto 0);
-  signal con_spi_sdi : std_ulogic;
-  signal con_spi_csn : std_ulogic;
+  signal con_pwm : std_logic_vector(2 downto 0);
 
 begin
 
@@ -95,7 +81,6 @@ begin
     CLKHFEN => '1',
     CLKHF   => hf_osc_clk
   );
-
 
   -- System PLL -----------------------------------------------------------------------------
   -- -------------------------------------------------------------------------------------------
@@ -135,70 +120,46 @@ begin
 
   -- The core of the problem ----------------------------------------------------------------
   -- -------------------------------------------------------------------------------------------
-
-  neorv32_inst: entity work.neorv32_ProcessorTop_UP5KDemo
+  neorv32_inst: entity work.neorv32_ProcessorTop_MinimalBoot
   generic map (
     CLOCK_FREQUENCY => f_clock_c -- clock frequency of clk_i in Hz
   )
   port map (
     -- Global control --
-    clk_i       => std_ulogic(pll_clk),
-    rstn_i      => std_ulogic(pll_rstn),
-
-    -- primary UART --
-    uart_txd_o  => uart_txd_o,
-    uart_rxd_i  => uart_rxd_i,
-    uart_rts_o  => open,
-    uart_cts_i  => '0',
-
-    -- SPI to on-board flash --
-    flash_sck_o => flash_sck_o,
-    flash_sdo_o => flash_sdo_o,
-    flash_sdi_i => flash_sdi_i,
-    flash_csn_o => flash_csn_o,
-
-    -- SPI to IO pins --
-    spi_sck_o   => spi_sck_o,
-    spi_sdo_o   => spi_sdo_o,
-    spi_sdi_i   => con_spi_sdi,
-    spi_csn_o   => con_spi_csn,
-
-    -- TWI --
-    twi_sda_io  => twi_sda_io,
-    twi_scl_io  => twi_scl_io,
+    clk_i      => std_ulogic(pll_clk),
+    rstn_i     => std_ulogic(pll_rstn),
 
     -- GPIO --
-    gpio_i      => gpio_i,
-    gpio_o      => gpio_o,
+    gpio_o     => UPDuinov30_GPIO_O,
 
-    -- PWM (to on-board RGB power LED) --
-    pwm_o       => con_pwm
+    -- primary UART --
+    uart_txd_o => UPDuinov30_TX, -- UART0 send data
+    uart_rxd_i => UPDuinov30_RX, -- UART0 receive data
+    uart_rts_o => open, -- hw flow control: UART0.RX ready to receive ("RTR"), low-active, optional
+    uart_cts_i => '0',  -- hw flow control: UART0.TX allowed to transmit, low-active, optional
+
+    -- PWM (to on-board RGB LED) --
+    pwm_o      => con_pwm
   );
 
   -- IO Connection --------------------------------------------------------------------------
   -- -------------------------------------------------------------------------------------------
-
-  -- SPI sdi read-back --
-  spi_csn_o <= con_spi_csn;
-  con_spi_sdi <= flash_sdi_i when (con_spi_csn = '0') else spi_sdi_i;
-
-  -- RGB --
   RGB_inst: SB_RGBA_DRV
   generic map (
     CURRENT_MODE => "0b1",
-    RGB0_CURRENT => "0b000001",
-    RGB1_CURRENT => "0b000001",
-    RGB2_CURRENT => "0b000001"
+    RGB0_CURRENT => "0b000011",
+    RGB1_CURRENT => "0b000011",
+    RGB2_CURRENT => "0b000011"
   )
   port map (
     CURREN   => '1',  -- I
     RGBLEDEN => '1',  -- I
     RGB0PWM  => con_pwm(1),  -- I - green - pwm channel 1
-    RGB1PWM  => con_pwm(2),  -- I - bluee - pwm channel 2
+    RGB1PWM  => con_pwm(2),  -- I - blue  - pwm channel 2
     RGB2PWM  => con_pwm(0),  -- I - red   - pwm channel 0
-    RGB2     => pwm_o(2),    -- O - red
-    RGB1     => pwm_o(1),    -- O - blue
-    RGB0     => pwm_o(0)     -- O - green
+    RGB2     => UPDuinov30_LED_R,    -- O - red
+    RGB1     => UPDuinov30_LED_B,    -- O - blue
+    RGB0     => UPDuinov30_LED_G     -- O - green
   );
 
 end architecture;

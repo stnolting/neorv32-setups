@@ -1,0 +1,36 @@
+## UART (uart0)
+set_io UPDuinov30_TX 38
+set_io UPDuinov30_RX 28
+
+## SPI - on-board flash
+set_io UPDuinov30_FLASH_SDO 14
+set_io UPDuinov30_FLASH_SCK 15
+set_io UPDuinov30_FLASH_CSN 16
+set_io UPDuinov30_FLASH_SDI 17
+
+## SPI - user port
+set_io UPDuinov30_SPI_SDO 34
+set_io UPDuinov30_SPI_SCK 43
+set_io UPDuinov30_SPI_CSN 36
+set_io UPDuinov30_SPI_SDI 42
+
+## TWI
+set_io UPDuinov30_TWI_SDA 31
+set_io UPDuinov30_TWI_SCL 37
+
+## GPIO - input
+set_io UPDuinov30_GPIO_I[0] 44
+set_io UPDuinov30_GPIO_I[1] 4
+set_io UPDuinov30_GPIO_I[2] 3
+set_io UPDuinov30_GPIO_I[3] 48
+
+## GPIO - output
+set_io UPDuinov30_GPIO_O[0] 45
+set_io UPDuinov30_GPIO_O[1] 47
+set_io UPDuinov30_GPIO_O[2] 46
+set_io UPDuinov30_GPIO_O[3] 2
+
+## RGB power LED
+set_io UPDuinov30_LED_R 39
+set_io UPDuinov30_LED_G 40
+set_io UPDuinov30_LED_B 41
