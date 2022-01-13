@@ -1,4 +1,4 @@
-GHDL_FLAGS += --std=08
+GHDL_FLAGS += --std=08 --workdir=build -Pbuild
 GHDL       ?= ghdl
 GHDLSYNTH  ?= ghdl
 YOSYS      ?= yosys
