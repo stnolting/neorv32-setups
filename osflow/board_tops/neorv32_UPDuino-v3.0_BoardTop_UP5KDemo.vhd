@@ -39,33 +39,35 @@ use ieee.numeric_std.all;
 library iCE40;
 use iCE40.components.all; -- for device primitives and macros
 
-entity neorv32_UPduino_BoardTop_UP5KDemo is
+entity neorv32_UPDuinov30_BoardTop_UP5KDemo is
   port (
     -- UART (uart0) --
-    uart_txd_o  : out std_ulogic;
-    uart_rxd_i  : in  std_ulogic;
+    UPDuinov30_TX        : out std_ulogic;
+    UPDuinov30_RX        : in  std_ulogic;
     -- SPI to on-board flash --
-    flash_sck_o : out std_ulogic;
-    flash_sdo_o : out std_ulogic;
-    flash_sdi_i : in  std_ulogic;
-    flash_csn_o : out std_ulogic; -- NEORV32.SPI_CS(0)
+    UPDuinov30_FLASH_SCK : out std_ulogic;
+    UPDuinov30_FLASH_SDO : out std_ulogic;
+    UPDuinov30_FLASH_SDI : in  std_ulogic;
+    UPDuinov30_FLASH_CSN : out std_ulogic; -- NEORV32.SPI_CS(0)
     -- SPI to IO pins --
-    spi_sck_o   : out std_ulogic;
-    spi_sdo_o   : out std_ulogic;
-    spi_sdi_i   : in  std_ulogic;
-    spi_csn_o   : out std_ulogic; -- NEORV32.SPI_CS(1)
+    UPDuinov30_SPI_SCK   : out std_ulogic;
+    UPDuinov30_SPI_SDO   : out std_ulogic;
+    UPDuinov30_SPI_SDI   : in  std_ulogic;
+    UPDuinov30_SPI_CSN   : out std_ulogic; -- NEORV32.SPI_CS(1)
     -- TWI --
-    twi_sda_io  : inout std_logic;
-    twi_scl_io  : inout std_logic;
+    UPDuinov30_TWI_SDA   : inout std_logic;
+    UPDuinov30_TWI_SCL   : inout std_logic;
     -- GPIO --
-    gpio_i      : in  std_ulogic_vector(3 downto 0);
-    gpio_o      : out std_ulogic_vector(3 downto 0);
+    UPDuinov30_GPIO_I    : in  std_ulogic_vector(3 downto 0);
+    UPDuinov30_GPIO_O    : out std_ulogic_vector(3 downto 0);
     -- PWM (to on-board RGB power LED) --
-    pwm_o       : out std_ulogic_vector(2 downto 0)
+    UPDuinov30_LED_R  : out std_logic;
+    UPDuinov30_LED_G  : out std_logic;
+    UPDuinov30_LED_B  : out std_logic
   );
 end entity;
 
-architecture neorv32_UPduino_BoardTop_UP5KDemo_rtl of neorv32_UPduino_BoardTop_UP5KDemo is
+architecture neorv32_UPDuinov30_BoardTop_UP5KDemo_rtl of neorv32_UPDuinov30_BoardTop_UP5KDemo is
 
   -- configuration --
   constant f_clock_c : natural := 18000000; -- PLL output clock frequency in Hz
@@ -146,30 +148,30 @@ begin
     rstn_i      => std_ulogic(pll_rstn),
 
     -- primary UART --
-    uart_txd_o  => uart_txd_o,
-    uart_rxd_i  => uart_rxd_i,
+    uart_txd_o  => UPDuinov30_TX,
+    uart_rxd_i  => UPDuinov30_RX,
     uart_rts_o  => open,
     uart_cts_i  => '0',
 
     -- SPI to on-board flash --
-    flash_sck_o => flash_sck_o,
-    flash_sdo_o => flash_sdo_o,
-    flash_sdi_i => flash_sdi_i,
-    flash_csn_o => flash_csn_o,
+    flash_sck_o => UPDuinov30_FLASH_SCK,
+    flash_sdo_o => UPDuinov30_FLASH_SDO,
+    flash_sdi_i => UPDuinov30_FLASH_SDI,
+    flash_csn_o => UPDuinov30_FLASH_CSN,
 
     -- SPI to IO pins --
-    spi_sck_o   => spi_sck_o,
-    spi_sdo_o   => spi_sdo_o,
+    spi_sck_o   => UPDuinov30_SPI_SCK,
+    spi_sdo_o   => UPDuinov30_SPI_SDO,
     spi_sdi_i   => con_spi_sdi,
     spi_csn_o   => con_spi_csn,
 
     -- TWI --
-    twi_sda_io  => twi_sda_io,
-    twi_scl_io  => twi_scl_io,
+    twi_sda_io  => UPDuinov30_TWI_SDA,
+    twi_scl_io  => UPDuinov30_TWI_SCL,
 
     -- GPIO --
-    gpio_i      => gpio_i,
-    gpio_o      => gpio_o,
+    gpio_i      => UPDuinov30_GPIO_I,
+    gpio_o      => UPDuinov30_GPIO_O,
 
     -- PWM (to on-board RGB power LED) --
     pwm_o       => con_pwm
@@ -179,8 +181,8 @@ begin
   -- -------------------------------------------------------------------------------------------
 
   -- SPI sdi read-back --
-  spi_csn_o <= con_spi_csn;
-  con_spi_sdi <= flash_sdi_i when (con_spi_csn = '0') else spi_sdi_i;
+  UPDuinov30_SPI_CSN <= con_spi_csn;
+  con_spi_sdi <= UPDuinov30_FLASH_SDI when (con_spi_csn = '0') else UPDuinov30_SPI_SDI;
 
   -- RGB --
   RGB_inst: SB_RGBA_DRV
@@ -196,9 +198,9 @@ begin
     RGB0PWM  => con_pwm(1),  -- I - green - pwm channel 1
     RGB1PWM  => con_pwm(2),  -- I - bluee - pwm channel 2
     RGB2PWM  => con_pwm(0),  -- I - red   - pwm channel 0
-    RGB2     => pwm_o(2),    -- O - red
-    RGB1     => pwm_o(1),    -- O - blue
-    RGB0     => pwm_o(0)     -- O - green
+    RGB2     => UPDuinov30_LED_R,    -- O - red
+    RGB1     => UPDuinov30_LED_B,    -- O - blue
+    RGB0     => UPDuinov30_LED_G     -- O - green
   );
 
 end architecture;

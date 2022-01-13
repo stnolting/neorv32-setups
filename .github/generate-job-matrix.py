@@ -2,13 +2,13 @@
 
 print('::set-output name=matrix::' + str([
 {
-  'board': 'UPduino',
+  'board': 'UPDuino-v3.0',
   'design': 'MinimalBoot',
-  'bitstream': 'neorv32_UPduino_v3_MinimalBoot.bit'
+  'bitstream': 'neorv32_UPDuino-v3.0_MinimalBoot.bit'
 }, {
-  'board': 'UPduino',
+  'board': 'UPDuino-v3.0',
   'design': 'UP5KDemo',
-  'bitstream': 'neorv32_UPduino_v3_UP5KDemo.bit'
+  'bitstream': 'neorv32_UPDuino-v3.0_UP5KDemo.bit'
 }, {
   'board': 'Fomu',
   'design': 'Minimal',
@@ -34,21 +34,21 @@ print('::set-output name=matrix::' + str([
   'design': 'UP5KDemo',
   'bitstream': 'neorv32_iCEBreaker_UP5KDemo.bit'
 }, {
-  'board': 'iCESugar',
+  'board': 'iCESugar-v1.5',
   'design': 'Minimal',
-  'bitstream': 'neorv32_iCESugar_Minimal.bit'
+  'bitstream': 'neorv32_iCESugar-v1.5_Minimal.bit'
 }, {
-  'board': 'iCESugar',
+  'board': 'iCESugar-v1.5',
   'design': 'MinimalBoot',
-  'bitstream': 'neorv32_iCESugar_MinimalBoot.bit'
+  'bitstream': 'neorv32_iCESugar-v1.5_MinimalBoot.bit'
 }, {
   'board': 'OrangeCrab',
   'design': 'MinimalBoot',
   'bitstream': 'neorv32_OrangeCrab_r02-25F_MinimalBoot.bit'
 }, {
-  'board': 'AlhambraII',
+  'board': 'IceZumAlhambraII',
   'design': 'MinimalBoot',
-  'bitstream': 'neorv32_AlhambraII_MinimalBoot.bit'
+  'bitstream': 'neorv32_IceZumAlhambraII_MinimalBoot.bit'
 }, {
   'board': 'ULX3S',
   'design': 'MinimalBoot',

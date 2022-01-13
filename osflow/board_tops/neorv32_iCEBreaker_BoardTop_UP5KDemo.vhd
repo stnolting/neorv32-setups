@@ -1,5 +1,5 @@
 -- #################################################################################################
--- # << NEORV32 - Example setup for the tinyVision.ai Inc. "UPduino v3" (c) Board >>               #
+-- # << NEORV32 - Example setup for the iCEBreaker >>                                              #
 -- # ********************************************************************************************* #
 -- # BSD 3-Clause License                                                                          #
 -- #                                                                                               #
@@ -41,28 +41,30 @@ use iCE40.components.all; -- for device primitives and macros
 
 entity neorv32_iCEBreaker_BoardTop_UP5KDemo is
   port (
-    user_reset_btn : in std_ulogic;
+    iCEBreaker_USR_RST_BTN : in std_ulogic;
     -- UART (uart0) --
-    uart_txd_o  : out std_ulogic;
-    uart_rxd_i  : in  std_ulogic;
+    iCEBreaker_TX          : out std_ulogic;
+    iCEBreaker_RX          : in  std_ulogic;
     -- SPI to on-board flash --
-    flash_sck_o : out std_ulogic;
-    flash_sdo_o : out std_ulogic;
-    flash_sdi_i : in  std_ulogic;
-    flash_csn_o : out std_ulogic; -- NEORV32.SPI_CS(0)
+    iCEBreaker_FLASH_SCK   : out std_ulogic;
+    iCEBreaker_FLASH_SDO   : out std_ulogic;
+    iCEBreaker_FLASH_SDI   : in  std_ulogic;
+    iCEBreaker_FLASH_CSN   : out std_ulogic; -- NEORV32.SPI_CS(0)
     -- SPI to IO pins --
-    spi_sck_o   : out std_ulogic;
-    spi_sdo_o   : out std_ulogic;
-    spi_sdi_i   : in  std_ulogic;
-    spi_csn_o   : out std_ulogic; -- NEORV32.SPI_CS(1)
+    iCEBreaker_SPI_SCK     : out std_ulogic;
+    iCEBreaker_SPI_SDO     : out std_ulogic;
+    iCEBreaker_SPI_SDI     : in  std_ulogic;
+    iCEBreaker_SPI_CSN     : out std_ulogic; -- NEORV32.SPI_CS(1)
     -- TWI --
-    twi_sda_io  : inout std_logic;
-    twi_scl_io  : inout std_logic;
+    iCEBreaker_TWI_SDA     : inout std_logic;
+    iCEBreaker_TWI_SCL     : inout std_logic;
     -- GPIO --
-    gpio_i      : in  std_ulogic_vector(3 downto 0);
-    gpio_o      : out std_ulogic_vector(3 downto 0);
-    -- PWM (to on-board RGB power LED) --  
-    pwm_o       : out std_ulogic_vector(2 downto 0)
+    iCEBreaker_GPIO_I      : in  std_ulogic_vector(3 downto 0);
+    iCEBreaker_GPIO_O      : out std_ulogic_vector(3 downto 0);
+    -- PWM (to on-board RGB power LED) --
+    iCEBreaker_LED_R       : out std_logic;
+    iCEBreaker_LED_G       : out std_logic;
+    iCEBreaker_LED_B       : out std_logic
   );
 end entity;
 
@@ -127,7 +129,7 @@ begin
     DYNAMICDELAY    => x"00",
     LOCK            => pll_rstn,
     BYPASS          => '0',
-    RESETB          => user_reset_btn,
+    RESETB          => iCEBreaker_USR_RST_BTN,
     LATCHINPUTVALUE => '0',
     SDO             => open,
     SDI             => '0',
@@ -147,30 +149,30 @@ begin
     rstn_i      => std_ulogic(pll_rstn),
 
     -- primary UART --
-    uart_txd_o  => uart_txd_o,
-    uart_rxd_i  => uart_rxd_i,
+    uart_txd_o  => iCEBreaker_TX,
+    uart_rxd_i  => iCEBreaker_RX,
     uart_rts_o  => open,
     uart_cts_i  => '0',
 
     -- SPI to on-board flash --
-    flash_sck_o => flash_sck_o,
-    flash_sdo_o => flash_sdo_o,
-    flash_sdi_i => flash_sdi_i,
-    flash_csn_o => flash_csn_o,
+    flash_sck_o => iCEBreaker_FLASH_SCK,
+    flash_sdo_o => iCEBreaker_FLASH_SDO,
+    flash_sdi_i => iCEBreaker_FLASH_SDI,
+    flash_csn_o => iCEBreaker_FLASH_CSN,
 
     -- SPI to IO pins --
-    spi_sck_o   => spi_sck_o,
-    spi_sdo_o   => spi_sdo_o,
+    spi_sck_o   => iCEBreaker_SPI_SCK,
+    spi_sdo_o   => iCEBreaker_SPI_SDO,
     spi_sdi_i   => con_spi_sdi,
     spi_csn_o   => con_spi_csn,
 
     -- TWI --
-    twi_sda_io  => twi_sda_io,
-    twi_scl_io  => twi_scl_io,
+    twi_sda_io  => iCEBreaker_TWI_SDA,
+    twi_scl_io  => iCEBreaker_TWI_SCL,
 
     -- GPIO --
-    gpio_i      => gpio_i,
-    gpio_o      => gpio_o,
+    gpio_i      => iCEBreaker_GPIO_I,
+    gpio_o      => iCEBreaker_GPIO_O,
 
     -- PWM (to on-board RGB power LED) --
     pwm_o       => con_pwm
@@ -180,8 +182,8 @@ begin
   -- -------------------------------------------------------------------------------------------
 
   -- SPI sdi read-back --
-  spi_csn_o <= con_spi_csn;
-  con_spi_sdi <= flash_sdi_i when (con_spi_csn = '0') else spi_sdi_i;
+  iCEBreaker_SPI_CSN <= con_spi_csn;
+  con_spi_sdi <= iCEBreaker_FLASH_SDI when (con_spi_csn = '0') else iCEBreaker_SPI_SDI;
 
   -- RGB --
   RGB_inst: SB_RGBA_DRV
@@ -197,9 +199,9 @@ begin
     RGB0PWM  => con_pwm(1),  -- I - green - pwm channel 1
     RGB1PWM  => con_pwm(2),  -- I - bluee - pwm channel 2
     RGB2PWM  => con_pwm(0),  -- I - red   - pwm channel 0
-    RGB2     => pwm_o(2),    -- O - red
-    RGB1     => pwm_o(1),    -- O - blue
-    RGB0     => pwm_o(0)     -- O - green
+    RGB2     => iCEBreaker_LED_R,    -- O - red
+    RGB1     => iCEBreaker_LED_G,    -- O - blue
+    RGB0     => iCEBreaker_LED_B     -- O - green
   );
 
 end architecture;

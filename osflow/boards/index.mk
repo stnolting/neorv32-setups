@@ -1,3 +1,54 @@
+#
+# Constraints from submodule
+#
+
+CONSTRAINTS_BOARD_PATH ?= ../constraints/board
+
+
+ifeq ($(BOARD),iCESugar-v1.5)
+$(info Setting constraints and implementation args for BOARD iCESugar-v1.5)
+
+CONSTRAINTS ?= $(CONSTRAINTS_BOARD_PATH)/$(BOARD)/constraints.pcf
+PNRFLAGS    ?= --up5k --package sg48 --ignore-loops --timing-allow-fail
+IMPL        ?= neorv32_$(BOARD)_$(ID)
+
+endif
+
+
+ifeq ($(BOARD),iCEBreaker)
+$(info Setting constraints and implementation args for BOARD iCEBreaker)
+
+CONSTRAINTS ?= $(CONSTRAINTS_BOARD_PATH)/$(BOARD)/constraints.pcf
+PNRFLAGS    ?= --up5k --package sg48 --ignore-loops --timing-allow-fail
+IMPL        ?= neorv32_$(BOARD)_$(ID)
+
+endif
+
+
+ifeq ($(BOARD),IceZumAlhambraII)
+$(info Setting constraints and implementation args for BOARD IceZumAlhambraII)
+
+CONSTRAINTS ?= $(CONSTRAINTS_BOARD_PATH)/$(BOARD)/constraints.pcf
+PNRFLAGS    ?= --hx8k --package tq144:4k --ignore-loops --timing-allow-fail
+IMPL        ?= neorv32_$(BOARD)_$(ID)
+
+endif
+
+
+ifeq ($(BOARD),UPDuino-v3.0)
+$(info Setting constraints and implementation args for BOARD UPDuino-v3.0)
+
+CONSTRAINTS ?= $(CONSTRAINTS_BOARD_PATH)/$(BOARD)/constraints.pcf
+PNRFLAGS    ?= --up5k --package sg48 --ignore-loops --timing-allow-fail
+IMPL        ?= neorv32_$(BOARD)_$(ID)
+
+endif
+
+
+#
+# Local constraints files
+#
+
 PCF_PATH ?= constraints
 
 
@@ -40,38 +91,6 @@ IMPL := neorv32_Fomu_$(FOMU_REV)_$(ID)
 endif
 
 
-ifeq ($(BOARD),iCESugar)
-$(info Setting constraints and implementation args for BOARD iCESugar)
-
-CONSTRAINTS ?= $(PCF_PATH)/$(BOARD).pcf
-PNRFLAGS    ?= --up5k --package sg48 --ignore-loops --timing-allow-fail
-IMPL        ?= neorv32_$(BOARD)_$(ID)
-
-endif
-
-
-ifeq ($(BOARD),UPduino)
-$(info Setting constraints and implementation args for BOARD UPduino)
-
-UPduino_REV ?= v3
-
-CONSTRAINTS ?= $(PCF_PATH)/$(BOARD)_v3.pcf
-PNRFLAGS    ?= --up5k --package sg48 --ignore-loops --timing-allow-fail
-IMPL        ?= neorv32_$(BOARD)_$(UPduino_REV)_$(ID)
-
-endif
-
-ifeq ($(BOARD),iCEBreaker)
-$(info Setting constraints and implementation args for BOARD iCEBreaker)
-
-CONSTRAINTS ?= $(PCF_PATH)/$(BOARD).pcf
-PNRFLAGS    ?= --up5k --package sg48 --ignore-loops --timing-allow-fail
-IMPL        ?= neorv32_$(BOARD)_$(ID)
-
-endif
-
-
-
 ifeq ($(BOARD),OrangeCrab)
 $(info Setting constraints and implementation args for BOARD OrangeCrab)
 
@@ -82,15 +101,6 @@ OrangeCrab_REV ?= r02-25F
 CONSTRAINTS ?= $(PCF_PATH)/$(BOARD).lpf
 PNRFLAGS    ?= --25k --package CSFBGA285 --ignore-loops --timing-allow-fail
 IMPL        ?= neorv32_$(BOARD)_$(OrangeCrab_REV)_$(ID)
-
-endif
-
-ifeq ($(BOARD),AlhambraII)
-$(info Setting constraints and implementation args for BOARD AlhambraII)
-
-CONSTRAINTS ?= $(PCF_PATH)/$(BOARD).pcf
-PNRFLAGS    ?= --hx8k --package tq144:4k --ignore-loops --timing-allow-fail
-IMPL        ?= neorv32_$(BOARD)_$(ID)
 
 endif
 

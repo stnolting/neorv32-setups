@@ -1,5 +1,5 @@
 -- #################################################################################################
--- # << NEORV32 - Example setup for the tinyVision.ai Inc. "UPduino v3" (c) Board >>               #
+-- # << NEORV32 - Example minimal setup for the iCEBreaker >>                                      #
 -- # ********************************************************************************************* #
 -- # BSD 3-Clause License                                                                          #
 -- #                                                                                               #
@@ -42,12 +42,14 @@ use iCE40.components.all; -- for device primitives and macros
 entity neorv32_iCEBreaker_BoardTop_MinimalBoot is
   port (
     -- UART (uart0) --
-    uart_txd_o : out std_ulogic;
-    uart_rxd_i : in  std_ulogic;
+    iCEBreaker_TX      : out std_ulogic;
+    iCEBreaker_RX      : in  std_ulogic;
     -- GPIO --
-    gpio_o     : out std_ulogic_vector(3 downto 0);
+    iCEBreaker_GPIO_O  : out std_ulogic_vector(3 downto 0);
     -- PWM (to on-board RGB power LED) --
-    pwm_o      : out std_logic_vector(2 downto 0)
+    iCEBreaker_LED_R : out std_logic;
+    iCEBreaker_LED_G : out std_logic;
+    iCEBreaker_LED_B : out std_logic
   );
 end entity;
 
@@ -128,11 +130,11 @@ begin
     rstn_i     => std_ulogic(pll_rstn),
 
     -- GPIO --
-    gpio_o     => gpio_o,
+    gpio_o     => iCEBreaker_GPIO_O,
 
     -- primary UART --
-    uart_txd_o => uart_txd_o, -- UART0 send data
-    uart_rxd_i => uart_rxd_i, -- UART0 receive data
+    uart_txd_o => iCEBreaker_TX, -- UART0 send data
+    uart_rxd_i => iCEBreaker_RX, -- UART0 receive data
     uart_rts_o => open, -- hw flow control: UART0.RX ready to receive ("RTR"), low-active, optional
     uart_cts_i => '0',  -- hw flow control: UART0.TX allowed to transmit, low-active, optional
 
@@ -155,9 +157,9 @@ begin
     RGB0PWM  => con_pwm(1),  -- I - green - pwm channel 1
     RGB1PWM  => con_pwm(2),  -- I - blue  - pwm channel 2
     RGB2PWM  => con_pwm(0),  -- I - red   - pwm channel 0
-    RGB2     => pwm_o(2),    -- O - red
-    RGB1     => pwm_o(1),    -- O - blue
-    RGB0     => pwm_o(0)     -- O - green
+    RGB2     => iCEBreaker_LED_R,    -- O - red
+    RGB1     => iCEBreaker_LED_B,    -- O - blue
+    RGB0     => iCEBreaker_LED_G     -- O - green
   );
 
 end architecture;
