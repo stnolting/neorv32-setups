@@ -66,11 +66,11 @@ set_location_assignment PIN_A13 -to gpio_o[1]
 set_location_assignment PIN_A15 -to gpio_o[0]
 set_global_assignment -name QSYS_FILE neorv32_test_qsys.qsys
 set_global_assignment -name QIP_FILE ../neorv32_qsys_component/neorv32_qsys.qip
-set_global_assignment -name VHDL_FILE ../../../rtl/core/neorv32_application_image.vhd
-set_global_assignment -name VHDL_FILE ../../../rtl/core/neorv32_bootloader_image.vhd
-set_global_assignment -name VHDL_FILE ./../../../rtl/core/neorv32_dmem.entity.vhd -library neorv32
-set_global_assignment -name VHDL_FILE ./../../../rtl/core/neorv32_imem.entity.vhd -library neorv32
-set_global_assignment -name VHDL_FILE ./../../../rtl/core/mem/neorv32_dmem.default.vhd -library neorv32
-set_global_assignment -name VHDL_FILE ./../../../rtl/core/mem/neorv32_imem.default.vhd -library neorv32
+set_global_assignment -name VHDL_FILE ../../NEORV32/rtl/core/neorv32_application_image.vhd
+set_global_assignment -name VHDL_FILE ../../NEORV32/rtl/core/neorv32_bootloader_image.vhd
+set_global_assignment -name VHDL_FILE ./../../NEORV32/rtl/core/neorv32_dmem.entity.vhd -library neorv32
+set_global_assignment -name VHDL_FILE ./../../NEORV32/rtl/core/neorv32_imem.entity.vhd -library neorv32
+set_global_assignment -name VHDL_FILE ./../../NEORV32/rtl/core/mem/neorv32_dmem.default.vhd -library neorv32
+set_global_assignment -name VHDL_FILE ./../../NEORV32/rtl/core/mem/neorv32_imem.default.vhd -library neorv32
 set_global_assignment -name VHDL_FILE neorv32_ProcessorTop_Test.vhd
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id neorv32_ProcessorTop_Test
