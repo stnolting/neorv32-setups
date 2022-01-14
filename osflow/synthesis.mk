@@ -17,6 +17,6 @@ ${IMPL}.json: work-obj08.cf $(NEORV32_VERILOG_ALL)
 	$(YOSYS) $(YOSYSFLAGS) \
 	  -p \
 	  "$(GHDLSYNTH) $(GHDL_FLAGS) --no-formal $(TOP); \
-	  $(READ_VERILOG) synth_${YOSYSSYNTH} \
+	  $(READ_VERILOG) synth_${YOSYSSYNTH} ${SYNTH_XILINX_OPTIONS}\
 	  -top $(TOP) $(YOSYSPIPE) \
-	  -json $@" 2>&1 | tee yosys-report.txt
+	  $(YOSYS_WRITE_JSON) $@" 2>&1 | tee yosys-report.txt

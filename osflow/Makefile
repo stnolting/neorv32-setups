@@ -94,6 +94,14 @@ iCEBreaker:
 	  NEORV32_MEM_SRC="$(NEORV32_MEM_SRC)" \
 	  run
 
+nexys_a7:
+	$(eval BITSTREAM ?= neorv32_$(BOARD)_$(DESIGN).bit)
+	$(eval NEORV32_MEM_SRC ?= $(RTL_CORE_SRC)/mem/neorv32_imem.default.vhd $(RTL_CORE_SRC)/mem/neorv32_dmem.default.vhd)
+	$(MAKE) \
+	  BITSTREAM="$(BITSTREAM)" \
+	  NEORV32_MEM_SRC="$(NEORV32_MEM_SRC)" \
+	  run
+
 # Designs
 
 Minimal:

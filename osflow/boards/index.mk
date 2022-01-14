@@ -115,3 +115,17 @@ PNRFLAGS    ?= --85k --freq 25 --package CABGA381 --ignore-loops --timing-allow-
 IMPL        ?= neorv32_$(BOARD)_$(ID)
 
 endif
+
+ifeq ($(BOARD),nexys_a7)
+$(info Setting constraints and implementation args for BOARD nexys_a7)
+
+SYNTH_XILINX_OPTIONS = -flatten -abc9 -arch xc7
+
+DEVICE_SERIES = xilinx
+DEVICE_PART   = xc7a100tcsg324-1
+
+CONSTRAINTS ?= $(PCF_PATH)/$(BOARD).xdc
+PNRFLAGS    ?= --chipdb "${NEXTPNR_DIR}/xilinx/xc7a100t.bin"
+IMPL        ?= neorv32_$(BOARD)_$(ID)
+
+endif
