@@ -37,6 +37,7 @@ Project maintainers may make pull requests against this repository to [add or li
 | :file_folder: [`Orange Crab`](https://github.com/stnolting/neorv32-setups/tree/main/osflow) | GHDL, Yosys, nextPNR | [Orange Crab](https://github.com/gregdavill/OrangeCrab)                                                      | Lattice ECP5-25F                          | [umarcor](https://github.com/umarcor), [jeremyherbert](https://github.com/jeremyherbert) |
 | :file_folder: [`ULX3S`](https://github.com/stnolting/neorv32-setups/tree/main/osflow)       | GHDL, Yosys, nextPNR | [ULX3S](https://radiona.org/ulx3s/)                                                                          | Lattice ECP5 `LFE5U-85F-6BG381C`          | [zipotron](https://github.com/zipotron) |
 | :earth_africa: [`ULX3S-SDRAM`](https://github.com/zipotron/neorv32-complex-setups)          | GHDL, Yosys, nextPNR | [ULX3S](https://radiona.org/ulx3s/)                                                                          | Lattice ECP5 `LFE5U-85F-6BG381C`          | [zipotron](https://github.com/zipotron) |
+| :file_folder: [`Nexys-A7`](osflow) | GHDL, Yosys, nextPNR-xilinx, prjxray | [Nexys A7](https://reference.digilentinc.com/reference/programmable-logic/nexys-a7/start)                                                      | Xilinx Artix-7 `XC7A100TCSG324-1`                          | [AWenzel83](https://github.com/AWenzel83)
 
 :information_source: All setups using open-source toolchains are located in the
 [`osflow`](https://github.com/stnolting/neorv32-setups/tree/main/osflow) folder.
