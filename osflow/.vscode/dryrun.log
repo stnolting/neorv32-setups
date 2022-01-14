@@ -1,7 +1,0 @@
-make --dry-run --always-make --keep-going --print-directory
-make: Entering directory '/home/andreas/Entwicklung/osflow/projects/neorv32-setups/osflow'
-echo "Open-Source Synthesis, P&R, Routing and Bitstream Generation"
-echo "Usage:   make BOARD=<fpga board> <board top>"
-echo "Example: make BOARD=Fomu Minimal"
-make: Leaving directory '/home/andreas/Entwicklung/osflow/projects/neorv32-setups/osflow'
- 
