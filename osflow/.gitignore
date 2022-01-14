@@ -3,6 +3,8 @@
 *.cf
 *.cfg
 *.dfu
+*.fasm
+*.frames
 *.history
 *.json
 *.o

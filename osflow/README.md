@@ -27,13 +27,15 @@ The Makefiles in this subdir require the following tools:
 
 * [GHDL](https://hdl.github.io/awesome/items/ghdl/)
 * [Yosys](https://hdl.github.io/awesome/items/yosys/)
-* [Nextpnr](https://hdl.github.io/awesome/items/nextpnr/)
+* [Nextpnr](https://hdl.github.io/awesome/items/nextpnr/) (or the experimental [Nextpnr-Xilinx](https://github.com/gatecat/nextpnr-xilinx) for Xilinx 7-series devices)
 
 Moreover, depending on the target board and/or device, the following are used:
 
 * [Icestorm](https://hdl.github.io/awesome/items/icestorm/): for Lattice's ICE40 family devices.
 * [Project Trellis](https://hdl.github.io/awesome/items/prjtrellis/): for Lattice's ECP5 family devices.
+* [Project X-Ray](https://github.com/SymbiFlow/prjxray): for Xilinx 7-series devices.
 * [Device Firmware Upgrade Utilities (dfu-util) ](https://hdl.github.io/awesome/items/dfu-util/): for uploading bitstreams to Fomu.
+* [openFPGALoader](https://github.com/trabucayre/openFPGALoader): for writing bitstreams to Xilinx devices
 
 On the software side, a RISC-V GCC toolchain is required in order to compile C sources.
 

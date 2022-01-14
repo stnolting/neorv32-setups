@@ -33,7 +33,11 @@ ifeq ($(DEVICE_SERIES),ecp5)
 svf: ${IMPL}.svf
 endif
 
+ifeq ($(DEVICE_SERIES),xilinx)
+frames: ${IMPL}.frames
+endif
+
 clean:
-	rm -rf *.{${PNR2BIT_EXT},bit,cf,dfu,history,json,o,svf} *-report.txt
+	rm -rf *.{${PNR2BIT_EXT},bit,cf,dfu,history,json,o,svf,frames,fasm} *-report.txt
 
 include boards/$(BOARD).mk
