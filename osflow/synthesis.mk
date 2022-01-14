@@ -1,5 +1,6 @@
 ${DEVICE_LIB}-obj08.cf: ${DEVICE_SRC}
-	ghdl -a $(GHDL_FLAGS) --work=${DEVICE_LIB} ${DEVICE_SRC}
+	mkdir -p build
+	ghdl -a $(GHDL_FLAGS) --workdir=build --work=${DEVICE_LIB} ${DEVICE_SRC}
 
 neorv32-obj08.cf: ${DEVICE_LIB}-obj08.cf ${NEORV32_SRC}
 	ghdl -a $(GHDL_FLAGS) --work=neorv32 ${NEORV32_SRC}

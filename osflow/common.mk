@@ -34,6 +34,6 @@ svf: ${IMPL}.svf
 endif
 
 clean:
-	rm -rf *.{${PNR2BIT_EXT},bit,cf,dfu,history,json,o,svf} *-report.txt
+	rm -rf build *.{${PNR2BIT_EXT},bit,cf,dfu,history,json,o,svf} *-report.txt
 
 include boards/$(BOARD).mk
