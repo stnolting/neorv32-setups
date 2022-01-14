@@ -2,9 +2,10 @@
 
 [![Containers](https://img.shields.io/github/workflow/status/stnolting/neorv32-setups/Containers/main?longCache=true&style=flat-square&label=Containers&logo=Github%20Actions&logoColor=fff)](https://github.com/stnolting/neorv32-setups/actions?query=workflow%3AContainers)
 [![Implementation](https://img.shields.io/github/workflow/status/stnolting/neorv32-setups/Implementation/main?longCache=true&style=flat-square&label=Implementation&logo=Github%20Actions&logoColor=fff)](https://github.com/stnolting/neorv32-setups/actions?query=workflow%3AImplementation)
+[![Gitter](https://img.shields.io/badge/Chat-on%20gitter-4db797.svg?longCache=true&style=flat-square&logo=gitter&logoColor=e8ecef)](https://gitter.im/neorv32/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 
-This folder provides exemplary NEORV32 SoC setups and projects for different FPGA platforms/boards.
+This folder provides exemplary [**NEORV32**](https://github.com/stnolting/neorv32) SoC setups and projects for different FPGA platforms/boards.
 You can directly use one of the provided setups or use them as starting point to build your own setup.
 Project maintainers may make pull requests against this repository to [add or link their setups](#Adding-Your-Project-Setup).
 
