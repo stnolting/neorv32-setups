@@ -49,7 +49,7 @@ Please respect the following guidelines if you'd like to add (or link) your setu
 
 * check out the project's [code of conduct](https://github.com/stnolting/neorv32-setups/tree/master/CODE_OF_CONDUCT.md)
 * add a link if the board you are using provides online documentation (and/or can be purchased somewhere)
-* use the :file_folder: emoji (`:file_folder:`) if the setup is located *in this* folder; use the :earth_africa:
+* use the :file_folder: emoji (`:file_folder:`) if the setup is located in this repository; use the :earth_africa:
 emoji (`:earth_africa:`) if it is a link to your local project
 * please add a `README` to give some brief information about the setup and a `.gitignore` to keep things clean
 
