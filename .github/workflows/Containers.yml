@@ -4,6 +4,7 @@ on:
   push:
     paths:
     - '.github/*.dockerfile'
+    - '.github/workflows/Containers.yml'
   schedule:
     - cron: '0 0 * * 5'
   workflow_dispatch:
