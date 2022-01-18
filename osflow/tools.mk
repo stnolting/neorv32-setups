@@ -6,9 +6,13 @@ ICEPACK    ?= icepack
 ECPPACK    ?= ecppack
 OPENOCD    ?= openocd
 COPY       ?= cp -a
-FASM2FRAMES ?= ${XRAY_UTILS_DIR}/fasm2frames.py
-DBROOT		?= ${XRAY_DATABASE_DIR}/artix7
-FRAMES2BIT  ?= ${XRAY_TOOLS_DIR}/xc7frames2bit
+
+XRAY_DIR    ?=/opt/prjxray
+NEXTPNR_DIR ?=/opt/nextpnr-xilinx
+
+FASM2FRAMES ?= $(XRAY_DIR)/utils/fasm2frames.py
+DBROOT		?= $(XRAY_DIR)/database/artix7
+FRAMES2BIT  ?= $(XRAY_DIR)/build/tools/xc7frames2bit
 
 
 DEVICE_SERIES ?= ice40

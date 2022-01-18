@@ -116,7 +116,7 @@ IMPL        ?= neorv32_$(BOARD)_$(ID)
 
 endif
 
-ifeq ($(BOARD),nexys_a7)
+ifeq ($(BOARD),NexysA7)
 $(info Setting constraints and implementation args for BOARD nexys_a7)
 
 SYNTH_XILINX_OPTIONS = -flatten -abc9 -arch xc7
