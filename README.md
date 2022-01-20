@@ -28,6 +28,11 @@ Project maintainers may make pull requests against this repository to [add or li
 
 ## Setups using Open-Source Toolchains
 
+All setups using open-source toolchains are located in the
+[`osflow`](https://github.com/stnolting/neorv32-setups/tree/main/osflow) folder.
+See the [README](https://github.com/stnolting/neorv32-setups/blob/main/osflow/README.md)
+there for more information how to run a specific setup and how to add new targets.
+
 | Setup | Toolchain | Board :books: | FPGA  | Author(s) |
 |:------|:----------|:--------------|:------|:----------|
 | :file_folder: [`UPDuino-v3.0`](https://github.com/stnolting/neorv32-setups/tree/main/osflow)  | GHDL, Yosys, nextPNR | [UPduino v3.0](https://www.tindie.com/products/tinyvision_ai/upduino-v30-low-cost-lattice-ice40-fpga-board/) | Lattice iCE40 UltraPlus `iCE40UP5K-SG48I` | [tmeissner](https://github.com/tmeissner) |
@@ -38,27 +43,25 @@ Project maintainers may make pull requests against this repository to [add or li
 | :file_folder: [`ULX3S`](https://github.com/stnolting/neorv32-setups/tree/main/osflow)       | GHDL, Yosys, nextPNR | [ULX3S](https://radiona.org/ulx3s/)                                                                          | Lattice ECP5 `LFE5U-85F-6BG381C`          | [zipotron](https://github.com/zipotron) |
 | :earth_africa: [`ULX3S-SDRAM`](https://github.com/zipotron/neorv32-complex-setups)          | GHDL, Yosys, nextPNR | [ULX3S](https://radiona.org/ulx3s/)                                                                          | Lattice ECP5 `LFE5U-85F-6BG381C`          | [zipotron](https://github.com/zipotron) |
 
-:information_source: All setups using open-source toolchains are located in the
-[`osflow`](https://github.com/stnolting/neorv32-setups/tree/main/osflow) folder.
-See the README there for more information how to run a specific setup / configuration.
-
 
 ## Adding Your Project Setup
 
 Please respect the following guidelines if you'd like to add (or link) your setup to the list.
 
 * check out the project's [code of conduct](https://github.com/stnolting/neorv32-setups/tree/master/CODE_OF_CONDUCT.md)
-* add a link if the board you are using provides online documentation (and/or can be purchased somewhere)
+* add a link if the board you are using provides online documentation or can be purchased somewhere
 * use the :file_folder: emoji (`:file_folder:`) if the setup is located in this repository; use the :earth_africa:
 emoji (`:earth_africa:`) if it is a link to your local project
-* please add a `README` to give some brief information about the setup and a `.gitignore` to keep things clean
+* please add a `README.md` file to give some brief information about the setup and a `.gitignore` file to keep things clean
+* if you like you can add your setup to the [implementation](https://github.com/stnolting/neorv32-setups/blob/main/.github/generate-job-matrix.py)
+GitHub actions workflow to automatically generate up-to-date bitstreams for your setup
 
 
-## Setup-Specific NEORV32 Software Framework Modification
+## Setup-Specific NEORV32 Software Framework Modifications
 
 In order to use the features provided by the setups, minor *optional* changes can be made to the default NEORV32 setup.
 
-* To change the default data memory size take a look at the :books: User Guide section
+* To change the default data memory size take a look at the User Guide section
 [_General Software Framework Setup_](https://stnolting.github.io/neorv32/ug/#_general_software_framework_setup)
-* To modify the SPI flash base address for storing/booting software application see :books: User Guide section
+* To modify the SPI flash base address for storing/booting software application see User Guide section
 [_Customizing the Internal Bootloader_](https://stnolting.github.io/neorv32/ug/#_customizing_the_internal_bootloader)
