@@ -53,4 +53,8 @@ print('::set-output name=matrix::' + str([
   'board': 'ULX3S',
   'design': 'MinimalBoot',
   'bitstream': 'neorv32_ULX3S_MinimalBoot.bit'
+}, {
+  'board': 'iCE40CW312',
+  'design': 'MinimalBoot',
+  'bitstream': 'neorv32_iCE40CW312_MinimalBoot.bit'
 }]))
