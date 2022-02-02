@@ -115,3 +115,13 @@ PNRFLAGS    ?= --85k --freq 25 --package CABGA381 --ignore-loops --timing-allow-
 IMPL        ?= neorv32_$(BOARD)_$(ID)
 
 endif
+
+
+ifeq ($(BOARD),iCE40CW312)
+$(info Setting constraints and implementation args for BOARD iCE40CW312)
+
+CONSTRAINTS ?= $(CONSTRAINTS_BOARD_PATH)/$(BOARD)/constraints.pcf
+PNRFLAGS    ?= --up5k --package uwg30 --ignore-loops --timing-allow-fail
+IMPL        ?= neorv32_$(BOARD)_$(ID)
+
+endif

@@ -94,6 +94,15 @@ iCEBreaker:
 	  NEORV32_MEM_SRC="$(NEORV32_MEM_SRC)" \
 	  run
 
+iCE40CW312:
+	$(eval BITSTREAM ?= neorv32_$(BOARD)_$(DESIGN).bit)
+	$(eval NEORV32_MEM_SRC ?= devices/ice40/neorv32_imem.ice40up_spram.vhd devices/ice40/neorv32_dmem.ice40up_spram.vhd)
+	$(MAKE) \
+	  BITSTREAM="$(BITSTREAM)" \
+	  NEORV32_MEM_SRC="$(NEORV32_MEM_SRC)" \
+	  run
+
+
 # Designs
 
 Minimal:
