@@ -43,6 +43,9 @@ there for more information how to run a specific setup and how to add new target
 | :file_folder: [`ULX3S`](https://github.com/stnolting/neorv32-setups/tree/main/osflow)       | GHDL, Yosys, nextPNR | [ULX3S](https://radiona.org/ulx3s/)                                                                          | Lattice ECP5 `LFE5U-85F-6BG381C`          | [zipotron](https://github.com/zipotron) |
 | :earth_africa: [`ULX3S-SDRAM`](https://github.com/zipotron/neorv32-complex-setups)          | GHDL, Yosys, nextPNR | [ULX3S](https://radiona.org/ulx3s/)                                                                          | Lattice ECP5 `LFE5U-85F-6BG381C`          | [zipotron](https://github.com/zipotron) |
 
+:bulb: The auto-generated bitstreams built by the [Implementation](https://github.com/stnolting/neorv32-setups/actions/workflows/Implementation.yml)
+GitHub workflow can be found in the according **workflow's artifacts**.
+
 
 ## Adding Your Project Setup
 
