@@ -33,6 +33,9 @@ All setups using open-source toolchains are located in the
 See the [README](https://github.com/stnolting/neorv32-setups/blob/main/osflow/README.md)
 there for more information how to run a specific setup and how to add new targets.
 
+:bulb: The auto-generated bitstreams built by the [Implementation](https://github.com/stnolting/neorv32-setups/actions/workflows/Implementation.yml)
+GitHub workflow can be found in the according **workflow's artifacts**.
+
 | Setup | Toolchain | Board | FPGA | Author(s) |
 |:------|:----------|:------|:-----|:----------|
 | :file_folder: [`UPDuino-v3.0`](https://github.com/stnolting/neorv32-setups/tree/main/osflow)  | GHDL, Yosys, nextPNR | [UPduino v3.0](https://www.tindie.com/products/tinyvision_ai/upduino-v30-low-cost-lattice-ice40-fpga-board/) | Lattice iCE40 UltraPlus `iCE40UP5K-SG48I` | [tmeissner](https://github.com/tmeissner) |
@@ -43,9 +46,6 @@ there for more information how to run a specific setup and how to add new target
 | :file_folder: [`ULX3S`](https://github.com/stnolting/neorv32-setups/tree/main/osflow)       | GHDL, Yosys, nextPNR | [ULX3S](https://radiona.org/ulx3s/)                                                                          | Lattice ECP5 `LFE5U-85F-6BG381C`          | [zipotron](https://github.com/zipotron) |
 | :file_folder: ChipWhisperer [`iCE40CW312`](https://github.com/stnolting/neorv32-setups/tree/main/osflow) | GHDL, Yosys, nextPNR | **T.B.A.**                                                                                      | Lattice iCE40 UltraPlus `iCE40UP5K-UWG30` | [colinoflynn](https://github.com/colinoflynn) |
 | :earth_africa: [`ULX3S-SDRAM`](https://github.com/zipotron/neorv32-complex-setups)          | GHDL, Yosys, nextPNR | [ULX3S](https://radiona.org/ulx3s/)                                                                          | Lattice ECP5 `LFE5U-85F-6BG381C`          | [zipotron](https://github.com/zipotron) |
-
-:bulb: The auto-generated bitstreams built by the [Implementation](https://github.com/stnolting/neorv32-setups/actions/workflows/Implementation.yml)
-GitHub workflow can be found in the according **workflow's artifacts**.
 
 
 ## Adding Your Project Setup
