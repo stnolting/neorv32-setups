@@ -120,7 +120,7 @@ Alternatively, you can add a *local* constraints file in subdir [constraints](co
 2. You can add _all_ of the FPGA's physical pins even though just a subset is used by the new setup.
 
 3. Take a look at the iCEBreaker pin mapping as a reference:
-[`constraints/iCEBreaker.pcf`](https://github.com/stnolting/neorv32-setups/blob/main/osflow/constraints/iCEBreaker.pcf)
+[`iCEBreaker.pcf`](https://github.com/hdl/constraints/blob/main/board/iCEBreaker/constraints.pcf)
 
 #### 3. Adding a board-specific makefile
 
