@@ -9,6 +9,8 @@ This folder provides exemplary [**NEORV32**](https://github.com/stnolting/neorv3
 You can directly use one of the provided setups or use them as starting point to build your own setup.
 Project maintainers may make pull requests against this repository to [add or link their setups](#Adding-Your-Project-Setup).
 
+:package: **Ready-to-use bitstreams** for the provided open source toolchain-based setups are available via the assets of the
+[Implementation Workflow](https://github.com/stnolting/neorv32-setups/actions/workflows/Implementation.yml).
 
 ## Setups using Commercial Toolchains
 
