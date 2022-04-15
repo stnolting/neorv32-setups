@@ -4,15 +4,23 @@
 [![Implementation](https://img.shields.io/github/workflow/status/stnolting/neorv32-setups/Implementation/main?longCache=true&style=flat-square&label=Implementation&logo=Github%20Actions&logoColor=fff)](https://github.com/stnolting/neorv32-setups/actions?query=workflow%3AImplementation)
 [![Gitter](https://img.shields.io/badge/Chat-on%20gitter-4db797.svg?longCache=true&style=flat-square&logo=gitter&logoColor=e8ecef)](https://gitter.im/neorv32/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
+* [**Setups using Commercial Toolchains**](#Setups-using-Commercial-Toolchains)
+* [**Setups using Open-Source Toolchains**](#Setups-using-Open-Source-Toolchains)
+* [Adding Your Project Setup](#Adding-Your-Project-Setup)
+* [Setup-Specific NEORV32 Software Framework Modifications](#Setup-Specific-NEORV32-Software-Framework-Modifications)
 
-This folder provides exemplary [**NEORV32**](https://github.com/stnolting/neorv32) SoC setups and projects for different FPGA platforms/boards.
-You can directly use one of the provided setups or use them as starting point to build your own setup.
+This repository provides exemplary [**NEORV32**](https://github.com/stnolting/neorv32) SoC setups and projects for different FPGA platforms/boards
+and various toolchains. You can directly use one of the provided setups or use them as starting point to build your own setup.
 Project maintainers may make pull requests against this repository to [add or link their setups](#Adding-Your-Project-Setup).
 
-:package: **Ready-to-use bitstreams** for the provided open source toolchain-based setups are available via the assets of the
+:bulb: **Ready-to-use bitstreams** for the provided _open source toolchain-based setups_ are available via the assets of the
 [Implementation Workflow](https://github.com/stnolting/neorv32-setups/actions/workflows/Implementation.yml).
 
+
 ## Setups using Commercial Toolchains
+
+The setups using commercial toolchains provide pre-configured project files that can be opened with the according
+FPGA tools.
 
 | Setup | Toolchain | Board | FPGA | Author(s) |
 |:------|:----------|:------|:-----|:----------|
@@ -27,6 +35,8 @@ Project maintainers may make pull requests against this repository to [add or li
 | :earth_africa: [custom CRC32 processor module for the nexys-a7 boards (**tutorial**)](https://github.com/motius/neorv32-setups/tree/add-custom-crc32-module) | Xilinx Vivado | [Digilent Nexys A7](https://reference.digilentinc.com/reference/programmable-logic/nexys-a7/start)                    | Xilinx Artix-7 `XC7A50TCSG324-1`          | [motius](https://github.com/motius) ([ikstvn](https://github.com/ikstvn), [turbinenreiter](https://github.com/turbinenreiter)) |
 | :earth_africa: [neorv32-examples](https://github.com/emb4fun/neorv32-examples) | Intel Quartus Prime | Different Terasic boards  | Different Intel FPGAs | [emb4fun](https://github.com/emb4fun) |
 
+[[back to top](#neorv32-setups-Exemplary-FPGA-Board-Setups)]
+
 
 ## Setups using Open-Source Toolchains
 
@@ -34,9 +44,6 @@ All setups using open-source toolchains are located in the
 [`osflow`](https://github.com/stnolting/neorv32-setups/tree/main/osflow) folder.
 See the [README](https://github.com/stnolting/neorv32-setups/blob/main/osflow/README.md)
 there for more information how to run a specific setup and how to add new targets.
-
-:bulb: The auto-generated bitstreams built by the [Implementation](https://github.com/stnolting/neorv32-setups/actions/workflows/Implementation.yml)
-GitHub workflow can be found in the according **workflow's artifacts**.
 
 | Setup | Toolchain | Board | FPGA | Author(s) |
 |:------|:----------|:------|:-----|:----------|
@@ -49,10 +56,12 @@ GitHub workflow can be found in the according **workflow's artifacts**.
 | :file_folder: ChipWhisperer [`iCE40CW312`](https://github.com/stnolting/neorv32-setups/tree/main/osflow) | GHDL, Yosys, nextPNR | [CW312T_ICE40UP](https://github.com/newaetech/chipwhisperer-target-cw308t/tree/main/CW312T_ICE40UP) | Lattice iCE40 UltraPlus `iCE40UP5K-UWG30` | [colinoflynn](https://github.com/colinoflynn) |
 | :earth_africa: [`ULX3S-SDRAM`](https://github.com/zipotron/neorv32-complex-setups)          | GHDL, Yosys, nextPNR | [ULX3S](https://radiona.org/ulx3s/)                                                                          | Lattice ECP5 `LFE5U-85F-6BG381C`          | [zipotron](https://github.com/zipotron) |
 
+[[back to top](#neorv32-setups-Exemplary-FPGA-Board-Setups)]
+
 
 ## Adding Your Project Setup
 
-Please respect the following guidelines if you'd like to add (or link) your setup to the list.
+Please respect the following guidelines if you'd like to add or link your setup to the list:
 
 * check out the project's [code of conduct](https://github.com/stnolting/neorv32-setups/tree/master/CODE_OF_CONDUCT.md)
 * add a link if the board you are using provides online documentation or can be purchased somewhere
@@ -61,6 +70,8 @@ emoji (`:earth_africa:`) if it is a link to your local project
 * please add a `README.md` file to give some brief information about the setup and a `.gitignore` file to keep things clean
 * if you like you can add your setup to the [implementation](https://github.com/stnolting/neorv32-setups/blob/main/.github/generate-job-matrix.py)
 GitHub actions workflow to automatically generate up-to-date bitstreams for your setup
+
+[[back to top](#neorv32-setups-Exemplary-FPGA-Board-Setups)]
 
 
 ## Setup-Specific NEORV32 Software Framework Modifications
@@ -71,3 +82,5 @@ In order to use the features provided by the setups, minor *optional* changes ca
 [_General Software Framework Setup_](https://stnolting.github.io/neorv32/ug/#_general_software_framework_setup)
 * To modify the SPI flash base address for storing/booting software application see User Guide section
 [_Customizing the Internal Bootloader_](https://stnolting.github.io/neorv32/ug/#_customizing_the_internal_bootloader)
+
+[[back to top](#neorv32-setups-Exemplary-FPGA-Board-Setups)]
