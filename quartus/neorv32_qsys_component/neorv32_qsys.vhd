@@ -95,7 +95,6 @@ signal  wb_we_o     : std_ulogic; -- read/write
 signal  wb_sel_o    : std_ulogic_vector(03 downto 0); -- byte enable
 signal  wb_stb_o    : std_ulogic; -- strobe
 signal  wb_cyc_o    : std_ulogic; -- valid cycle
-signal  wb_lock_o   : std_ulogic; -- exclusive access request
 signal  wb_ack_i    : std_ulogic; -- transfer acknowledge
 signal  wb_err_i    : std_ulogic; -- transfer error
 
@@ -123,7 +122,6 @@ begin
     -- On-Chip Debugger (OCD) --
     ON_CHIP_DEBUGGER_EN          => false,       -- implement on-chip debugger
     -- RISC-V CPU Extensions --
-    CPU_EXTENSION_RISCV_A        => false,       -- implement atomic extension?
     CPU_EXTENSION_RISCV_C        => true,        -- implement compressed extension?
     CPU_EXTENSION_RISCV_E        => false,       -- implement embedded RF extension?
     CPU_EXTENSION_RISCV_M        => true,        -- implement muld/div extension?
@@ -205,7 +203,6 @@ begin
     wb_sel_o    => wb_sel_o,        -- byte enable
     wb_stb_o    => wb_stb_o,        -- strobe
     wb_cyc_o    => wb_cyc_o,        -- valid cycle
-    wb_lock_o   => wb_lock_o,       -- exclusive access request
     wb_ack_i    => wb_ack_i,        -- transfer acknowledge
     wb_err_i    => wb_err_i,        -- transfer error
     -- Advanced memory control signals (available if MEM_EXT_EN = true) --

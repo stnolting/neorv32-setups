@@ -75,7 +75,6 @@ architecture neorv32_test_setup_avalonmm_rtl of neorv32_test_setup_avalonmm is
       ON_CHIP_DEBUGGER_EN          : boolean := false;  -- implement on-chip debugger
   
       -- RISC-V CPU Extensions --
-      CPU_EXTENSION_RISCV_A        : boolean := false;  -- implement atomic extension?
       CPU_EXTENSION_RISCV_B        : boolean := false;  -- implement bit-manipulation extension?
       CPU_EXTENSION_RISCV_C        : boolean := false;  -- implement compressed extension?
       CPU_EXTENSION_RISCV_E        : boolean := false;  -- implement embedded RF extension?
