@@ -121,7 +121,6 @@ begin
   neorv32_inst: entity work.neorv32_ProcessorTop_MinimalBoot
   generic map (
     CLOCK_FREQUENCY              => f_clock_c,  -- clock frequency of clk_i in Hz
-    CPU_EXTENSION_RISCV_A        => false,
     CPU_EXTENSION_RISCV_C        => false,
     CPU_EXTENSION_RISCV_E        => false,
     CPU_EXTENSION_RISCV_M        => false,
