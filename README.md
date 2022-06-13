@@ -35,7 +35,7 @@ FPGA tools.
 | :earth_africa: [custom CRC32 processor module for the nexys-a7 boards (**tutorial**)](https://github.com/motius/neorv32-setups/tree/add-custom-crc32-module) | Xilinx Vivado | [Digilent Nexys A7](https://reference.digilentinc.com/reference/programmable-logic/nexys-a7/start)                    | Xilinx Artix-7 `XC7A50TCSG324-1`          | [motius](https://github.com/motius) ([ikstvn](https://github.com/ikstvn), [turbinenreiter](https://github.com/turbinenreiter)) |
 | :earth_africa: [neorv32-examples](https://github.com/emb4fun/neorv32-examples) | Intel Quartus Prime | Different Terasic boards  | Different Intel FPGAs | [emb4fun](https://github.com/emb4fun) |
 
-[[back to top](#neorv32-setups-Exemplary-FPGA-Board-Setups)]
+[[back to top](#Exemplary-NEORV32-Setups)]
 
 
 ## Setups using Open-Source Toolchains
@@ -56,7 +56,7 @@ there for more information how to run a specific setup and how to add new target
 | :file_folder: ChipWhisperer [`iCE40CW312`](https://github.com/stnolting/neorv32-setups/tree/main/osflow) | GHDL, Yosys, nextPNR | [CW312T_ICE40UP](https://github.com/newaetech/chipwhisperer-target-cw308t/tree/main/CW312T_ICE40UP) | Lattice iCE40 UltraPlus `iCE40UP5K-UWG30` | [colinoflynn](https://github.com/colinoflynn) |
 | :earth_africa: [`ULX3S-SDRAM`](https://github.com/zipotron/neorv32-complex-setups)          | GHDL, Yosys, nextPNR | [ULX3S](https://radiona.org/ulx3s/)                                                                          | Lattice ECP5 `LFE5U-85F-6BG381C`          | [zipotron](https://github.com/zipotron) |
 
-[[back to top](#neorv32-setups-Exemplary-FPGA-Board-Setups)]
+[[back to top](#Exemplary-NEORV32-Setups)]
 
 
 ## Adding Your Project Setup
@@ -71,7 +71,7 @@ emoji (`:earth_africa:`) if it is a link to your local project
 * if you like you can add your setup to the [implementation](https://github.com/stnolting/neorv32-setups/blob/main/.github/generate-job-matrix.py)
 GitHub actions workflow to automatically generate up-to-date bitstreams for your setup
 
-[[back to top](#neorv32-setups-Exemplary-FPGA-Board-Setups)]
+[[back to top](#Exemplary-NEORV32-Setups)]
 
 
 ## Setup-Specific NEORV32 Software Framework Modifications
@@ -83,4 +83,4 @@ In order to use the features provided by the setups, minor *optional* changes ca
 * To modify the SPI flash base address for storing/booting software application see User Guide section
 [_Customizing the Internal Bootloader_](https://stnolting.github.io/neorv32/ug/#_customizing_the_internal_bootloader)
 
-[[back to top](#neorv32-setups-Exemplary-FPGA-Board-Setups)]
+[[back to top](#Exemplary-NEORV32-Setups)]
