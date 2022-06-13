@@ -1,4 +1,4 @@
-# neorv32-setups: Exemplary FPGA Board Setups
+# Exemplary NEORV32 Setups
 
 [![Containers](https://img.shields.io/github/workflow/status/stnolting/neorv32-setups/Containers/main?longCache=true&style=flat-square&label=Containers&logo=Github%20Actions&logoColor=fff)](https://github.com/stnolting/neorv32-setups/actions?query=workflow%3AContainers)
 [![Implementation](https://img.shields.io/github/workflow/status/stnolting/neorv32-setups/Implementation/main?longCache=true&style=flat-square&label=Implementation&logo=Github%20Actions&logoColor=fff)](https://github.com/stnolting/neorv32-setups/actions?query=workflow%3AImplementation)
