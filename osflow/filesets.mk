@@ -20,6 +20,7 @@ NEORV32_CORE_SRC := \
   $(RTL_CORE_SRC)/neorv32_cpu_bus.vhd \
   $(RTL_CORE_SRC)/neorv32_cpu_control.vhd \
   $(RTL_CORE_SRC)/neorv32_cpu_cp_bitmanip.vhd \
+  $(RTL_CORE_SRC)/neorv32_cpu_cp_cpu.vhd \
   $(RTL_CORE_SRC)/neorv32_cpu_cp_fpu.vhd \
   $(RTL_CORE_SRC)/neorv32_cpu_cp_muldiv.vhd \
   $(RTL_CORE_SRC)/neorv32_cpu_cp_shifter.vhd \
@@ -43,6 +44,7 @@ NEORV32_CORE_SRC := \
   $(RTL_CORE_SRC)/neorv32_uart.vhd \
   $(RTL_CORE_SRC)/neorv32_wdt.vhd \
   $(RTL_CORE_SRC)/neorv32_wishbone.vhd \
+  $(RTL_CORE_SRC)/neorv32_xip.vhd \
   $(RTL_CORE_SRC)/neorv32_xirq.vhd
 
 # Before including this partial makefile, NEORV32_MEM_SRC needs to be set
