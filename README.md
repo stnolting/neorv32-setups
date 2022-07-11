@@ -7,8 +7,6 @@
 * [**Community Projects** (hardware / software)](#Community-Projects)
 * [**Setups using Commercial Toolchains** (FPGA setups)](#Setups-using-Commercial-Toolchains)
 * [**Setups using Open-Source Toolchains** (FPGA setups)](#Setups-using-Open-Source-Toolchains)
-
-
 * [Adding Your Project or Setup](#Adding-Your-Project-or-Setup)
 * [Setup-Specific NEORV32 Software Framework Modifications](#Setup-Specific-NEORV32-Software-Framework-Modifications)
 
