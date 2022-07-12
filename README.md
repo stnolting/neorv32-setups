@@ -26,6 +26,7 @@ This list shows projects that focus on custom hard- or software modifications, s
 |:-----|:------------|:----------|
 | :earth_africa: [github.com/motius](https://github.com/motius/neorv32/tree/add-custom-crc32-module) | **tutorial:** custom CRC32 processor module for the nexys-a7 boards | [motius](https://github.com/motius) ([ikstvn](https://github.com/ikstvn), [turbinenreiter](https://github.com/turbinenreiter)) |
 | :earth_africa: [neorv32-examples](https://github.com/emb4fun/neorv32-examples) | NEORV32 setups/projects for different Intel/Terasic boards | [emb4fun](https://github.com/emb4fun) |
+| :earth_africa: [neorv32-xip-bootloader](https://github.com/betocool-prog/neorv32-xip-bootloader) | A XIP (eXecute In Place) Bootloader for the NEORV32| [betocool-prog](https://github.com/betocool-prog) |
 
 [[back to top](#Exemplary-NEORV32-Setups-and-Projects)]
 
