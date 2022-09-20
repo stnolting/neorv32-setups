@@ -157,9 +157,6 @@ begin
     CPU_EXTENSION_RISCV_Zicntr   => true,        -- implement base counters?
     CPU_EXTENSION_RISCV_Zifencei => true,        -- implement instruction stream sync.?
 
-    -- Extension Options --
-    CPU_CNT_WIDTH                => 34,          -- total width of CPU cycle and instret counters (0..64)
-
     -- Internal Instruction memory --
     MEM_INT_IMEM_EN              => true,        -- implement processor-internal instruction memory
     MEM_INT_IMEM_SIZE            => 64*1024,     -- size of processor-internal instruction memory in bytes
