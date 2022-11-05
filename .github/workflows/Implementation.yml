@@ -18,7 +18,7 @@ jobs:
     steps:
 
     - name: '🧰 Repository Checkout'
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: '🔧 Generate examples matrix'
       id: generate
@@ -37,7 +37,7 @@ jobs:
     steps:
 
     - name: '🧰 Repository Checkout'
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         fetch-depth: 0
         submodules: recursive
@@ -48,7 +48,7 @@ jobs:
         args: make -C osflow BOARD=${{ matrix.board }} ${{ matrix.design }}
 
     - name: '📤 Upload Artifact: ${{ matrix.board }} ${{ matrix.design }} bitstream and reports'
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: ${{ matrix.board }}-${{ matrix.design }}
         path: |
@@ -70,7 +70,7 @@ jobs:
     steps:
 
     - name: '🟦 Setup MSYS2'
-      uses: msys2/setup-msys2@v2
+      uses: msys2/setup-msys2@v3
       with:
         msystem: MINGW64
         update: true
@@ -86,7 +86,7 @@ jobs:
       shell: bash
 
     - name: '🧰 Checkout'
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         fetch-depth: 0
         submodules: recursive
