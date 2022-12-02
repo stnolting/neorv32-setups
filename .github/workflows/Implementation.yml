@@ -11,7 +11,7 @@ jobs:
 
 
   Matrix:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     outputs:
       matrix: ${{ steps.generate.outputs.matrix }}
 
@@ -27,7 +27,7 @@ jobs:
 
   All-in-one:
     needs: Matrix
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     strategy:
       fail-fast: false
       matrix:
