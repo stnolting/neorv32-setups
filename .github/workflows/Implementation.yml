@@ -11,7 +11,7 @@ jobs:
 
 
   Matrix:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.generate.outputs.matrix }}
 
@@ -27,7 +27,7 @@ jobs:
 
   All-in-one:
     needs: Matrix
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
@@ -70,7 +70,7 @@ jobs:
     steps:
 
     - name: '🟦 Setup MSYS2'
-      uses: msys2/setup-msys2@v2
+      uses: msys2/setup-msys2@v3
       with:
         msystem: MINGW64
         update: true

@@ -12,7 +12,7 @@ on:
 jobs:
 
   Container:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
@@ -24,7 +24,7 @@ jobs:
     steps:
 
     - name: '🧰 Repository Checkout'
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: '⛴️ Build neorv32/${{ matrix.image }}'
       run: docker build -t ghcr.io/stnolting/neorv32/${{ matrix.image }} - < .github/${{ matrix.image }}.dockerfile
