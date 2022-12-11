@@ -16,10 +16,10 @@ The project will be created and implementation will be run until generation of `
 
 1. start Vivado (in GUI mode)
 2. click on "TCL Console" at the bottom
-3. use the console to naviagte to the boards folder. For example: `cd .../neorv32/setups/vivado/arty-a7-test-setup`
+3. use the console to navigation to the boards folder. For example: `cd somewhere/neorv32-setups/vivado/arty-a7-test-setup`
 4. execute `source create_project.tcl` - this will create the actual Vivado project in `work`
-5. when the Vivado project has openend, Implementation will run and a bitstream will be generated.
-6. maybe a prompt will notify about it.
+5. when the Vivado project has opened, Implementation will run and a bitstream will be generated - if the process is not started automatically, click "run"
+to "run synthesis", "run implementation" and "generate bitstream" steps
 
 ### Programming the Bitstream
 
