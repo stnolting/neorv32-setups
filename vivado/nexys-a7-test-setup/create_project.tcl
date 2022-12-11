@@ -27,15 +27,15 @@ switch $board {
 create_project -part $a7part $a7prj $outputdir
 
 # add source files: core sources
-add_files [glob ./../../NEORV32/rtl/core/*.vhd] ./../../NEORV32/rtl/core/mem/neorv32_dmem.default.vhd ./../../NEORV32/rtl/core/mem/neorv32_imem.default.vhd
-set_property library neorv32 [get_files [glob ./../../NEORV32/rtl/core/*.vhd]]
-set_property library neorv32 [get_files [glob ./../../NEORV32/rtl/core/mem/neorv32_*mem.default.vhd]]
+add_files [glob ./../../neorv32/rtl/core/*.vhd] ./../../neorv32/rtl/core/mem/neorv32_dmem.default.vhd ./../../neorv32/rtl/core/mem/neorv32_imem.default.vhd
+set_property library neorv32 [get_files [glob ./../../neorv32/rtl/core/*.vhd]]
+set_property library neorv32 [get_files [glob ./../../neorv32/rtl/core/mem/neorv32_*mem.default.vhd]]
 
 # add source file: top entity
-add_files [glob ./../../NEORV32/rtl/test_setups/neorv32_test_setup_bootloader.vhd]
+add_files [glob ./../../neorv32/rtl/test_setups/neorv32_test_setup_bootloader.vhd]
 
 # add source files: simulation-only
-add_files -fileset sim_1 [list ./../../NEORV32/sim/simple/neorv32_tb.simple.vhd ./../../NEORV32/sim/simple/uart_rx.simple.vhd]
+add_files -fileset sim_1 [list ./../../neorv32/sim/simple/neorv32_tb.simple.vhd ./../../neorv32/sim/simple/uart_rx.simple.vhd]
 
 # add source files: constraints
 add_files -fileset constrs_1 [glob ./*.xdc]
