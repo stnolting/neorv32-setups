@@ -166,7 +166,7 @@ begin
     MEM_INT_DMEM_SIZE            => 64*1024,     -- size of processor-internal data memory in bytes
 
     -- Processor peripherals --
-    IO_GPIO_EN                   => true,        -- implement general purpose input/output port unit (GPIO)?
+    IO_GPIO_NUM                  => 4,           -- implement general purpose input/output port unit (GPIO)?
     IO_MTIME_EN                  => true,        -- implement machine system timer (MTIME)?
     IO_UART0_EN                  => true,        -- implement primary universal asynchronous receiver/transmitter (UART0)?
     IO_SPI_EN                    => true,        -- implement serial peripheral interface (SPI)?
