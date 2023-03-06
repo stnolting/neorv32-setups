@@ -3,7 +3,7 @@
 -- # ********************************************************************************************* #
 -- # BSD 3-Clause License                                                                          #
 -- #                                                                                               #
--- # Copyright (c) 2021, Stephan Nolting. All rights reserved.                                     #
+-- # Copyright (c) 2023, Stephan Nolting. All rights reserved.                                     #
 -- #                                                                                               #
 -- # Redistribution and use in source and binary forms, with or without modification, are          #
 -- # permitted provided that the following conditions are met:                                     #
@@ -89,8 +89,6 @@ begin
     -- primary UART --
     uart_txd_o => ULX3S_TX, -- UART0 send data
     uart_rxd_i => ULX3S_RX, -- UART0 receive data
-    uart_rts_o => open, -- hw flow control: UART0.RX ready to receive ("RTR"), low-active, optional
-    uart_cts_i => '0',  -- hw flow control: UART0.TX allowed to transmit, low-active, optional
 
     -- PWM (to on-board RGB LED) --
     pwm_o      => con_pwm

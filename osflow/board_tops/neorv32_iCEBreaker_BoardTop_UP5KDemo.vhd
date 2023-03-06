@@ -3,7 +3,7 @@
 -- # ********************************************************************************************* #
 -- # BSD 3-Clause License                                                                          #
 -- #                                                                                               #
--- # Copyright (c) 2021, Stephan Nolting. All rights reserved.                                     #
+-- # Copyright (c) 2023, Stephan Nolting. All rights reserved.                                     #
 -- #                                                                                               #
 -- # Redistribution and use in source and binary forms, with or without modification, are          #
 -- # permitted provided that the following conditions are met:                                     #
@@ -151,8 +151,6 @@ begin
     -- primary UART --
     uart_txd_o  => iCEBreaker_TX,
     uart_rxd_i  => iCEBreaker_RX,
-    uart_rts_o  => open,
-    uart_cts_i  => '0',
 
     -- SPI to on-board flash --
     flash_sck_o => iCEBreaker_FLASH_SCK,
