@@ -120,14 +120,7 @@ begin
 
   neorv32_inst: entity work.neorv32_ProcessorTop_MinimalBoot
   generic map (
-    CLOCK_FREQUENCY              => f_clock_c,  -- clock frequency of clk_i in Hz
-    CPU_EXTENSION_RISCV_C        => false,
-    CPU_EXTENSION_RISCV_E        => false,
-    CPU_EXTENSION_RISCV_M        => false,
-    CPU_EXTENSION_RISCV_U        => false,
-    CPU_EXTENSION_RISCV_Zfinx    => false,
-    CPU_EXTENSION_RISCV_Zicsr    => true,
-    CPU_EXTENSION_RISCV_Zifencei => false
+    CLOCK_FREQUENCY => f_clock_c  -- clock frequency of clk_i in Hz
   )
   port map (
     -- Global control --
