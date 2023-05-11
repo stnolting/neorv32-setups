@@ -6,7 +6,7 @@
 -- # ********************************************************************************************* #
 -- # BSD 3-Clause License                                                                          #
 -- #                                                                                               #
--- # Copyright (c) 2022, Stephan Nolting. All rights reserved.                                     #
+-- # Copyright (c) 2023, Stephan Nolting. All rights reserved.                                     #
 -- #                                                                                               #
 -- # Redistribution and use in source and binary forms, with or without modification, are          #
 -- # permitted provided that the following conditions are met:                                     #
@@ -85,8 +85,8 @@ begin
 
   -- Access Control -------------------------------------------------------------------------
   -- -------------------------------------------------------------------------------------------
-  acc_en <= '1' when (addr_i(hi_abb_c downto lo_abb_c) = IMEM_BASE(hi_abb_c downto lo_abb_c)) else '0';
-  mem_cs <= acc_en and (rden_i or wren_i);
+  acc_en <= '1' when (bus_req_i.addr(hi_abb_c downto lo_abb_c) = IMEM_BASE(hi_abb_c downto lo_abb_c)) else '0';
+  mem_cs <= acc_en and (bus_req_i.re or bus_req_i.we);
 
 
   -- Memory Access --------------------------------------------------------------------------
@@ -121,29 +121,29 @@ begin
 
   -- access logic and signal type conversion --
   spram_clk   <= std_logic(clk_i);
-  spram_addr  <= std_logic_vector(addr_i(13+2 downto 0+2));
-  spram_di_lo <= std_logic_vector(data_i(15 downto 00));
-  spram_di_hi <= std_logic_vector(data_i(31 downto 16));
-  spram_we    <= '1' when ((acc_en and wren_i) = '1') else '0'; -- global write enable
+  spram_addr  <= std_logic_vector(bus_req_i.addr(13+2 downto 0+2));
+  spram_di_lo <= std_logic_vector(bus_req_i.data(15 downto 00));
+  spram_di_hi <= std_logic_vector(bus_req_i.data(31 downto 16));
+  spram_we    <= '1' when ((acc_en and bus_req_i.we) = '1') else '0'; -- global write enable
   spram_cs    <= std_logic(mem_cs);
-  spram_be_lo <= std_logic(ben_i(1)) & std_logic(ben_i(1)) & std_logic(ben_i(0)) & std_logic(ben_i(0)); -- low byte write enable
-  spram_be_hi <= std_logic(ben_i(3)) & std_logic(ben_i(3)) & std_logic(ben_i(2)) & std_logic(ben_i(2)); -- high byte write enable
+  spram_be_lo <= std_logic(bus_req_i.ben(1)) & std_logic(bus_req_i.ben(1)) & std_logic(bus_req_i.ben(0)) & std_logic(bus_req_i.ben(0)); -- low byte write enable
+  spram_be_hi <= std_logic(bus_req_i.ben(3)) & std_logic(bus_req_i.ben(3)) & std_logic(bus_req_i.ben(2)) & std_logic(bus_req_i.ben(2)); -- high byte write enable
   spram_pwr_n <= '0' when ((spram_sleep_mode_en_c = false) or (mem_cs = '1')) else '1'; -- LP mode disabled or IMEM selected
   rdata       <= std_ulogic_vector(spram_do_hi) & std_ulogic_vector(spram_do_lo);
 
   buffer_ff: process(clk_i)
   begin
     if rising_edge(clk_i) then
-      ack_o <= mem_cs;
-      rden  <= acc_en and rden_i;
+      bus_rsp_o.ack <= mem_cs;
+      rden          <= acc_en and bus_req_i.re;
     end if;
   end process buffer_ff;
 
-  -- no access error --
-  err_o <= '0';
+  -- no access error possible --
+  bus_rsp_o.err <= '0';
 
   -- output gate --
-  data_o <= rdata when (rden = '1') else (others => '0');
+  bus_rsp_o.data <= rdata when (rden = '1') else (others => '0');
 
 
 end neorv32_imem_rtl;
