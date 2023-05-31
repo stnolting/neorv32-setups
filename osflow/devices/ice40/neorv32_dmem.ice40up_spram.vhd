@@ -53,7 +53,7 @@ architecture neorv32_dmem_rtl of neorv32_dmem is
 
   -- IO space: module base address --
   constant hi_abb_c : natural := 31; -- high address boundary bit
-  constant lo_abb_c : natural := index_size_f(64*1024); -- low address boundary bit
+  constant lo_abb_c : natural := index_size_f(DMEM_SIZE); -- low address boundary bit
 
   -- local signals --
   signal acc_en : std_ulogic;
@@ -79,7 +79,7 @@ begin
   -- Sanity Checks --------------------------------------------------------------------------
   -- -------------------------------------------------------------------------------------------
   assert false report "NEORV32 PROCESSOR CONFIG NOTE: Using iCE40up SPRAM-based DMEM." severity note;
-  assert not (DMEM_SIZE > 64*1024) report "NEORV32 PROCESSOR CONFIG ERROR: DMEM has a fixed physical size of 64kB. Logical size must be less or equal." severity error;
+  assert not (DMEM_SIZE /= 64*1024) report "NEORV32 PROCESSOR CONFIG NOTE: DMEM SPRAM has a fixed physical size of 64kB." severity note;
 
 
   -- Access Control -------------------------------------------------------------------------
