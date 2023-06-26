@@ -32,6 +32,7 @@ NEORV32_CORE_SRC := \
   $(RTL_CORE_SRC)/neorv32_crc.vhd \
   $(RTL_CORE_SRC)/neorv32_debug_dm.vhd \
   $(RTL_CORE_SRC)/neorv32_debug_dtm.vhd \
+  $(RTL_CORE_SRC)/neorv32_dcache.vhd \
   $(RTL_CORE_SRC)/neorv32_dma.vhd \
   $(RTL_CORE_SRC)/neorv32_gpio.vhd \
   $(RTL_CORE_SRC)/neorv32_gptmr.vhd \
@@ -44,14 +45,14 @@ NEORV32_CORE_SRC := \
   $(RTL_CORE_SRC)/neorv32_slink.vhd \
   $(RTL_CORE_SRC)/neorv32_spi.vhd \
   $(RTL_CORE_SRC)/neorv32_sysinfo.vhd \
-  $(RTL_CORE_SRC)/neorv32_top.vhd \
   $(RTL_CORE_SRC)/neorv32_trng.vhd \
   $(RTL_CORE_SRC)/neorv32_twi.vhd \
   $(RTL_CORE_SRC)/neorv32_uart.vhd \
   $(RTL_CORE_SRC)/neorv32_wdt.vhd \
   $(RTL_CORE_SRC)/neorv32_wishbone.vhd \
   $(RTL_CORE_SRC)/neorv32_xip.vhd \
-  $(RTL_CORE_SRC)/neorv32_xirq.vhd
+  $(RTL_CORE_SRC)/neorv32_xirq.vhd \
+  $(RTL_CORE_SRC)/neorv32_top.vhd
 
 # Before including this partial makefile, NEORV32_MEM_SRC needs to be set
 # (containing two VHDL sources: one for IMEM and one for DMEM)
