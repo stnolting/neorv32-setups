@@ -9,27 +9,29 @@ NEORV32_MEM_ENTITIES := \
   $(RTL_CORE_SRC)/neorv32_dmem.entity.vhd \
   $(RTL_CORE_SRC)/neorv32_imem.entity.vhd
 
+# ordered list: leaf cells first
 NEORV32_CORE_SRC := \
-  $(RTL_CORE_SRC)/neorv32_bootloader_image.vhd \
-  $(RTL_CORE_SRC)/neorv32_boot_rom.vhd \
-  $(RTL_CORE_SRC)/neorv32_bus_keeper.vhd \
-  $(RTL_CORE_SRC)/neorv32_busswitch.vhd \
-  $(RTL_CORE_SRC)/neorv32_cfs.vhd \
-  $(RTL_CORE_SRC)/neorv32_cpu.vhd \
-  $(RTL_CORE_SRC)/neorv32_cpu_alu.vhd \
-  $(RTL_CORE_SRC)/neorv32_cpu_bus.vhd \
+  $(RTL_CORE_SRC)/neorv32_fifo.vhd \
+  $(RTL_CORE_SRC)/neorv32_cpu_decompressor.vhd \
   $(RTL_CORE_SRC)/neorv32_cpu_control.vhd \
   $(RTL_CORE_SRC)/neorv32_cpu_cp_bitmanip.vhd \
   $(RTL_CORE_SRC)/neorv32_cpu_cp_cfu.vhd \
   $(RTL_CORE_SRC)/neorv32_cpu_cp_fpu.vhd \
   $(RTL_CORE_SRC)/neorv32_cpu_cp_muldiv.vhd \
   $(RTL_CORE_SRC)/neorv32_cpu_cp_shifter.vhd \
-  $(RTL_CORE_SRC)/neorv32_cpu_decompressor.vhd \
+  $(RTL_CORE_SRC)/neorv32_cpu_alu.vhd \
+  $(RTL_CORE_SRC)/neorv32_cpu_bus.vhd \
   $(RTL_CORE_SRC)/neorv32_cpu_regfile.vhd \
+  $(RTL_CORE_SRC)/neorv32_cpu.vhd \
+  $(RTL_CORE_SRC)/neorv32_bootloader_image.vhd \
+  $(RTL_CORE_SRC)/neorv32_boot_rom.vhd \
+  $(RTL_CORE_SRC)/neorv32_bus_keeper.vhd \
+  $(RTL_CORE_SRC)/neorv32_busswitch.vhd \
+  $(RTL_CORE_SRC)/neorv32_cfs.vhd \
+  $(RTL_CORE_SRC)/neorv32_crc.vhd \
   $(RTL_CORE_SRC)/neorv32_debug_dm.vhd \
   $(RTL_CORE_SRC)/neorv32_debug_dtm.vhd \
   $(RTL_CORE_SRC)/neorv32_dma.vhd \
-  $(RTL_CORE_SRC)/neorv32_fifo.vhd \
   $(RTL_CORE_SRC)/neorv32_gpio.vhd \
   $(RTL_CORE_SRC)/neorv32_gptmr.vhd \
   $(RTL_CORE_SRC)/neorv32_icache.vhd \
