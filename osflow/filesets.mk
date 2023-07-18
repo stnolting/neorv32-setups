@@ -26,8 +26,6 @@ NEORV32_CORE_SRC := \
   $(RTL_CORE_SRC)/neorv32_cpu.vhd \
   $(RTL_CORE_SRC)/neorv32_bootloader_image.vhd \
   $(RTL_CORE_SRC)/neorv32_boot_rom.vhd \
-  $(RTL_CORE_SRC)/neorv32_bus_keeper.vhd \
-  $(RTL_CORE_SRC)/neorv32_busswitch.vhd \
   $(RTL_CORE_SRC)/neorv32_cfs.vhd \
   $(RTL_CORE_SRC)/neorv32_crc.vhd \
   $(RTL_CORE_SRC)/neorv32_debug_dm.vhd \
@@ -37,6 +35,7 @@ NEORV32_CORE_SRC := \
   $(RTL_CORE_SRC)/neorv32_gpio.vhd \
   $(RTL_CORE_SRC)/neorv32_gptmr.vhd \
   $(RTL_CORE_SRC)/neorv32_icache.vhd \
+  $(RTL_CORE_SRC)/neorv32_intercon.vhd \
   $(RTL_CORE_SRC)/neorv32_mtime.vhd \
   $(RTL_CORE_SRC)/neorv32_neoled.vhd \
   $(RTL_CORE_SRC)/neorv32_onewire.vhd \
