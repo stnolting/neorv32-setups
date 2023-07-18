@@ -56,7 +56,6 @@ architecture neorv32_dmem_rtl of neorv32_dmem is
   constant lo_abb_c : natural := index_size_f(DMEM_SIZE); -- low address boundary bit
 
   -- local signals --
-  signal acc_en : std_ulogic;
   signal mem_cs : std_ulogic;
   signal rdata  : std_ulogic_vector(31 downto 0);
   signal rden   : std_ulogic;
@@ -84,8 +83,7 @@ begin
 
   -- Access Control -------------------------------------------------------------------------
   -- -------------------------------------------------------------------------------------------
-  acc_en <= '1' when (bus_req_i.addr(hi_abb_c downto lo_abb_c) = DMEM_BASE(hi_abb_c downto lo_abb_c)) else '0';
-  mem_cs <= acc_en and (bus_req_i.re or bus_req_i.we);
+  mem_cs <= bus_req_i.re or bus_req_i.we;
 
 
   -- Memory Access --------------------------------------------------------------------------
@@ -123,7 +121,7 @@ begin
   spram_addr  <= std_logic_vector(bus_req_i.addr(13+2 downto 0+2));
   spram_di_lo <= std_logic_vector(bus_req_i.data(15 downto 00));
   spram_di_hi <= std_logic_vector(bus_req_i.data(31 downto 16));
-  spram_we    <= '1' when ((acc_en and bus_req_i.we) = '1') else '0'; -- global write enable
+  spram_we    <= '1' when (bus_req_i.we = '1') else '0'; -- global write enable
   spram_cs    <= std_logic(mem_cs);
   spram_be_lo <= std_logic(bus_req_i.ben(1)) & std_logic(bus_req_i.ben(1)) & std_logic(bus_req_i.ben(0)) & std_logic(bus_req_i.ben(0)); -- low byte write enable
   spram_be_hi <= std_logic(bus_req_i.ben(3)) & std_logic(bus_req_i.ben(3)) & std_logic(bus_req_i.ben(2)) & std_logic(bus_req_i.ben(2)); -- high byte write enable
@@ -134,7 +132,7 @@ begin
   begin
     if rising_edge(clk_i) then
       bus_rsp_o.ack <= mem_cs;
-      rden          <= acc_en and bus_req_i.re;
+      rden          <= bus_req_i.re;
     end if;
   end process buffer_ff;
 
