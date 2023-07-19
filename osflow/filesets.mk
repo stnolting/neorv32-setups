@@ -4,6 +4,7 @@ NEORV32_PKG := $(RTL_CORE_SRC)/neorv32_package.vhd
 
 NEORV32_APP_SRC := \
   $(RTL_CORE_SRC)/neorv32_application_image.vhd \
+  $(RTL_CORE_SRC)/neorv32_bootloader_image.vhd
 
 NEORV32_MEM_ENTITIES := \
   $(RTL_CORE_SRC)/neorv32_dmem.entity.vhd \
@@ -24,7 +25,6 @@ NEORV32_CORE_SRC := \
   $(RTL_CORE_SRC)/neorv32_cpu_bus.vhd \
   $(RTL_CORE_SRC)/neorv32_cpu_regfile.vhd \
   $(RTL_CORE_SRC)/neorv32_cpu.vhd \
-  $(RTL_CORE_SRC)/neorv32_bootloader_image.vhd \
   $(RTL_CORE_SRC)/neorv32_boot_rom.vhd \
   $(RTL_CORE_SRC)/neorv32_cfs.vhd \
   $(RTL_CORE_SRC)/neorv32_crc.vhd \
