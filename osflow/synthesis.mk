@@ -7,8 +7,7 @@ neorv32-obj08.cf: ${DEVICE_LIB}-obj08.cf ${NEORV32_SRC}
 	ghdl -m $(GHDL_FLAGS) --work=neorv32 neorv32_top
 
 work-obj08.cf: neorv32-obj08.cf ${DESIGN_SRC} ${BOARD_SRC}
-	ghdl -i $(GHDL_FLAGS) --work=work ${DESIGN_SRC} ${BOARD_SRC}
-	ghdl -m $(GHDL_FLAGS) --work=work $(TOP)
+	ghdl -a $(GHDL_FLAGS) --work=work ${DESIGN_SRC} ${BOARD_SRC}
 
 ifeq ($(strip $(NEORV32_VERILOG_ALL)),)
 READ_VERILOG =
