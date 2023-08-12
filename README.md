@@ -5,11 +5,11 @@
 [![License](https://img.shields.io/github/license/stnolting/neorv32-setups?longCache=true&style=flat-square&label=License)](https://github.com/stnolting/neorv32-setups/blob/main/LICENSE)
 [![Gitter](https://img.shields.io/badge/Chat-on%20gitter-4db797.svg?longCache=true&style=flat-square&logo=gitter&logoColor=e8ecef)](https://gitter.im/neorv32/community)
 
-* [**Community Projects** (hardware / software)](#Community-Projects)
-* [**Setups using Commercial Toolchains** (FPGA setups)](#Setups-using-Commercial-Toolchains)
-* [**Setups using Open-Source Toolchains** (FPGA setups)](#Setups-using-Open-Source-Toolchains)
-* [Adding Your Project or Setup](#Adding-Your-Project-or-Setup)
-* [Setup-Specific NEORV32 Software Framework Modifications](#Setup-Specific-NEORV32-Software-Framework-Modifications)
+* [**Community Projects** (hardware / software)](#community-projects)
+* [**Setups using Commercial Toolchains** (FPGA setups)](#setups-using-commercial-toolchains)
+* [**Setups using Open-Source Toolchains** (FPGA setups)](#setups-using-open-source-toolchains)
+* [Adding Your Project or Setup](#ADDING-YOUR-PROJECT-OR-SETUp)
+* [Setup-Specific NEORV32 Software Framework Modifications](#setup-specific-neorv32-software-framework-modifications)
 
 This repository provides community projects as well as exemplary setups for different FPGAs, platforms, boards
 and toolchains for the [**NEORV32 RISC-V Processor**](https://github.com/stnolting/neorv32).
@@ -30,7 +30,7 @@ This list shows projects that focus on custom hard- or software modifications, s
 | :earth_africa: [neorv32-xmodem-bootloader](https://www.emb4fun.de/riscv/neorv32xboot/index.html) | A XModem Bootloader for the DE0-Nano board | [emb4fun](https://github.com/emb4fun) |
 | :earth_africa: [neorv32-xip-bootloader](https://github.com/betocool-prog/neorv32-xip-bootloader) | A XIP (eXecute In Place) Bootloader for the NEORV32| [betocool-prog](https://github.com/betocool-prog) |
 
-[[back to top](#Exemplary-NEORV32-Setups-and-Projects)]
+[[back to top](#exemplary-neorv32-setups-and-projects)]
 
 
 ## Setups using Commercial Toolchains
@@ -50,7 +50,7 @@ FPGA tools.
 | :file_folder: [`nexys-a7-test-setup`](https://github.com/stnolting/neorv32-setups/tree/main/vivado/nexys-a7-test-setup)  | Xilinx Vivado       | [Digilent Nexys 4 DDR](https://reference.digilentinc.com/reference/programmable-logic/nexys-4-ddr/start)                          | Xilinx Artix-7 `XC7A100TCSG324-1`         | [AWenzel83](https://github.com/AWenzel83) |
 | :file_folder: [`on-chip-debugger-intel`](https://github.com/stnolting/neorv32-setups/tree/main/quartus/on-chip-debugger-intel) | Intel Quartus Prime | [Gecko4Education](https://gecko-wiki.ti.bfh.ch/gecko4education:start)                                                       | Intel Cyclone IV E `EP4CE15F23C8`         | [NikLeberg](https://github.com/NikLeberg) |
 
-[[back to top](#Exemplary-NEORV32-Setups-and-Projects)]
+[[back to top](#exemplary-neorv32-setups-and-projects)]
 
 
 ## Setups using Open-Source Toolchains
@@ -71,7 +71,7 @@ there for more information how to run a specific setup and how to add new target
 | :file_folder: ChipWhisperer [`iCE40CW312`](https://github.com/stnolting/neorv32-setups/tree/main/osflow) | GHDL, Yosys, nextPNR | [CW312T_ICE40UP](https://github.com/newaetech/chipwhisperer-target-cw308t/tree/main/CW312T_ICE40UP) | Lattice iCE40 UltraPlus `iCE40UP5K-UWG30` | [colinoflynn](https://github.com/colinoflynn) |
 | :earth_africa: [`ULX3S-SDRAM`](https://github.com/zipotron/neorv32-complex-setups)          | GHDL, Yosys, nextPNR | [ULX3S](https://radiona.org/ulx3s/)                                                                          | Lattice ECP5 `LFE5U-85F-6BG381C`          | [zipotron](https://github.com/zipotron) |
 
-[[back to top](#Exemplary-NEORV32-Setups-and-Projects)]
+[[back to top](#exemplary-neorv32-setups-and-projects)]
 
 
 ------------------------------------------------------
@@ -95,7 +95,7 @@ GitHub actions workflow to automatically generate up-to-date bitstreams for your
   * provide a short description
   * further information should be provided by a project-local README
 
-[[back to top](#Exemplary-NEORV32-Setups-and-Projects)]
+[[back to top](#exemplary-neorv32-setups-and-projects)]
 
 
 ### Setup-Specific NEORV32 Software Framework Modifications
@@ -107,4 +107,4 @@ In order to use the features provided by the setups, minor *optional* changes ca
 * To modify the SPI flash base address for storing/booting software application see User Guide section
 [_Customizing the Internal Bootloader_](https://stnolting.github.io/neorv32/ug/#_customizing_the_internal_bootloader)
 
-[[back to top](#Exemplary-NEORV32-Setups-and-Projects)]
+[[back to top](#exemplary-neorv32-setups-and-projects)]
