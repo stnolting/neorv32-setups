@@ -109,7 +109,7 @@ begin
     -- RISC-V CPU Extensions --
     CPU_EXTENSION_RISCV_C        => true,              -- implement compressed extension?
     CPU_EXTENSION_RISCV_M        => true,              -- implement mul/div extension?
-    CPU_EXTENSION_RISCV_Zicsr    => true,              -- implement CSR system?
+    CPU_EXTENSION_RISCV_U        => true,              -- implement user mode extension?
     CPU_EXTENSION_RISCV_Zicntr   => true,              -- implement base counters?
     CPU_EXTENSION_RISCV_Zifencei => true,              -- implement instruction stream sync.? (required for the on-chip debugger)
     -- Internal Instruction memory --
@@ -119,7 +119,7 @@ begin
     MEM_INT_DMEM_EN              => true,              -- implement processor-internal data memory
     MEM_INT_DMEM_SIZE            => MEM_INT_DMEM_SIZE, -- size of processor-internal data memory in bytes
     -- Processor peripherals --
-    IO_GPIO_EN                   => true,              -- implement general purpose input/output port unit (GPIO)?
+    IO_GPIO_NUM                  => 8,                 -- number of GPIO input/output pairs (0..64)
     IO_MTIME_EN                  => true               -- implement machine system timer (MTIME)?
   )
   port map (
@@ -132,7 +132,7 @@ begin
     jtag_tdi_i  => con_jtag_tdi, -- serial data input
     jtag_tdo_o  => con_jtag_tdo, -- serial data output
     jtag_tms_i  => con_jtag_tms, -- mode select
-    -- GPIO (available if IO_GPIO_EN = true) --
+    -- GPIO (available if IO_GPIO_NUM > 0) --
     gpio_o      => con_gpio_o    -- parallel output
   );
 
