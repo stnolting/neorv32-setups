@@ -41,9 +41,9 @@ configuration and entity details.
 ### FPGA Utilization
 
 ```
-Total logic elements                    3,786 / 15,408 ( 25 % )
-Total registers                         1,835 / 17,056 ( 11 % )
-Total LABs                              291 / 963 ( 30 % )
+Total logic elements                    3,791 / 15,408 ( 25 % )
+Total registers                         1,750 / 17,056 ( 11 % )
+Total LABs                              278 / 963 ( 29 % )
 Virtual pins                            0
 I/O pins                                10 / 344 ( 3 % )
 M9Ks                                    30 / 56 ( 54 % )
@@ -56,8 +56,8 @@ CRC blocks                              0 / 1 ( 0 % )
 ASMI blocks                             0 / 1 ( 0 % )
 Oscillator blocks                       0 / 1 ( 0 % )
 Impedance control blocks                0 / 4 ( 0 % )
-Average interconnect usage (total/H/V)  10.2% / 9.9% / 10.6%
-Peak interconnect usage (total/H/V)     36.5% / 36.3% / 36.8%
+Average interconnect usage (total/H/V)  10.0% / 9.4% / 10.7%
+Peak interconnect usage (total/H/V)     39.7% / 37.3% / 43.1%
 ```
 
 
