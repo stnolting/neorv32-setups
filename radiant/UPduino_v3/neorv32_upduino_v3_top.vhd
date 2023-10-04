@@ -3,7 +3,7 @@
 -- # ********************************************************************************************* #
 -- # BSD 3-Clause License                                                                          #
 -- #                                                                                               #
--- # Copyright (c) 2021, Stephan Nolting. All rights reserved.                                     #
+-- # Copyright (c) 2023, Stephan Nolting. All rights reserved.                                     #
 -- #                                                                                               #
 -- # Redistribution and use in source and binary forms, with or without modification, are          #
 -- # permitted provided that the following conditions are met:                                     #
@@ -106,6 +106,9 @@ architecture neorv32_upduino_v3_top_rtl of neorv32_upduino_v3_top is
   signal con_gpio_i  : std_ulogic_vector(63 downto 0);
   signal con_gpio_o  : std_ulogic_vector(63 downto 0);
 
+  -- TWI tri-state drivers --
+  signal twi_sda_i, twi_sda_o, twi_scl_i, twi_scl_o : std_ulogic;
+
   -- Misc --
   signal pwm_drive  : std_logic_vector(2 downto 0);
   signal pwm_driven : std_ulogic_vector(2 downto 0);
@@ -146,14 +149,12 @@ begin
   generic map (
     -- General --
     CLOCK_FREQUENCY              => f_clock_c,   -- clock frequency of clk_i in Hz
-    HW_THREAD_ID                 => 0,           -- hardware thread id (32-bit)
     INT_BOOTLOADER_EN            => true,        -- boot configuration: true = boot explicit bootloader; false = boot from int/ext (I)MEM
 
     -- RISC-V CPU Extensions --
     CPU_EXTENSION_RISCV_C        => true,        -- implement compressed extension?
     CPU_EXTENSION_RISCV_M        => true,        -- implement mul/div extension?
     CPU_EXTENSION_RISCV_U        => true,        -- implement user mode extension?
-    CPU_EXTENSION_RISCV_Zicsr    => true,        -- implement CSR system?
     CPU_EXTENSION_RISCV_Zicntr   => true,        -- implement base counters?
     CPU_EXTENSION_RISCV_Zifencei => true,        -- implement instruction stream sync.?
 
@@ -177,30 +178,38 @@ begin
   )
   port map (
     -- Global control --
-    clk_i       => cpu_clk,                      -- global clock, rising edge
-    rstn_i      => cpu_rstn,                     -- global reset, low-active, async
+    clk_i       => cpu_clk,
+    rstn_i      => cpu_rstn,
 
     -- GPIO (available if IO_GPIO_EN = true) --
-    gpio_o      => con_gpio_o,                   -- parallel output
-    gpio_i      => con_gpio_i,                   -- parallel input
+    gpio_o      => con_gpio_o,
+    gpio_i      => con_gpio_i,
 
     -- primary UART0 (available if IO_UART0_EN = true) --
-    uart0_txd_o => uart_txd_o,                    -- UART0 send data
-    uart0_rxd_i => uart_rxd_i,                    -- UART0 receive data
+    uart0_txd_o => uart_txd_o,
+    uart0_rxd_i => uart_rxd_i,
 
     -- SPI (available if IO_SPI_EN = true) --
-    spi_sck_o   => con_spi_sck,
-    spi_sdo_o   => con_spi_sdo,
-    spi_sdi_i   => con_spi_sdi,
+    spi_clk_o   => con_spi_sck,
+    spi_dat_o   => con_spi_sdo,
+    spi_dat_i   => con_spi_sdi,
     spi_csn_o   => con_spi_csn,
 
     -- TWI (available if IO_TWI_EN = true) --
-    twi_sda_io  => twi_sda_io,                   -- twi serial data line
-    twi_scl_io  => twi_scl_io,                   -- twi serial clock line
+    twi_sda_i   => twi_sda_i,
+    twi_sda_o   => twi_sda_o,
+    twi_scl_i   => twi_scl_i,
+    twi_scl_o   => twi_scl_o,
 
     -- PWM (available if IO_PWM_EN = true) --
-    pwm_o       => con_pwm                       -- pwm channels
+    pwm_o       => con_pwm
   );
+
+  -- TWI --
+  twi_sda_io <= '0' when (twi_sda_o = '0') else 'Z'; -- module can only pull the line low actively
+  twi_scl_io <= '0' when (twi_scl_o = '0') else 'Z';
+  twi_sda_i  <= std_ulogic(twi_sda_io);
+  twi_scl_i  <= std_ulogic(twi_scl_io);
 
   -- GPIO --
   con_gpio_i <= x"000000000000000" & gpio_i(3 downto 0);
