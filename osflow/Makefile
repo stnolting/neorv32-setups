@@ -44,7 +44,12 @@ endif
 
 iCESugar-v1.5:
 	$(eval BITSTREAM ?= neorv32_$(BOARD)_$(DESIGN).bit)
-	$(eval NEORV32_MEM_SRC ?= devices/ice40/neorv32_imem.ice40up_spram.vhd devices/ice40/neorv32_dmem.ice40up_spram.vhd)
+ifeq ($(DESIGN),Minimal)
+	$(eval IMEM_SRC := $(RTL_CORE_SRC)/mem/neorv32_imem.default.vhd)
+else
+	$(eval IMEM_SRC := devices/ice40/neorv32_imem.ice40up_spram.vhd)
+endif
+	$(eval NEORV32_MEM_SRC ?= ${IMEM_SRC} devices/ice40/neorv32_dmem.ice40up_spram.vhd)
 	$(eval TOP ?= neorv32_iCESugarv15_BoardTop_$(DESIGN))
 	$(MAKE) \
 	  BITSTREAM="$(BITSTREAM)" \
