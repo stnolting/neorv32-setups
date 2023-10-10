@@ -3,7 +3,6 @@
 [![Containers](https://img.shields.io/github/actions/workflow/status/stnolting/neorv32-setups/Containers.yml?branch=main&longCache=true&style=flat-square&label=Containers&logo=Github%20Actions&logoColor=fff)](https://github.com/stnolting/neorv32-setups/actions?query=workflow%3AContainers)
 [![Implementation](https://img.shields.io/github/actions/workflow/status/stnolting/neorv32-setups/Implementation.yml?branch=main&longCache=true&style=flat-square&label=Implementation&logo=Github%20Actions&logoColor=fff)](https://github.com/stnolting/neorv32-setups/actions?query=workflow%3AImplementation)
 [![License](https://img.shields.io/github/license/stnolting/neorv32-setups?longCache=true&style=flat-square&label=License)](https://github.com/stnolting/neorv32-setups/blob/main/LICENSE)
-[![Gitter](https://img.shields.io/badge/Chat-on%20gitter-4db797.svg?longCache=true&style=flat-square&logo=gitter&logoColor=e8ecef)](https://gitter.im/neorv32/community)
 
 * [**Community Projects** (hardware / software)](#community-projects)
 * [**Setups using Commercial Toolchains** (FPGA setups)](#setups-using-commercial-toolchains)
