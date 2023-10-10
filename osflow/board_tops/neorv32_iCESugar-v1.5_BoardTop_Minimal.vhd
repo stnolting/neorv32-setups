@@ -67,8 +67,7 @@ architecture neorv32_iCESugarv15_BoardTop_Minimal_rtl of neorv32_iCESugarv15_Boa
   signal pll_clk  : std_logic;
 
   -- internal IO connection --
-  signal con_gpio_o : std_ulogic_vector(3 downto 0);
-  signal con_pwm  : std_logic_vector(2 downto 0);
+  signal con_pwm : std_logic_vector(2 downto 0);
 
 begin
 
@@ -118,7 +117,7 @@ begin
   -- The core of the problem ----------------------------------------------------------------
   -- -------------------------------------------------------------------------------------------
 
-  neorv32_inst: entity work.neorv32_ProcessorTop_MinimalBoot
+  neorv32_inst: entity work.neorv32_ProcessorTop_Minimal
   generic map (
     CLOCK_FREQUENCY => f_clock_c  -- clock frequency of clk_i in Hz
   )
@@ -127,19 +126,15 @@ begin
     clk_i      => std_ulogic(pll_clk),
     rstn_i     => std_ulogic(pll_rstn),
 
-    -- GPIO --
-    gpio_o     => con_gpio_o,
-
-    -- primary UART --
-    uart_txd_o => iCESugarv15_TX, -- UART0 send data
-    uart_rxd_i => iCESugarv15_RX, -- UART0 receive data
-
     -- PWM (to on-board RGB LED) --
     pwm_o      => con_pwm
   );
 
   -- IO Connection --------------------------------------------------------------------------
   -- -------------------------------------------------------------------------------------------
+
+  -- local UART echo --
+  iCESugarv15_TX <= iCESugarv15_RX;
 
   RGB_inst: SB_RGBA_DRV
   generic map (
@@ -151,9 +146,9 @@ begin
   port map (
     CURREN   => '1',  -- I
     RGBLEDEN => '1',  -- I
-    RGB2PWM  => con_pwm(2),                   -- I - blue  - pwm channel 2
-    RGB1PWM  => con_pwm(1) or con_gpio_o(0),  -- I - red   - pwm channel 1 || BOOT blink
-    RGB0PWM  => con_pwm(0),                   -- I - green - pwm channel 0
+    RGB2PWM  => con_pwm(2),  -- I - blue  - pwm channel 2
+    RGB1PWM  => con_pwm(1),  -- I - red   - pwm channel 1
+    RGB0PWM  => con_pwm(0),  -- I - green - pwm channel 0
     RGB2     => iCESugarv15_LED_B,  -- O - blue
     RGB1     => iCESugarv15_LED_R,  -- O - red
     RGB0     => iCESugarv15_LED_G   -- O - green

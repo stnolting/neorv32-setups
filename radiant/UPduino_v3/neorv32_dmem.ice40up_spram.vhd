@@ -83,7 +83,7 @@ begin
 
   -- Access Control -------------------------------------------------------------------------
   -- -------------------------------------------------------------------------------------------
-  mem_cs <= bus_req_i.re or bus_req_i.we;
+  mem_cs <= bus_req_i.stb;
 
 
   -- Memory Access --------------------------------------------------------------------------
@@ -121,7 +121,7 @@ begin
   spram_addr  <= std_logic_vector(bus_req_i.addr(13+2 downto 0+2));
   spram_di_lo <= std_logic_vector(bus_req_i.data(15 downto 00));
   spram_di_hi <= std_logic_vector(bus_req_i.data(31 downto 16));
-  spram_we    <= '1' when (bus_req_i.we = '1') else '0'; -- global write enable
+  spram_we    <= '1' when (bus_req_i.rw = '1') else '0'; -- global write enable
   spram_cs    <= std_logic(mem_cs);
   spram_be_lo <= std_logic(bus_req_i.ben(1)) & std_logic(bus_req_i.ben(1)) & std_logic(bus_req_i.ben(0)) & std_logic(bus_req_i.ben(0)); -- low byte write enable
   spram_be_hi <= std_logic(bus_req_i.ben(3)) & std_logic(bus_req_i.ben(3)) & std_logic(bus_req_i.ben(2)) & std_logic(bus_req_i.ben(2)); -- high byte write enable
@@ -132,7 +132,7 @@ begin
   begin
     if rising_edge(clk_i) then
       bus_rsp_o.ack <= mem_cs;
-      rden          <= bus_req_i.re;
+      rden          <= bus_req_i.stb and (not bus_req_i.rw);
     end if;
   end process buffer_ff;
 
