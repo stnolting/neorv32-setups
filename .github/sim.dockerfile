@@ -12,7 +12,7 @@ RUN apt-get update -qq \
  && pip3 install wheel setuptools \
  && pip3 install doit \
  && mkdir -p /opt/riscv \
- && curl -fsSL https://github.com/stnolting/riscv-gcc-prebuilt/releases/download/rv32i-4.0.0/riscv32-unknown-elf.gcc-12.1.0.tar.gz | \
+ && curl -fsSL https://github.com/stnolting/riscv-gcc-prebuilt/releases/download/rv32i-131023/riscv32-unknown-elf.gcc-13.2.0.tar.gz | \
  tar -xzf - -C /opt/riscv \
  && ls -al /opt/riscv
 
