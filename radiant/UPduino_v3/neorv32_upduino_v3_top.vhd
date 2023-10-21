@@ -156,7 +156,6 @@ begin
     CPU_EXTENSION_RISCV_M        => true,        -- implement mul/div extension?
     CPU_EXTENSION_RISCV_U        => true,        -- implement user mode extension?
     CPU_EXTENSION_RISCV_Zicntr   => true,        -- implement base counters?
-    CPU_EXTENSION_RISCV_Zifencei => true,        -- implement instruction stream sync.?
 
     -- Internal Instruction memory --
     MEM_INT_IMEM_EN              => true,        -- implement processor-internal instruction memory

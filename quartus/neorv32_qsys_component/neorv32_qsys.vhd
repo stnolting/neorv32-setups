@@ -127,13 +127,10 @@ begin
     CPU_EXTENSION_RISCV_M        => true,        -- implement muld/div extension?
     CPU_EXTENSION_RISCV_U        => true,        -- implement user mode extension?
     CPU_EXTENSION_RISCV_Zfinx    => false,       -- implement 32-bit floating-point extension (using INT reg!)
-    CPU_EXTENSION_RISCV_Zicsr    => true,        -- implement CSR system?
-    CPU_EXTENSION_RISCV_Zifencei => false,       -- implement instruction stream sync.?
     CPU_EXTENSION_RISCV_Zmmul    => false,  -- implement multiply-only M sub-extension?
     -- Extension Options --
     FAST_MUL_EN                  => false,       -- use DSPs for M extension's multiplier
     FAST_SHIFT_EN                => false,       -- use barrel shifter for shift operations
-    CPU_IPB_ENTRIES              => 2,           -- entries is instruction prefetch buffer, has to be a power of 2
     -- Physical Memory Protection (PMP) --
     PMP_NUM_REGIONS              => 0,           -- number of regions (0..64)
     PMP_MIN_GRANULARITY          => 64*1024,     -- minimal region granularity in bytes, has to be a power of 2, min 8 bytes
