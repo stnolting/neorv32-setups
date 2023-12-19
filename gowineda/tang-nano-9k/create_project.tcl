@@ -20,6 +20,8 @@ if { ![string match {/*} $script_dir] } {
     cd $starting_dir
 }
 
+set neorv32_dir $script_dir/../../neorv32
+
 # If you want to customize the values below, the full list is available on 
 # [Gowin EDA path]/IDE/data/device/device_info.csv
 # column B (2nd)
@@ -42,18 +44,46 @@ create_project \
   -device_version $version
 
 # Creating the project creates a new directory in project_path with the 
-# project's name and changes into that directory. We don't want to go there yet,
-# but let's save it for later.
+# project's name and changes into that directory. Let's save it for later.
 # project_dir should be equal to $project_path/project_name
 set project_dir [pwd]
 
-# changing to #starting_dir guarantees that the paths to script_dir are valid
-# even if they are relative.
-#cd $starting_dir
-#source $script_dir/add_neorv32.tcl
-
-cd $project_dir
+# --- Importing neorv32 library files ---
 source $script_dir/import_neorv32.tcl
 
-# Return to the newly created project directory
+# --- Importing bootloader template file and constraint file ---
+import_files \
+  -file $neorv32_dir/rtl/test_setups/neorv32_test_setup_bootloader.vhd
+import_files \
+  -file $script_dir/tang-nano-9k_test_setup_bootloader.cst
+
+# --- Modify bootloader template file ---
+set fd [open $project_dir/src/neorv32_test_setup_bootloader.vhd r]
+set fc [read $fd]
+close $fd
+# CLOCK_FREQUENCY   : natural := 100000000;  -- clock frequency of clk_i in Hz
+regsub -all {100000000;} $fc {27000000; } fc
+# gpio_o      : out std_ulogic_vector(7 downto 0); -- parallel output
+regsub -all \
+  {gpio_o\s*?:\s*?out\s+std_ulogic_vector\s*?\(\s*?[0-9]+\s+downto\s+0\s*?\)} \
+  $fc {gpio_o : out std_ulogic_vector(5 downto 0)} fc
+# gpio_o <= con_gpio_o(7 downto 0);
+regsub -all \
+  {gpio_o\s*?<=\s*?con_gpio_o\s*?\(\s*?[0-9]+\s+downto\s+0\s*?\)} \
+  $fc {gpio_o <= con_gpio_o(5 downto 0)} fc
+set fd [open $project_dir/src/neorv32_test_setup_bootloader.vhd w]
+puts -nonewline $fd $fc
+close $fd
+
+# --- Setting top level file ---
+set_option -top_module neorv32_test_setup_bootloader
+
+# --- Setting dual-purpose pin configuration ---
+set_option -use_done_as_gpio 1
+
+# --- Other set_options ---
+set_option -synthesis_tool gowinsynthesis
+set_option -output_base_name tang-nano-9k
+
+# --- Return to the newly created project directory ---
 cd $project_dir
