@@ -3,7 +3,9 @@
 ## How To Run
 
 The `create_project.tcl` TCL script in the board subdirectories can be used for creating a complete Gowin EDA project and for running the implementation.
-If not already available, this script will create a `work` folder in those subdirectories.
+If not already available, this script will create a `work` folder in those subdirectories. Assuming that `gw_sh` is on you path, you can run `gw_sh create_project.tcl`. You can also pass arguments like `gw_sh create_project.tcl --project-name myproject --project-path "~/Sources"`. 
+
+Arguments do not work if you are already inside the Gowin shell (e.g. `% source create_project.tcl`), at least not as of version 1.9.9. You can set environment variables instead, like `set nrv_project_name myproject` and `set nrv_project_creation_path "~/Sources"`. Check the source code for all the flags.
 
 ### Creating from a shell
 

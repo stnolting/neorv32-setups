@@ -1,10 +1,39 @@
 #!/usr/bin/env gw_sh
 # Must be run on Gowin EDA version 1.9.9 or later (no 1.9.9 betas)
-# TODO:
-# * to specify project path
-# * to specify project name
-# * to override neorv32 path
-# * to immediately synthesise using run all (implement "batch mode")
+
+# TODO: implement flag to immediately synthesise using run all (implement 
+# "batch mode")
+
+# Available flags
+# Example usage:
+#  `gw_sh create_project.tcl --skip-creation`
+#
+# --skip-creation skips the creation of the project. Useful inside the Gowin IDE
+#     when you already created a project but haven't imported the NEORV32 files.
+# --force-project overwrites the project file if it already exists
+# --force-import overwrites any NEORV32 files that already exist in your 
+#     project's src directory. Use with caution.
+# --project-name [NAME] lets you specify a name for the project instead of the
+#     default name of "work".
+# --project-path [PATH] lets you specify a path for the project instead of the
+#     default path of the current working directory.
+
+# Available environment variables
+# The flags take precedence over the environment variables. Example usage:
+#  `set nrv_project_name myproject`
+#  `set nrv_project_creation_path ~/Sources`
+#  `source create_project.tcl`
+#  `unset nrv_project_name`
+#  `unset nrv_project_creation_path`
+# Unsetting the variables is not absolutely necessary, but they will keep their
+# values if you don't, and they will affect this and other scripts every time
+# you source them.
+#
+# nrv_skip_creation equivalent to `--skip-creation` if set to `true`.
+# nrv_force_project equivalent to `--force-project` if set to `true`.
+# nrv_force_import equivalent to `--force-import` if set to `true`.
+# nrv_project_name equivalent to `--project-name`. Set to the project name.
+# nrv_project_creation_path equivalent to `--project-path`. Set to project path.
 
 # Record some basic directories
 set starting_dir [pwd]
@@ -23,6 +52,8 @@ set neorv32_dir $script_dir/../../neorv32
 set flags_project ""
 set flags_import ""
 set flag_skip_creation false
+set project_name work
+set project_creation_path [pwd]
 
 if {[info exists nrv_skip_creation]} { 
   set flag_skip_creation $nrv_skip_creation }
@@ -33,6 +64,12 @@ if {[info exists nrv_force_project] && ($nrv_force_project == true)} {
 if {[info exists nrv_force_import] && ($nrv_force_import == true)} {
   lappend flags_import -force }
 
+if {[info exists nrv_project_name]} {
+  set project_name $nrv_project_name }
+
+if {[info exists nrv_project_creation_path]} {
+  set project_creation_path $nrv_project_creation_path }
+
 # Parse arguments passed.
 if {[info exists argc] && ($argc>0)} {
   for {set i 0} {$i < $argc} {incr i} {
@@ -41,8 +78,17 @@ if {[info exists argc] && ($argc>0)} {
       "--skip-creation" { set flag_skip_creation true }
       "--force-project" { lappend flags_project -force }
       "--force-import"  { lappend flags_import -force }
+      "--project-name" { incr i; set project_name [lindex $argv $i] }
+      "--project-path" { incr i; set project_creation_path [lindex $argv $i] }
     }
   }
+}
+
+# Force project_creation_path to be an absolute path
+if { ![string match {/*} $project_creation_path] } {
+    cd $project_creation_path
+    set project_creation_path [pwd]
+    cd $starting_dir
 }
 
 puts "create_project flags: $flags_project"
@@ -59,9 +105,6 @@ set device GW1NR-9C
 set version C 
 # column G (7th)
 set package QFN88P
-
-set project_name work
-set project_creation_path [pwd]
 
 if {!$flag_skip_creation} {
   puts "Creating project"
@@ -124,6 +167,10 @@ unset flag_skip_creation
 unset starting_dir
 unset script_dir
 unset neorv32_dir
+unset part_number
+unset device
+unset version
+unset package
 
 
 # --- Return to the newly created project directory ---
