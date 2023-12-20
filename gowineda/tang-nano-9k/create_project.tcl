@@ -1,16 +1,10 @@
 #!/usr/bin/env gw_sh
 # Must be run on Gowin EDA version 1.9.9 or later (no 1.9.9 betas)
-# TODO: add top level project files
-# TODO: add console arguments
+# TODO:
 # * to specify project path
 # * to specify project name
-# * to specify whether to add or import the files
 # * to override neorv32 path
-# * to specify force
-#    --force-project
-#    --force-import
 # * to immediately synthesise using run all (implement "batch mode")
-# * to skip project creation and just import files (GUI mode) --skip-creation
 
 # Record some basic directories
 set starting_dir [pwd]
