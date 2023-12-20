@@ -9,7 +9,10 @@
 # * to specify force
 #    --force-project
 #    --force-import
+# * to immediately synthesise using run all (implement "batch mode")
+# * to skip project creation and just import files (GUI mode) --skip-creation
 
+# Record some basic directories
 set starting_dir [pwd]
 set script_dir [file dirname [info script]]
 
@@ -22,6 +25,36 @@ if { ![string match {/*} $script_dir] } {
 
 set neorv32_dir $script_dir/../../neorv32
 
+# Declare flags, use environment variable values if they exist, else defaults
+set flags_project ""
+set flags_import ""
+set flag_skip_creation false
+
+if {[info exists nrv_skip_creation]} { 
+  set flag_skip_creation $nrv_skip_creation }
+
+if {[info exists nrv_force_project] && ($nrv_force_project == true)} {
+  lappend flags_project -force }
+
+if {[info exists nrv_force_import] && ($nrv_force_import == true)} {
+  lappend flags_import -force }
+
+# Parse arguments passed.
+if {[info exists argc] && ($argc>0)} {
+  for {set i 0} {$i < $argc} {incr i} {
+    set current_arg [lindex $argv $i]
+    switch $current_arg {
+      "--skip-creation" { set flag_skip_creation true }
+      "--force-project" { lappend flags_project -force }
+      "--force-import"  { lappend flags_import -force }
+    }
+  }
+}
+
+puts "create_project flags: $flags_project"
+puts "import_files flags: $flags_import"
+
+
 # If you want to customize the values below, the full list is available on 
 # [Gowin EDA path]/IDE/data/device/device_info.csv
 # column B (2nd)
@@ -33,15 +66,18 @@ set version C
 # column G (7th)
 set package QFN88P
 
-set project_name tang-nano-9k
+set project_name work
 set project_creation_path [pwd]
 
-puts "Creating project"
-create_project \
-  -name $project_name \
-  -dir $project_creation_path \
-  -pn $part_number \
-  -device_version $version
+if {!$flag_skip_creation} {
+  puts "Creating project"
+  create_project \
+    -name $project_name \
+    -dir $project_creation_path \
+    -pn $part_number \
+    -device_version $version \
+    {*}$flags_project
+}
 
 # Creating the project creates a new directory in project_path with the 
 # project's name and changes into that directory. Let's save it for later.
@@ -53,9 +89,11 @@ source $script_dir/import_neorv32.tcl
 
 # --- Importing bootloader template file and constraint file ---
 import_files \
-  -file $neorv32_dir/rtl/test_setups/neorv32_test_setup_bootloader.vhd
+  -file $neorv32_dir/rtl/test_setups/neorv32_test_setup_bootloader.vhd \
+  {*}$flags_import
 import_files \
-  -file $script_dir/tang-nano-9k_test_setup_bootloader.cst
+  -file $script_dir/tang-nano-9k_test_setup_bootloader.cst \
+  {*}$flags_import
 
 # --- Modify bootloader template file ---
 set fd [open $project_dir/src/neorv32_test_setup_bootloader.vhd r]
@@ -84,6 +122,15 @@ set_option -use_done_as_gpio 1
 # --- Other set_options ---
 set_option -synthesis_tool gowinsynthesis
 set_option -output_base_name tang-nano-9k
+
+# --- Unset variables ---
+unset flags_project
+unset flags_import
+unset flag_skip_creation
+unset starting_dir
+unset script_dir
+unset neorv32_dir
+
 
 # --- Return to the newly created project directory ---
 cd $project_dir
