@@ -3,13 +3,13 @@
 -- # ********************************************************************************************* #
 -- # BSD 3-Clause License                                                                          #
 -- #                                                                                               #
--- # Copyright (c) 2023, Stephan Nolting. All rights reserved.                                     #
+-- # Copyright (c) 2024, Stephan Nolting. All rights reserved.                                     #
 -- #                                                                                               #
 -- # Redistribution and use in source and binary forms, with or without modification, are          #
 -- # permitted provided that the following conditions are met:                                     #
 -- #                                                                                               #
 -- # 1. Redistributions of source code must retain the above copyright notice, this list of        #
--- #    conditions and the following disclaimer.                                                   #
+-- #    conditions and the following disclaimer.                                                    #
 -- #                                                                                               #
 -- # 2. Redistributions in binary form must reproduce the above copyright notice, this list of     #
 -- #    conditions and the following disclaimer in the documentation and/or other materials        #
@@ -98,7 +98,7 @@ architecture neorv32_upduino_v3_top_rtl of neorv32_upduino_v3_top is
   signal cpu_rstn : std_ulogic;
 
   -- internal IO connection --
-  signal con_pwm     : std_ulogic_vector(59 downto 0);
+  signal con_pwm     : std_ulogic_vector(11 downto 0);
   signal con_spi_sck : std_ulogic;
   signal con_spi_sdi : std_ulogic;
   signal con_spi_sdo : std_ulogic;

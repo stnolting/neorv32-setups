@@ -2,7 +2,7 @@
 <RadiantProject version="4.2" title="neorv32_upduino_v3" device="iCE40UP5K-SG48I" performance_grade="High-Performance_1.2V" default_implementation="impl_1">
     <Options/>
     <Implementation title="impl_1" dir="impl_1" description="impl_1" synthesis="lse" default_strategy="Strategy1">
-        <Options def_top="neorv32_upduino_v3_top" top="neorv32_upduino_v3_top"/>
+        <Options def_top="neorv32_upduino_v3_top"/>
         <Source name="neorv32_upduino_v3_top.vhd" type="VHDL" type_short="VHDL">
             <Options lib="work" top_module="neorv32_upduino_v3_top"/>
         </Source>
@@ -39,6 +39,9 @@
         <Source name="../../neorv32/rtl/core/neorv32_cpu_cp_bitmanip.vhd" type="VHDL" type_short="VHDL">
             <Options lib="neorv32"/>
         </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_cpu_cp_cond.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
         <Source name="../../neorv32/rtl/core/neorv32_cpu_alu.vhd" type="VHDL" type_short="VHDL">
             <Options lib="neorv32"/>
         </Source>
@@ -60,7 +63,7 @@
         <Source name="../../neorv32/rtl/core/neorv32_cpu.vhd" type="VHDL" type_short="VHDL">
             <Options lib="neorv32"/>
         </Source>
-        <Source name="../../NEORV32/rtl/core/neorv32_xip.vhd" type="VHDL" type_short="VHDL">
+        <Source name="../../neorv32/rtl/core/neorv32_xip.vhd" type="VHDL" type_short="VHDL">
             <Options lib="neorv32"/>
         </Source>
         <Source name="../../neorv32/rtl/core/neorv32_crc.vhd" type="VHDL" type_short="VHDL">
