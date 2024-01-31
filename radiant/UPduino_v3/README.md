@@ -15,6 +15,7 @@ and a set of standard peripherals like UART, TWI and SPI.
 
 ### Processor Configuration
 
+- [x] NEORV32 version: v1.9.3.9
 - [x] CPU: `rv32imacu_Zicsr_Zicntr` (reduced CPU `[m]instret` & `[m]cycle` counter width!)
 - [x] Memory: 64 kB instruction memory (internal IMEM), 64 kB data memory (internal DMEM), 4 kB bootloader ROM
 - [x] Peripherals: `GPIO`, `MTIME`, `UART0`, `SPI`, `TWI`, `PWM`, `WDT`, `TRNG`
