@@ -74,7 +74,7 @@ end neorv32_upduino_v3_top;
 architecture neorv32_upduino_v3_top_rtl of neorv32_upduino_v3_top is
 
   -- configuration --
-  constant f_clock_c : natural := 24000000; -- PLL output clock frequency in Hz
+  constant f_clock_c : natural := 22125000; -- PLL output clock frequency in Hz
 
   -- On-chip oscillator --
   signal hf_osc_clk : std_logic;
@@ -172,8 +172,7 @@ begin
     IO_SPI_EN                    => true,        -- implement serial peripheral interface (SPI)?
     IO_TWI_EN                    => true,        -- implement two-wire interface (TWI)?
     IO_PWM_NUM_CH                => 3,           -- number of PWM channels to implement (0..60); 0 = disabled
-    IO_WDT_EN                    => true,        -- implement watch dog timer (WDT)?
-    IO_TRNG_EN                   => true         -- implement true random number generator (TRNG)?
+    IO_WDT_EN                    => true         -- implement watch dog timer (WDT)?
   )
   port map (
     -- Global control --
