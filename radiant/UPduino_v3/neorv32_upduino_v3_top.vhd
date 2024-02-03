@@ -74,7 +74,7 @@ end neorv32_upduino_v3_top;
 architecture neorv32_upduino_v3_top_rtl of neorv32_upduino_v3_top is
 
   -- configuration --
-  constant f_clock_c : natural := 22125000; -- PLL output clock frequency in Hz
+  constant f_clock_c : natural := 21000000; -- PLL output clock frequency in Hz
 
   -- On-chip oscillator --
   signal hf_osc_clk : std_logic;

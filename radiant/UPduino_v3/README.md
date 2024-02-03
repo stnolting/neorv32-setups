@@ -19,7 +19,7 @@ and a set of standard peripherals like UART, TWI and SPI.
 - [x] CPU: `rv32imacu_Zicsr_Zicntr` (reduced CPU `[m]instret` & `[m]cycle` counter width!)
 - [x] Memory: 64 kB instruction memory (internal IMEM), 64 kB data memory (internal DMEM), 4 kB bootloader ROM
 - [x] Peripherals: `GPIO`, `MTIME`, `UART0`, `SPI`, `TWI`, `PWM`, `WDT`
-- [x] Clock: 22.125 MHz from on-chip HF oscillator (via PLL)
+- [x] Clock: 21 MHz from on-chip HF oscillator (via PLL)
 - [x] Reset: via PLL "locked" signal; external "reset" via FPGA re-reconfiguration pin (`creset_n`)
 - [x] Tested with processor version [`1.6.1.6`](https://github.com/stnolting/neorv32/blob/master/CHANGELOG.md)
 - [x] On-board FPGA bitstream flash storage can also be used to store/load NEORV32 application software (via the bootloader)
