@@ -3,13 +3,13 @@
 -- # ********************************************************************************************* #
 -- # BSD 3-Clause License                                                                          #
 -- #                                                                                               #
--- # Copyright (c) 2023, Stephan Nolting. All rights reserved.                                     #
+-- # Copyright (c) 2024, Stephan Nolting. All rights reserved.                                     #
 -- #                                                                                               #
 -- # Redistribution and use in source and binary forms, with or without modification, are          #
 -- # permitted provided that the following conditions are met:                                     #
 -- #                                                                                               #
 -- # 1. Redistributions of source code must retain the above copyright notice, this list of        #
--- #    conditions and the following disclaimer.                                                   #
+-- #    conditions and the following disclaimer.                                                    #
 -- #                                                                                               #
 -- # 2. Redistributions in binary form must reproduce the above copyright notice, this list of     #
 -- #    conditions and the following disclaimer in the documentation and/or other materials        #
@@ -74,7 +74,7 @@ end neorv32_upduino_v3_top;
 architecture neorv32_upduino_v3_top_rtl of neorv32_upduino_v3_top is
 
   -- configuration --
-  constant f_clock_c : natural := 24000000; -- PLL output clock frequency in Hz
+  constant f_clock_c : natural := 21000000; -- PLL output clock frequency in Hz
 
   -- On-chip oscillator --
   signal hf_osc_clk : std_logic;
@@ -98,7 +98,7 @@ architecture neorv32_upduino_v3_top_rtl of neorv32_upduino_v3_top is
   signal cpu_rstn : std_ulogic;
 
   -- internal IO connection --
-  signal con_pwm     : std_ulogic_vector(59 downto 0);
+  signal con_pwm     : std_ulogic_vector(11 downto 0);
   signal con_spi_sck : std_ulogic;
   signal con_spi_sdi : std_ulogic;
   signal con_spi_sdo : std_ulogic;
@@ -172,8 +172,7 @@ begin
     IO_SPI_EN                    => true,        -- implement serial peripheral interface (SPI)?
     IO_TWI_EN                    => true,        -- implement two-wire interface (TWI)?
     IO_PWM_NUM_CH                => 3,           -- number of PWM channels to implement (0..60); 0 = disabled
-    IO_WDT_EN                    => true,        -- implement watch dog timer (WDT)?
-    IO_TRNG_EN                   => true         -- implement true random number generator (TRNG)?
+    IO_WDT_EN                    => true         -- implement watch dog timer (WDT)?
   )
   port map (
     -- Global control --
