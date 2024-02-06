@@ -48,7 +48,7 @@ FPGA tools.
 | :file_folder: [`nexys-a7-test-setup`](https://github.com/stnolting/neorv32-setups/tree/main/vivado/nexys-a7-test-setup)  | Xilinx Vivado       | [Digilent Nexys A7](https://reference.digilentinc.com/reference/programmable-logic/nexys-a7/start)                                | Xilinx Artix-7 `XC7A50TCSG324-1`          | [AWenzel83](https://github.com/AWenzel83) |
 | :file_folder: [`nexys-a7-test-setup`](https://github.com/stnolting/neorv32-setups/tree/main/vivado/nexys-a7-test-setup)  | Xilinx Vivado       | [Digilent Nexys 4 DDR](https://reference.digilentinc.com/reference/programmable-logic/nexys-4-ddr/start)                          | Xilinx Artix-7 `XC7A100TCSG324-1`         | [AWenzel83](https://github.com/AWenzel83) |
 | :file_folder: [`on-chip-debugger-intel`](https://github.com/stnolting/neorv32-setups/tree/main/quartus/on-chip-debugger-intel) | Intel Quartus Prime | [Gecko4Education](https://gecko-wiki.ti.bfh.ch/gecko4education:start)                                                       | Intel Cyclone IV E `EP4CE15F23C8`         | [NikLeberg](https://github.com/NikLeberg) |
-
+| :file_folder: [`tang-nano-9k`](https://github.com/stnolting/neorv32-setups/tree/main/gowineda/tang-nano-9k)              | Gowin EDA           | [Sipeed Tang Nano 9K](https://wiki.sipeed.com/hardware/en/tang/Tang-Nano-9K/Nano-9K.html)                                         | Gowin LittleBee GW1NR-9 `GW1NR-LV9QN88PC6/I5` | [IvanVeloz](https://github.com/IvanVeloz)
 [[back to top](#exemplary-neorv32-setups-and-projects)]
 
 
