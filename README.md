@@ -29,8 +29,6 @@ This list shows projects that focus on custom hard- or software modifications, s
 | :earth_africa: [neorv32-xmodem-bootloader](https://www.emb4fun.de/riscv/neorv32xboot/index.html) | A XModem Bootloader for the DE0-Nano board | [emb4fun](https://github.com/emb4fun) |
 | :earth_africa: [neorv32-xip-bootloader](https://github.com/betocool-prog/neorv32-xip-bootloader) | A XIP (eXecute In Place) Bootloader for the NEORV32| [betocool-prog](https://github.com/betocool-prog) |
 
-[[back to top](#exemplary-neorv32-setups-and-projects)]
-
 
 ## Setups using Commercial Toolchains
 
@@ -44,12 +42,13 @@ FPGA tools.
 | :file_folder: [`de0-nano-test-setup-avalonmm`](quartus/de0-nano-test-setup-avalonmm-wrapper) | Intel Quartus Prime | [Terasic DE0-Nano](https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&CategoryNo=139&No=593)                     | Intel Cyclone IV `EP4CE22F17C6N`          | [torerams](https://github.com/torerams) |
 | :file_folder: [`terasic-cyclone-V-gx-starter-kit-test-setup`](https://github.com/stnolting/neorv32-setups/tree/main/quartus/terasic-cyclone-V-gx-starter-kit-test-setup) | Intel Quartus Prime | [Terasic Cyclone-V GX Starter Kit](https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&CategoryNo=167&No=830) | Intel Cyclone V `5CGXFC5C6F27C7N` | zs6mue |
 | :file_folder: [`UPduino_v3`](https://github.com/stnolting/neorv32-setups/tree/main/radiant/UPduino_v3)                   | Lattice Radiant     | [tinyVision.ai Inc. UPduino `v3.0`](https://www.tindie.com/products/tinyvision_ai/upduino-v30-low-cost-lattice-ice40-fpga-board/) | Lattice iCE40 UltraPlus `iCE40UP5K-SG48I` | [stnolting](https://github.com/stnolting) |
+| :file_folder: [`iCEBreaker`](https://github.com/stnolting/neorv32-setups/tree/main/radiant/iCEBreaker)                   | Lattice Radiant     | [iCEBreaker @ GitHub](https://github.com/icebreaker-fpga/icebreaker)                                                              | Lattice iCE40 UltraPlus `iCE40UP5K-SG48I` | [stnolting](https://github.com/stnolting) |
+
 | :file_folder: [`arty-a7-35-test-setup`](https://github.com/stnolting/neorv32-setups/tree/main/vivado/arty-a7-test-setup) | Xilinx Vivado       | [Digilent Arty A7-35](https://reference.digilentinc.com/reference/programmable-logic/arty-a7/start)                               | Xilinx Artix-7 `XC7A35TICSG324-1L`        | [stnolting](https://github.com/stnolting) |
 | :file_folder: [`nexys-a7-test-setup`](https://github.com/stnolting/neorv32-setups/tree/main/vivado/nexys-a7-test-setup)  | Xilinx Vivado       | [Digilent Nexys A7](https://reference.digilentinc.com/reference/programmable-logic/nexys-a7/start)                                | Xilinx Artix-7 `XC7A50TCSG324-1`          | [AWenzel83](https://github.com/AWenzel83) |
 | :file_folder: [`nexys-a7-test-setup`](https://github.com/stnolting/neorv32-setups/tree/main/vivado/nexys-a7-test-setup)  | Xilinx Vivado       | [Digilent Nexys 4 DDR](https://reference.digilentinc.com/reference/programmable-logic/nexys-4-ddr/start)                          | Xilinx Artix-7 `XC7A100TCSG324-1`         | [AWenzel83](https://github.com/AWenzel83) |
 | :file_folder: [`on-chip-debugger-intel`](https://github.com/stnolting/neorv32-setups/tree/main/quartus/on-chip-debugger-intel) | Intel Quartus Prime | [Gecko4Education](https://gecko-wiki.ti.bfh.ch/gecko4education:start)                                                       | Intel Cyclone IV E `EP4CE15F23C8`         | [NikLeberg](https://github.com/NikLeberg) |
 | :file_folder: [`tang-nano-9k`](https://github.com/stnolting/neorv32-setups/tree/main/gowineda/tang-nano-9k)              | Gowin EDA           | [Sipeed Tang Nano 9K](https://wiki.sipeed.com/hardware/en/tang/Tang-Nano-9K/Nano-9K.html)                                         | Gowin LittleBee GW1NR-9 `GW1NR-LV9QN88PC6/I5` | [IvanVeloz](https://github.com/IvanVeloz)
-[[back to top](#exemplary-neorv32-setups-and-projects)]
 
 
 ## Setups using Open-Source Toolchains
@@ -69,8 +68,6 @@ there for more information how to run a specific setup and how to add new target
 | :file_folder: [`ULX3S`](https://github.com/stnolting/neorv32-setups/tree/main/osflow)       | GHDL, Yosys, nextPNR | [ULX3S](https://radiona.org/ulx3s/)                                                                          | Lattice ECP5 `LFE5U-85F-6BG381C`          | [zipotron](https://github.com/zipotron) |
 | :file_folder: ChipWhisperer [`iCE40CW312`](https://github.com/stnolting/neorv32-setups/tree/main/osflow) | GHDL, Yosys, nextPNR | [CW312T_ICE40UP](https://github.com/newaetech/chipwhisperer-target-cw308t/tree/main/CW312T_ICE40UP) | Lattice iCE40 UltraPlus `iCE40UP5K-UWG30` | [colinoflynn](https://github.com/colinoflynn) |
 | :earth_africa: [`ULX3S-SDRAM`](https://github.com/zipotron/neorv32-complex-setups)          | GHDL, Yosys, nextPNR | [ULX3S](https://radiona.org/ulx3s/)                                                                          | Lattice ECP5 `LFE5U-85F-6BG381C`          | [zipotron](https://github.com/zipotron) |
-
-[[back to top](#exemplary-neorv32-setups-and-projects)]
 
 
 ------------------------------------------------------
@@ -94,8 +91,6 @@ GitHub actions workflow to automatically generate up-to-date bitstreams for your
   * provide a short description
   * further information should be provided by a project-local README
 
-[[back to top](#exemplary-neorv32-setups-and-projects)]
-
 
 ### Setup-Specific NEORV32 Software Framework Modifications
 
@@ -105,5 +100,3 @@ In order to use the features provided by the setups, minor *optional* changes ca
 [_General Software Framework Setup_](https://stnolting.github.io/neorv32/ug/#_general_software_framework_setup)
 * To modify the SPI flash base address for storing/booting software application see User Guide section
 [_Customizing the Internal Bootloader_](https://stnolting.github.io/neorv32/ug/#_customizing_the_internal_bootloader)
-
-[[back to top](#exemplary-neorv32-setups-and-projects)]

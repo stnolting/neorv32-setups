@@ -1,0 +1,31 @@
+# ignore ALL
+/*
+
+# keep project sources/configuration
+!*.vhd
+!*.rdf
+!*.pdc
+!*.bin
+!*.sty
+
+# keep pr0ject description
+!.gitignore
+!README.md
+
+# keep PLL IP
+!system_pll/
+system_pll/*
+!system_pll/system_pll.ipx
+!system_pll/rtl/
+system_pll/rtl/*
+!system_pll/rtl/system_pll.v
+
+# keep programmer file
+!source/
+source/*
+!source/impl_1.xcf
+
+# keep precompiled bitstream
+!impl_1/
+impl_1/*
+!impl_1/iCEBreaker_impl_1.bin

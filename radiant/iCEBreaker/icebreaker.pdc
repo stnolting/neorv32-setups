@@ -1,0 +1,18 @@
+# Radiant pin mapping for iCEBreaker FPGA Board
+
+## UART (uart0) - on-board USB-serial bridge
+ldc_set_location -site {9} [get_ports uart_txd_o]
+ldc_set_location -site {6} [get_ports uart_rxd_i]
+
+## SPI - on-board flash
+ldc_set_location -site {14} [get_ports flash_sdo_o]
+ldc_set_location -site {15} [get_ports flash_sck_o]
+ldc_set_location -site {16} [get_ports flash_csn_o]
+ldc_set_location -site {17} [get_ports flash_sdi_i]
+
+## GPIO - on-board low-active LEDs
+ldc_set_location -site {37} [get_ports led_gr_o]
+ldc_set_location -site {11} [get_ports led_rd_o]
+
+## RESET - on-board low-active button
+ldc_set_location -site {10} [get_ports button_i]
