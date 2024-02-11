@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8' ?>
 <!DOCTYPE		ispXCF	SYSTEM	"IspXCF.dtd" >
-<ispXCF version="R3.0">
+<ispXCF version="R2022.1">
 	<Comment></Comment>
 	<Chain>
 		<Comm>SPI</Comm>
@@ -18,7 +18,7 @@
 				<BScanVal>0</BScanVal>
 			</Bypass>
 			<File>../../impl_1/neorv32_upduino_v3_impl_1.bin</File>
-			<FileTime>11/04/21 21:44:40</FileTime>
+			<FileTime>02/11/24 09:39:36</FileTime>
 			<MemoryType>External SPI Flash Memory (SPI FLASH)</MemoryType>
 			<Operation>Erase,Program,Verify</Operation>
 			<Option>
@@ -102,7 +102,7 @@
 	</ProjectOptions>
 	<CableOptions>
 		<CableName>USB2</CableName>
-		<PortAdd>FTUSB-1</PortAdd>
-		<USBID>UPduino v3.0 Location 0002 Serial </USBID>
+		<PortAdd>FTUSB-0</PortAdd>
+		<USBID>Single RS232-HS Location 0000 Serial </USBID>
 	</CableOptions>
 </ispXCF>
