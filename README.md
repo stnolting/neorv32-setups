@@ -14,8 +14,8 @@ This repository provides community projects as well as exemplary setups for diff
 and toolchains for the [**NEORV32 RISC-V Processor**](https://github.com/stnolting/neorv32).
 Project maintainers may make pull requests against this repository to add or link their setups and projects.
 
-:bulb: **Ready-to-use bitstreams** for the provided _open source toolchain-based setups_ are available via the assets of the
-[Implementation Workflow](https://github.com/stnolting/neorv32-setups/actions/workflows/Implementation.yml).
+> [!TIP]
+> **Ready-to-use bitstreams** for the provided _open source toolchain-based setups_ are available via the assets of the[Implementation Workflow](https://github.com/stnolting/neorv32-setups/actions/workflows/Implementation.yml).
 
 
 ## Community Projects
