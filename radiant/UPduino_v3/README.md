@@ -1,6 +1,7 @@
 # NEORV32 Example Setup for the tinyVision.ai Inc. "UPduino v3.0" FPGA Board
 
-:warning: This setup _requires_ Lattice Radiant version **2022.1**!
+> [!WARNING]
+> This setup **requires** Lattice Radiant version **2022.1**!
 
 This example setup turns the UPduino v3.0 board, which features a Lattice iCE40 UltraPlus FPGA, into a tiny-scale NEORV32 microcontroller.
 The processor setup provides 64kB of data and instruction memory, an RTOS-capable CPU (privileged architecture)
