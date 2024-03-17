@@ -1,6 +1,7 @@
 # NEORV32 Example Setup for the iCEBreaker FPGA Board
 
-:warning: This setup _requires_ Lattice Radiant version **2022.1**!
+> [!WARNING]
+> This setup **requires** Lattice Radiant version **2022.1**!
 
 ### General
 
