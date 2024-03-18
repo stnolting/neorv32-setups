@@ -58,7 +58,10 @@ entity neorv32_iCEBreaker_BoardTop_UP5KDemo is
     -- TWI --
     iCEBreaker_TWI_SDA     : inout std_logic;
     iCEBreaker_TWI_SCL     : inout std_logic;
-    -- GPIO --
+	-- on-board GPIO --
+    --iCEBreaker_BOARD_LED_G : out  std_ulogic; -- iCEBreaker on-board LEDs
+	--iCEBreaker_BOARD_LED_R : out  std_ulogic; -- iCEBreaker on-board LEDs
+    -- GPIO External --
     iCEBreaker_GPIO_I      : in  std_ulogic_vector(3 downto 0);
     iCEBreaker_GPIO_O      : out std_ulogic_vector(3 downto 0);
     -- PWM (to on-board RGB power LED) --

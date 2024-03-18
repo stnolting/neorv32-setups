@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8' ?>
 <!DOCTYPE		ispXCF	SYSTEM	"IspXCF.dtd" >
-<ispXCF version="R2023.2">
+<ispXCF version="R2022.1">
 	<Comment></Comment>
 	<Chain>
 		<Comm>SPI</Comm>
@@ -18,8 +18,7 @@
 				<BScanVal>0</BScanVal>
 			</Bypass>
 			<File>../../impl_1/iCEBreaker_impl_1.bin</File>
-			<FileTime>02/10/24 19:41:19</FileTime>
-			<JedecChecksum>0xB101</JedecChecksum>
+			<FileTime>03/18/24 09:25:47</FileTime>
 			<MemoryType>External SPI Flash Memory (SPI FLASH)</MemoryType>
 			<Operation>Erase,Program,Verify</Operation>
 			<Option>
@@ -103,6 +102,6 @@
 	<CableOptions>
 		<CableName>USB2</CableName>
 		<PortAdd>FTUSB-0</PortAdd>
-		<USBID>iCEBreaker V1.0d A Location 0000 Serial ibT0gbT8A</USBID>
+		<USBID>iCEBreaker V1.0e A Location 0000 Serial ibSp9gG5A</USBID>
 	</CableOptions>
 </ispXCF>
