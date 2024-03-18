@@ -17,7 +17,7 @@ endif
 
 ${IMPL}.json: work-obj08.cf $(NEORV32_VERILOG_ALL)
 	$(YOSYS) $(YOSYSFLAGS) \
-	  -p \
+	  -m ghdl -p \
 	  "$(GHDLSYNTH) $(GHDL_FLAGS) --no-formal $(TOP); \
 	  $(READ_VERILOG) synth_${YOSYSSYNTH} \
 	  -top $(TOP) $(YOSYSPIPE) \
