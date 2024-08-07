@@ -1,0 +1,16 @@
+*.log
+*.synth.v
+*.id
+*.idh
+*.net
+*.net
+*.refcomp
+*.pos
+*.refparam
+*.refwire
+*.pin
+*.cdf
+*.prn
+*.txt
+*.pathes
+*_00*
