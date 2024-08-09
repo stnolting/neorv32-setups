@@ -9,12 +9,14 @@ based on a Cologne Chip GateMate `CCGM1A1` FPGA.
 #### Processor Configuration
 
 * CPU: `rv32imc_zicntr_zicsr_zifencei`
-* Peripherals: BOOTROM, GPIO, MTIME, UART0
-* Memory: 16kB IMEM, 8kB DMEM
+* Tuning options: `FAST_MUL`, `FAST_SHIFT`
+* Peripherals: BOOTROM, IMEM, DMEM, GPIO, MTIME, UART0, PWM, DMA
+* Memory: 16kB IMEM, 8kB DMEM, 4kB bootloader ROM
 * Clock: on-board oscillator, 10MHz
 * Reset: on-board button ("FPGA_BUT1")
 
-Pin 0 of the processor's GPIO output port is inverted and connected to the on-board user LED ("FPGA_LED").
+Pin 0 of the processor's GPIO output port and pin 0 of the processor's PWM port are logically OR-ed,
+inverted and connected to the on-board user LED ("FPGA_LED").
 
 #### How-To
 
@@ -24,6 +26,11 @@ via Yosys + GHDL and (CC's) place&route.
 Download and unpack the [Cologne Chip toolchain](https://www.colognechip.com/programmable-logic/gatemate/gatemate-download)
 to some system folder. Adjust the Makefile's `CCTOOLS` variable to point to the `bin` folder inside the installation folder.
 
+> [!WARNING]
+> The GHDL-Yosys plugin of the toolchain seems to have some _hardcoded_ relative paths. I had to copy the toolchain's `bin`
+folder right into the root directory of `neorv32-setups`. Otherwise, (Yosys+)GHDL cannot find the built-in
+IEEE libraries.
+
 To generate the bitstream just run the `all` target. In case you need some help, run the `help` target.
 This will also show the current Makefile configuration.
 
@@ -32,7 +39,7 @@ neorv32-setups/cologne_chip/GateMateA1-EVB$ make all
 ```
 
 This will generate the bitstream file (`neorv32_gatemate_00.cfg`) that can be uploaded to the FPGA using OpenFPGALoader
-(part of the Cologne Chip toolchain):
+(part of the Cologne Chip toolchain). Better press the "FPGA_RST1" button before uploading the bitstream (see note at the end).
 
 ```bash
 neorv32-setups/cologne_chip/GateMateA1-EVB$ make jtag
@@ -42,7 +49,50 @@ neorv32-setups/cologne_chip/GateMateA1-EVB$ make jtag
 > In order to program the Olimex Board via JTAG, openFPGAloader's "DirtyJTAG" (implemented by the on-board RP2040)
 cable driver has to be used (`-c dirtyJtag`).
 
-Connect a USB-UART connector to the board's PMOD port:
+Synthesis and implementations logs are available in `synth.log` and `impl.log`, respectively. Here is the implementation's
+resource utilization:
+
+```
+Utilization Report
+
+ CPEs                   5010 /  20480  ( 24.5 %)
+ -----------------------------------------------
+   CPE Registers        1944 /  40960  (  4.7 %)
+     Flip-flops         1944
+     Latches               0
+
+ GPIOs                     5 /    144  (  3.5 %)
+ -----------------------------------------------
+   Single-ended            5 /    144  (  3.5 %)
+     IBF                   3
+     OBF                   2
+     TOBF                  0
+     IOBF                  0
+   LVDS pairs              0 /     72  (  0.0 %)
+     IBF                   0
+     OBF                   0
+     TOBF                  0
+     IOBF                  0
+
+ GPIO Registers            0 /    288  (  0.0 %)
+ -----------------------------------------------
+   FF_IBF                  0
+   FF_OBF                  0
+   IDDR                    0
+   ODDR                    0
+
+ Block RAMs             10.0 /     32  ( 31.3 %)
+ -----------------------------------------------
+   BRAM_20K                2 /     64  (  3.1 %)
+   BRAM_40K                8 /     32  ( 25.0 %)
+   FIFO_40K                0 /     32  (  0.0 %)
+
+ PLLs                      0 /      4  (  0.0 %)
+ GLBs                      1 /      4  ( 25.0 %)
+ SerDes                    0 /      1  (  0.0 %)
+```
+
+UART0 is used as system and bootloader console. Connect a USB-UART connector to the board's PMOD port:
 
 ```schematic
 PMOD front-view
@@ -66,4 +116,5 @@ Open a serial terminal using the following configuration: `19200-8-N-1`; linebre
 When you press the reset button ("FPGA_BUT1") the on-board LED should start flashing and the bootloader prompt
 should show up in the terminal.
 
-If nothing happens, press the "FPGA_RST1" button and upload the bitstream again.
+> [!TIP]
+> If nothing happens or if the FPGA haves strange, press the "FPGA_RST1" button and upload the bitstream again.
