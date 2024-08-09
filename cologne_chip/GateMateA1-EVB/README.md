@@ -26,7 +26,7 @@ via Yosys + GHDL and (CC's) place&route.
 Download and unpack the [Cologne Chip toolchain](https://www.colognechip.com/programmable-logic/gatemate/gatemate-download)
 to some system folder. Adjust the Makefile's `CCTOOLS` variable to point to the `bin` folder inside the installation folder.
 
-> [!WARNING]
+> [!IMPORTANT]
 > The GHDL-Yosys plugin of the toolchain seems to have some _hardcoded_ relative paths. I had to copy the toolchain's `bin`
 folder right into the root directory of `neorv32-setups`. Otherwise, (Yosys+)GHDL cannot find the built-in
 IEEE libraries.
@@ -95,14 +95,14 @@ Utilization Report
 UART0 is used as system and bootloader console. Connect a USB-UART connector to the board's PMOD port:
 
 ```schematic
-PMOD front-view
-     ________________________
-    /                       /|
-   +---+---+---+---+---+---+ |
-   |3.3|GND| 4 | 3 | 2 | 1 | |
-   +---+---+---+---+---+---+ |
-   |3.3|GND|10 | 9 | 8 | 7 |/
----+---+---+---+---+---+---+---
+PMOD front-view:
+  ________________________
+ /                       /|
++---+---+---+---+---+---+ |
+|3.3|GND| 4 | 3 | 2 | 1 | |
++---+---+---+---+---+---+ |
+|3.3|GND|10 | 9 | 8 | 7 |/
++---+---+---+---+---+---+
 ```
 
 | PMOD pin | Signal  | FPGA pin | Description    |
