@@ -10,7 +10,7 @@ based on a Cologne Chip GateMate `CCGM1A1` FPGA.
 
 * CPU: `rv32imc_zicntr_zicsr_zifencei`
 * Tuning options: `FAST_MUL`, `FAST_SHIFT`
-* Peripherals: BOOTROM, IMEM, DMEM, GPIO, MTIME, UART0, PWM, DMA
+* Peripherals: `BOOTROM`, `IMEM`, `DMEM`, `GPIO`, `MTIME`, `UART0`, `PWM`, `DMA`
 * Memory: 16kB IMEM, 8kB DMEM, 4kB bootloader ROM
 * Clock: on-board oscillator, 10MHz
 * Reset: on-board button ("FPGA_BUT1")
@@ -20,7 +20,7 @@ inverted and connected to the on-board user LED ("FPGA_LED").
 
 ### How-To
 
-A [Makefile](Makefile) is provided to automate bitstream generation (i.e. synthesis, technology mapping, placement and routing)
+A simple [Makefile](Makefile) is provided to automate bitstream generation (i.e. synthesis, technology mapping, placement and routing)
 via Yosys + GHDL and (CC's) place&route.
 
 Download and unpack the [Cologne Chip toolchain](https://www.colognechip.com/programmable-logic/gatemate/gatemate-download)
@@ -35,22 +35,22 @@ To generate the bitstream just run the `all` target. In case you need some help,
 This will also show the current Makefile configuration.
 
 ```bash
-neorv32-setups/cologne_chip/GateMateA1-EVB$ make all
+$ make all
 ```
 
 This will generate the bitstream file (`neorv32_gatemate_00.cfg`) that can be uploaded to the FPGA using OpenFPGALoader
 (part of the Cologne Chip toolchain). Better press the "FPGA_RST1" button before uploading the bitstream (see note at the end).
 
 ```bash
-neorv32-setups/cologne_chip/GateMateA1-EVB$ make jtag
+$ make jtag
 ```
 
 > [!IMPORTANT]
 > In order to program the Olimex Board via JTAG, openFPGAloader's "DirtyJTAG" (implemented by the on-board RP2040)
 cable driver has to be used (`-c dirtyJtag`).
 
-Synthesis and implementations logs are available in `synth.log` and `impl.log`, respectively. Here is the implementation's
-resource utilization:
+Synthesis and implementations logs are available in `synth.log` and `impl.log`, respectively.
+Here is the implementation's resource utilization:
 
 ```
 Utilization Report
@@ -92,7 +92,7 @@ Utilization Report
  SerDes                    0 /      1  (  0.0 %)
 ```
 
-UART0 is used as system and bootloader console. Connect a USB-UART connector to the board's PMOD port:
+UART0 is used as system and bootloader console. Connect a USB-UART bridge to the board's PMOD port:
 
 ```schematic
 PMOD front-view:
@@ -101,8 +101,8 @@ PMOD front-view:
 +---+---+---+---+---+---+ |
 |3.3|GND| 4 | 3 | 2 | 1 | |
 +---+---+---+---+---+---+ |
-|3.3|GND|10 | 9 | 8 | 7 |/
-+---+---+---+---+---+---+
+|3.3|GND|10 | 9 | 8 | 7 | |
++---+---+---+---+---+---+/
 ```
 
 | PMOD pin | Signal  | FPGA pin | Description    |
