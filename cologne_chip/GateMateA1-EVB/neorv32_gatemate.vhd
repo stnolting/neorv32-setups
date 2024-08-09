@@ -31,6 +31,7 @@ end entity;
 architecture neorv32_gatemate_rtl of neorv32_gatemate is
 
   signal con_gpio_out : std_ulogic_vector(63 downto 0);
+  signal con_pwm      : std_ulogic_vector(11 downto 0);
 
 begin
 
@@ -45,6 +46,9 @@ begin
     CPU_EXTENSION_RISCV_C      => true,
     CPU_EXTENSION_RISCV_M      => true,
     CPU_EXTENSION_RISCV_Zicntr => true,
+    -- Tuning Options --
+    FAST_MUL_EN                => true,
+    FAST_SHIFT_EN              => true,
     -- Internal Instruction memory --
     MEM_INT_IMEM_EN            => true,
     MEM_INT_IMEM_SIZE          => 16*1024,
@@ -55,8 +59,10 @@ begin
     IO_GPIO_NUM                => 1,
     IO_MTIME_EN                => true,
     IO_UART0_EN                => true,
-    IO_UART0_RX_FIFO           => 128,
-    IO_UART0_TX_FIFO           => 128
+    IO_UART0_RX_FIFO           => 64,
+    IO_UART0_TX_FIFO           => 64,
+    IO_PWM_NUM_CH              => 1,
+    IO_DMA_EN                  => true
   )
   port map (
     -- Global control --
@@ -66,11 +72,13 @@ begin
     gpio_o      => con_gpio_out,
     -- primary UART0 (available if IO_UART0_EN = true) --
     uart0_txd_o => txd_o,
-    uart0_rxd_i => rxd_i
+    uart0_rxd_i => rxd_i,
+    -- PWM (available if IO_PWM_NUM_CH > 0) --
+    pwm_o       => con_pwm
   );
 
   -- low-active status LED --
-  led_o <= not con_gpio_out(0);
+  led_o <= not (con_gpio_out(0) or con_pwm(0));
 
 
 end architecture;
