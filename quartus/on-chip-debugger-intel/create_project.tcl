@@ -25,10 +25,6 @@ foreach core_src_file $core_src_files {
   set_global_assignment -name VHDL_FILE $core_src_file -library neorv32
 }
 
-# add default IMEM & DMEM architecture (Quartus is able to infer correct memory)
-set_global_assignment -name VHDL_FILE ./../../neorv32/rtl/core/mem/neorv32_dmem.default.vhd -library neorv32
-set_global_assignment -name VHDL_FILE ./../../neorv32/rtl/core/mem/neorv32_imem.default.vhd -library neorv32
-
 # add Intel specific DTM implementation, replaces default one
 set_global_assignment -name VHDL_FILE ./neorv32_debug_dtm.intel.vhd -library neorv32
 

@@ -1,5 +1,5 @@
 # Usage:
-# * Use on an existing project where you want to import neorv32. Importing 
+# * Use on an existing project where you want to import neorv32. Importing
 #   copies all the neorv32 core files into your project. It makes your project
 #   self-contained. To update your neorv32 library, first get the up to date
 #   files and run the updated import_neorv32.tcl with the -force flag from
@@ -34,11 +34,5 @@ set corefiles [glob $import_neorv32_dir/rtl/core/*.vhd]
 foreach corefile $corefiles {
     import_files -file $corefile {*}$flags_import
     set_file_prop -lib neorv32 $project_dir/src/[file tail $corefile]
-    # TODO: verify set_file_prop call is refering to the files correctly
-}
-set memfiles [glob $import_neorv32_dir/rtl/core/mem/*.default.vhd]
-foreach memfile $memfiles {
-    import_files -file $memfile {*}$flags_import
-    set_file_prop -lib neorv32 $project_dir/src/[file tail $memfile]
     # TODO: verify set_file_prop call is refering to the files correctly
 }
