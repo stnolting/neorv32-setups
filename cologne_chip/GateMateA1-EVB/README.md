@@ -42,7 +42,7 @@ This will generate the bitstream final file (`neorv32_gatemate_00.cfg`).
 Synthesis and implementations logs are available in `synth.log` and `impl.log`, respectively.
 
 Before you can upload that via JTAG, make sure the FPGA's boot mode is also set to "JTAG" via the on-board
-"CFG_SET1" DIP switches ("1100 = JTAG"):
+"CFG_SET1" DIP switches (`1100`):
 
 ```
 ON
@@ -89,4 +89,4 @@ When you press the reset button ("FPGA_BUT1") the on-board LED should start flas
 should show up in the terminal.
 
 > [!TIP]
-> If nothing happens or if the FPGA haves strange, press the "FPGA_RST1" button and upload the bitstream again.
+> If nothing happens or if the FPGA behaves in a strange way, press the "FPGA_RST1" button and upload the bitstream again.
