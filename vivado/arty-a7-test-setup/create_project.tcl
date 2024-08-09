@@ -28,9 +28,8 @@ set_property target_language VHDL [current_project]
 # Define filesets
 
 ## Core: NEORV32
-add_files [glob ./../../neorv32/rtl/core/*.vhd] ./../../neorv32/rtl/core/mem/neorv32_dmem.default.vhd ./../../neorv32/rtl/core/mem/neorv32_imem.default.vhd
+add_files [glob ./../../neorv32/rtl/core/*.vhd]
 set_property library neorv32 [get_files [glob ./../../neorv32/rtl/core/*.vhd]]
-set_property library neorv32 [get_files [glob ./../../neorv32/rtl/core/mem/neorv32_*mem.default.vhd]]
 
 ## Design: processor subsystem template, and (optionally) BoardTop and/or other additional sources
 set fileset_design ./../../neorv32/rtl/test_setups/neorv32_test_setup_bootloader.vhd
