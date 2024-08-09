@@ -16,7 +16,7 @@ NETLIST   = $(TOP).synth.v
 # -----------------------------------------------------------------------------
 # cologne chip toolchain
 # -----------------------------------------------------------------------------
-CCTOOLS = /opt/cc-toolchain-linux/bin
+CCTOOLS = ../../bin
 YOSYS   = $(CCTOOLS)/yosys/yosys
 PR      = $(CCTOOLS)/p_r/p_r
 OFL     = $(CCTOOLS)/openFPGALoader/openFPGALoader
@@ -24,8 +24,8 @@ OFL     = $(CCTOOLS)/openFPGALoader/openFPGALoader
 # -----------------------------------------------------------------------------
 # neorv32 sources
 # -----------------------------------------------------------------------------
-NEORV32_HOME = ../../neorv32
-NEORV32_SRC  = $(NEORV32_HOME)/rtl/core/*.vhd $(NEORV32_HOME)/rtl/core/mem/*.default.vhd
+NEORV32_HOME  = ../../neorv32
+VHDL_SRC     += $(NEORV32_HOME)/rtl/core/*.vhd $(NEORV32_HOME)/rtl/core/mem/*.default.vhd
 
 # -----------------------------------------------------------------------------
 # targets
@@ -35,7 +35,11 @@ NEORV32_SRC  = $(NEORV32_HOME)/rtl/core/*.vhd $(NEORV32_HOME)/rtl/core/mem/*.def
 
 all: help clean synth impl
 
-synth: $(NEORV32_SRC) $(VHDL_SRC)
+info:
+	$(YOSYS) -V
+	$(PR) -V
+
+synth: $(VHDL_SRC)
 	$(YOSYS) -ql synth.log -p 'ghdl $(GHDLFLAGS) $^ -e $(TOP); synth_gatemate -top $(TOP) $(SYNFLAGS) -vlog $(NETLIST)'
 
 impl:
@@ -64,9 +68,10 @@ help:
 	@echo ""
 	@echo "Targets:"
 	@echo " help     - show this text"
+	@echo " info     - show toolchain version (Yosys and P_R)"
 	@echo " clean    - remove all build artifacts"
 	@echo " synth    - synthesize design (including technology mapping) and generate netlist"
-	@echo " impl     - implement design (place and route)"
+	@echo " impl     - implement design (place and route) and generate bitstream"
 	@echo " jtag     - upload bitstream via JTAG"
 	@echo " jtag-spi - program bitstream to SPI flash"
 	@echo " all      - help + clean + synth + impl"
