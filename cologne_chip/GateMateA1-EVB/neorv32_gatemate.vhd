@@ -55,8 +55,8 @@ begin
     IO_GPIO_NUM                => 1,
     IO_MTIME_EN                => true,
     IO_UART0_EN                => true,
-    IO_UART0_RX_FIFO           => 64,
-    IO_UART0_TX_FIFO           => 64
+    IO_UART0_RX_FIFO           => 128,
+    IO_UART0_TX_FIFO           => 128
   )
   port map (
     -- Global control --
