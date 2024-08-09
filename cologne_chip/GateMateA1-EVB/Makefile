@@ -33,7 +33,7 @@ VHDL_SRC     += $(NEORV32_HOME)/rtl/core/*.vhd $(NEORV32_HOME)/rtl/core/mem/*.de
 .PHONY: help
 .DEFAULT_GOAL := help
 
-all: help clean synth impl
+all: clean synth impl
 
 info:
 	$(YOSYS) -V
@@ -47,9 +47,6 @@ impl:
 
 jtag:
 	$(OFL) $(OFLFLAGS) $(TOP)_00.cfg
-
-jtag-flash:
-	$(OFL) $(OFLFLAGS) -f --verify $(TOP)_00.cfg
 
 clean:
 	@rm -rf $(NETLIST) *.log *_00* *.id *.net *.pathes *.pos *.txt *.refcomp *.refparam *.refwire *.prn
@@ -67,12 +64,11 @@ help:
 	@echo " OFLFLAGS  = $(OFLFLAGS)"
 	@echo ""
 	@echo "Targets:"
-	@echo " help     - show this text"
-	@echo " info     - show toolchain version (Yosys and P_R)"
-	@echo " clean    - remove all build artifacts"
-	@echo " synth    - synthesize design (including technology mapping) and generate netlist"
-	@echo " impl     - implement design (place and route) and generate bitstream"
-	@echo " jtag     - upload bitstream via JTAG"
-	@echo " jtag-spi - program bitstream to SPI flash"
-	@echo " all      - help + clean + synth + impl"
+	@echo " help  - show this text"
+	@echo " info  - show toolchain version (Yosys and P_R)"
+	@echo " clean - remove all build artifacts"
+	@echo " synth - synthesize design (including technology mapping) and generate netlist"
+	@echo " impl  - implement design (place and route) and generate bitstream"
+	@echo " jtag  - upload bitstream via JTAG"
+	@echo " all   - clean + synth + impl"
 	@echo ""
