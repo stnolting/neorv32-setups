@@ -18,7 +18,7 @@ based on a Cologne Chip GateMate `CCGM1A1` FPGA.
 Pin 0 of the processor's GPIO output port and pin 0 of the processor's PWM port are logically OR-ed,
 inverted and connected to the on-board user LED ("FPGA_LED").
 
-#### How-To
+### How-To
 
 A [Makefile](Makefile) is provided to automate bitstream generation (i.e. synthesis, technology mapping, placement and routing)
 via Yosys + GHDL and (CC's) place&route.
