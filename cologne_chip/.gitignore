@@ -1,0 +1,13 @@
+*.log
+*.v
+*.id*
+*.net
+*.ref*
+*.pos
+*.pin
+*.cdf
+*.cfg
+*.prn
+*.txt
+*.pathes
+*_00*

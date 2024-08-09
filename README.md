@@ -32,8 +32,7 @@ This list shows projects that focus on custom hard- or software modifications, s
 
 ## Setups using Commercial Toolchains
 
-The setups using commercial toolchains provide pre-configured project files that can be opened with the according
-FPGA tools.
+The setups using commercial toolchains provide pre-configured project files that can be opened with the according FPGA tools.
 
 | Setup | Toolchain | Board | FPGA | Author(s) |
 |:------|:----------|:------|:-----|:----------|
@@ -43,7 +42,6 @@ FPGA tools.
 | :file_folder: [`terasic-cyclone-V-gx-starter-kit-test-setup`](https://github.com/stnolting/neorv32-setups/tree/main/quartus/terasic-cyclone-V-gx-starter-kit-test-setup) | Intel Quartus Prime | [Terasic Cyclone-V GX Starter Kit](https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&CategoryNo=167&No=830) | Intel Cyclone V `5CGXFC5C6F27C7N` | zs6mue |
 | :file_folder: [`UPduino_v3`](https://github.com/stnolting/neorv32-setups/tree/main/radiant/UPduino_v3)                   | Lattice Radiant     | [tinyVision.ai Inc. UPduino `v3.0`](https://www.tindie.com/products/tinyvision_ai/upduino-v30-low-cost-lattice-ice40-fpga-board/) | Lattice iCE40 UltraPlus `iCE40UP5K-SG48I` | [stnolting](https://github.com/stnolting) |
 | :file_folder: [`iCEBreaker`](https://github.com/stnolting/neorv32-setups/tree/main/radiant/iCEBreaker)                   | Lattice Radiant     | [iCEBreaker @ GitHub](https://github.com/icebreaker-fpga/icebreaker)                                                              | Lattice iCE40 UltraPlus `iCE40UP5K-SG48I` | [stnolting](https://github.com/stnolting) |
-
 | :file_folder: [`arty-a7-35-test-setup`](https://github.com/stnolting/neorv32-setups/tree/main/vivado/arty-a7-test-setup) | Xilinx Vivado       | [Digilent Arty A7-35](https://reference.digilentinc.com/reference/programmable-logic/arty-a7/start)                               | Xilinx Artix-7 `XC7A35TICSG324-1L`        | [stnolting](https://github.com/stnolting) |
 | :file_folder: [`nexys-a7-test-setup`](https://github.com/stnolting/neorv32-setups/tree/main/vivado/nexys-a7-test-setup)  | Xilinx Vivado       | [Digilent Nexys A7](https://reference.digilentinc.com/reference/programmable-logic/nexys-a7/start)                                | Xilinx Artix-7 `XC7A50TCSG324-1`          | [AWenzel83](https://github.com/AWenzel83) |
 | :file_folder: [`nexys-a7-test-setup`](https://github.com/stnolting/neorv32-setups/tree/main/vivado/nexys-a7-test-setup)  | Xilinx Vivado       | [Digilent Nexys 4 DDR](https://reference.digilentinc.com/reference/programmable-logic/nexys-4-ddr/start)                          | Xilinx Artix-7 `XC7A100TCSG324-1`         | [AWenzel83](https://github.com/AWenzel83) |
@@ -53,21 +51,22 @@ FPGA tools.
 
 ## Setups using Open-Source Toolchains
 
-All setups using open-source toolchains are located in the
+Most OSS setups using open-source toolchains are located in the
 [`osflow`](https://github.com/stnolting/neorv32-setups/tree/main/osflow) folder.
 See the [README](https://github.com/stnolting/neorv32-setups/blob/main/osflow/README.md)
 there for more information how to run a specific setup and how to add new targets.
 
 | Setup | Toolchain | Board | FPGA | Author(s) |
 |:------|:----------|:------|:-----|:----------|
-| :file_folder: [`UPDuino-v3.0`](https://github.com/stnolting/neorv32-setups/tree/main/osflow)  | GHDL, Yosys, nextPNR | [UPduino v3.0](https://www.tindie.com/products/tinyvision_ai/upduino-v30-low-cost-lattice-ice40-fpga-board/) | Lattice iCE40 UltraPlus `iCE40UP5K-SG48I` | [tmeissner](https://github.com/tmeissner) |
-| :file_folder: [`FOMU`](https://github.com/stnolting/neorv32-setups/tree/main/osflow)        | GHDL, Yosys, nextPNR | [FOMU](https://tomu.im/fomu.html)                                                                            | Lattice iCE40 UltraPlus `iCE40UP5K-SG48I` | [umarcor](https://github.com/umarcor) |
-| :file_folder: [`iCESugar`](https://github.com/stnolting/neorv32-setups/tree/main/osflow)    | GHDL, Yosys, nextPNR | [iCESugar](https://github.com/wuxx/icesugar/blob/master/README_en.md)                                        | Lattice iCE40 UltraPlus `iCE40UP5K-SG48I` | [umarcor](https://github.com/umarcor) |
-| :file_folder: [`AlhambraII`](https://github.com/stnolting/neorv32-setups/tree/main/osflow)  | GHDL, Yosys, nextPNR | [AlhambraII](https://alhambrabits.com/alhambra/)                                                             | Lattice iCE40HX4K                         | [zipotron](https://github.com/zipotron) |
-| :file_folder: [`Orange Crab`](https://github.com/stnolting/neorv32-setups/tree/main/osflow) | GHDL, Yosys, nextPNR | [Orange Crab](https://github.com/gregdavill/OrangeCrab)                                                      | Lattice ECP5-25F                          | [umarcor](https://github.com/umarcor), [jeremyherbert](https://github.com/jeremyherbert) |
-| :file_folder: [`ULX3S`](https://github.com/stnolting/neorv32-setups/tree/main/osflow)       | GHDL, Yosys, nextPNR | [ULX3S](https://radiona.org/ulx3s/)                                                                          | Lattice ECP5 `LFE5U-85F-6BG381C`          | [zipotron](https://github.com/zipotron) |
+| :file_folder: [`UPDuino-v3.0`](https://github.com/stnolting/neorv32-setups/tree/main/osflow) | GHDL, Yosys, nextPNR | [UPduino v3.0](https://www.tindie.com/products/tinyvision_ai/upduino-v30-low-cost-lattice-ice40-fpga-board/) | Lattice iCE40 UltraPlus `iCE40UP5K-SG48I` | [tmeissner](https://github.com/tmeissner) |
+| :file_folder: [`FOMU`](https://github.com/stnolting/neorv32-setups/tree/main/osflow)        | GHDL, Yosys, nextPNR | [FOMU](https://tomu.im/fomu.html)                                                                             | Lattice iCE40 UltraPlus `iCE40UP5K-SG48I` | [umarcor](https://github.com/umarcor) |
+| :file_folder: [`iCESugar`](https://github.com/stnolting/neorv32-setups/tree/main/osflow)    | GHDL, Yosys, nextPNR | [iCESugar](https://github.com/wuxx/icesugar/blob/master/README_en.md)                                         | Lattice iCE40 UltraPlus `iCE40UP5K-SG48I` | [umarcor](https://github.com/umarcor) |
+| :file_folder: [`AlhambraII`](https://github.com/stnolting/neorv32-setups/tree/main/osflow)  | GHDL, Yosys, nextPNR | [AlhambraII](https://alhambrabits.com/alhambra/)                                                              | Lattice iCE40HX4K                         | [zipotron](https://github.com/zipotron) |
+| :file_folder: [`Orange Crab`](https://github.com/stnolting/neorv32-setups/tree/main/osflow) | GHDL, Yosys, nextPNR | [Orange Crab](https://github.com/gregdavill/OrangeCrab)                                                       | Lattice ECP5-25F                          | [umarcor](https://github.com/umarcor), [jeremyherbert](https://github.com/jeremyherbert) |
+| :file_folder: [`ULX3S`](https://github.com/stnolting/neorv32-setups/tree/main/osflow)       | GHDL, Yosys, nextPNR | [ULX3S](https://radiona.org/ulx3s/)                                                                           | Lattice ECP5 `LFE5U-85F-6BG381C`          | [zipotron](https://github.com/zipotron) |
+| :file_folder: [`GateMateA1-EVB`](https://github.com/stnolting/neorv32-setups/cologne_chip/GateMateA1-EVB) | GHDL, Yosys, CC P_R | [GateMateA1-EVB(-2M)](https://www.olimex.com/Products/FPGA/GateMate/GateMateA1-EVB/)             | Cologne Chip GateMate `CCGM1A1`           | [stnolting](https://github.com/stnolting) |
 | :file_folder: ChipWhisperer [`iCE40CW312`](https://github.com/stnolting/neorv32-setups/tree/main/osflow) | GHDL, Yosys, nextPNR | [CW312T_ICE40UP](https://github.com/newaetech/chipwhisperer-target-cw308t/tree/main/CW312T_ICE40UP) | Lattice iCE40 UltraPlus `iCE40UP5K-UWG30` | [colinoflynn](https://github.com/colinoflynn) |
-| :earth_africa: [`ULX3S-SDRAM`](https://github.com/zipotron/neorv32-complex-setups)          | GHDL, Yosys, nextPNR | [ULX3S](https://radiona.org/ulx3s/)                                                                          | Lattice ECP5 `LFE5U-85F-6BG381C`          | [zipotron](https://github.com/zipotron) |
+| :earth_africa: [`ULX3S-SDRAM`](https://github.com/zipotron/neorv32-complex-setups)          | GHDL, Yosys, nextPNR | [ULX3S](https://radiona.org/ulx3s/)                                                                           | Lattice ECP5 `LFE5U-85F-6BG381C`          | [zipotron](https://github.com/zipotron) |
 
 
 ------------------------------------------------------
