@@ -45,7 +45,7 @@ endif
 iCESugar-v1.5:
 	$(eval BITSTREAM ?= neorv32_$(BOARD)_$(DESIGN).bit)
 ifeq ($(DESIGN),Minimal)
-	$(eval IMEM_SRC := $(RTL_CORE_SRC)neorv32_imem.vhd)
+	$(eval IMEM_SRC := $(RTL_CORE_SRC)/neorv32_imem.vhd)
 else
 	$(eval IMEM_SRC := devices/ice40/neorv32_imem.ice40up_spram.vhd)
 endif
@@ -85,7 +85,7 @@ IceZumAlhambraII:
 
 ULX3S:
 	$(eval BITSTREAM ?= neorv32_$(BOARD)_$(DESIGN).bit)
-	$(eval NEORV32_MEM_SRC ?= $(RTL_CORE_SRC)/mem/neorv32_imem.default.vhd $(RTL_CORE_SRC)/mem/neorv32_dmem.default.vhd)
+	$(eval NEORV32_MEM_SRC ?= $(RTL_CORE_SRC)/neorv32_imem.vhd $(RTL_CORE_SRC)/neorv32_dmem.vhd)
 	$(MAKE) \
 	  BITSTREAM="$(BITSTREAM)" \
 	  NEORV32_MEM_SRC="$(NEORV32_MEM_SRC)" \
