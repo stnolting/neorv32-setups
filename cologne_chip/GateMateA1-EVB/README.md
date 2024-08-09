@@ -10,13 +10,12 @@ based on a Cologne Chip GateMate `CCGM1A1` FPGA.
 
 * CPU: `rv32imc_zicntr_zicsr_zifencei`
 * Tuning options: `FAST_MUL`, `FAST_SHIFT`
-* Peripherals: `BOOTROM`, `IMEM`, `DMEM`, `GPIO`, `MTIME`, `UART0`, `PWM`, `DMA`
+* Peripherals: `BOOTROM`, `IMEM`, `DMEM`, `GPIO`, `MTIME`, `UART0`
 * Memory: 16kB IMEM, 8kB DMEM, 4kB bootloader ROM
 * Clock: on-board oscillator, 10MHz
 * Reset: on-board button ("FPGA_BUT1")
 
-Pin 0 of the processor's GPIO output port and pin 0 of the processor's PWM port are logically OR-ed,
-inverted and connected to the on-board user LED ("FPGA_LED").
+Pin 0 of the processor's GPIO output port is inverted and connected to the on-board user LED ("FPGA_LED").
 
 ### How-To
 
@@ -32,64 +31,37 @@ folder right into the root directory of `neorv32-setups`. Otherwise, (Yosys+)GHD
 IEEE libraries.
 
 To generate the bitstream just run the `all` target. In case you need some help, run the `help` target.
-This will also show the current Makefile configuration.
+This will also show the current Makefile/setup configuration. The synthesis flow uses the GHDL plugin for Yosys
+for processing the VHDL sources. Note that all VHDL sources are added to the `neorv32` library.
 
 ```bash
 $ make all
 ```
 
-This will generate the bitstream file (`neorv32_gatemate_00.cfg`) that can be uploaded to the FPGA using OpenFPGALoader
-(part of the Cologne Chip toolchain). Better press the "FPGA_RST1" button before uploading the bitstream (see note at the end).
+This will generate the bitstream final file (`neorv32_gatemate_00.cfg`).
+Synthesis and implementations logs are available in `synth.log` and `impl.log`, respectively.
 
-```bash
-$ make jtag
+Before you can upload that via JTAG, make sure the FPGA's boot mode is also set to "JTAG" via the on-board
+"CFG_SET1" DIP switches ("1100 = JTAG"):
+
 ```
+ON
++-+-+-+-+
+|#|#| | |
+| | |#|#|
++-+-+-+-+
+ 1 2 3 4
+```
+
+OpenFPGALoader (part of the Cologne Chip toolchain) is used to upload the bitstream.
+Better press the "FPGA_RST1" button before uploading the bitstream (see note at the end).
 
 > [!IMPORTANT]
 > In order to program the Olimex Board via JTAG, openFPGAloader's "DirtyJTAG" (implemented by the on-board RP2040)
 cable driver has to be used (`-c dirtyJtag`).
 
-Synthesis and implementations logs are available in `synth.log` and `impl.log`, respectively.
-Here is the implementation's resource utilization:
-
-```
-Utilization Report
-
- CPEs                   5010 /  20480  ( 24.5 %)
- -----------------------------------------------
-   CPE Registers        1944 /  40960  (  4.7 %)
-     Flip-flops         1944
-     Latches               0
-
- GPIOs                     5 /    144  (  3.5 %)
- -----------------------------------------------
-   Single-ended            5 /    144  (  3.5 %)
-     IBF                   3
-     OBF                   2
-     TOBF                  0
-     IOBF                  0
-   LVDS pairs              0 /     72  (  0.0 %)
-     IBF                   0
-     OBF                   0
-     TOBF                  0
-     IOBF                  0
-
- GPIO Registers            0 /    288  (  0.0 %)
- -----------------------------------------------
-   FF_IBF                  0
-   FF_OBF                  0
-   IDDR                    0
-   ODDR                    0
-
- Block RAMs             10.0 /     32  ( 31.3 %)
- -----------------------------------------------
-   BRAM_20K                2 /     64  (  3.1 %)
-   BRAM_40K                8 /     32  ( 25.0 %)
-   FIFO_40K                0 /     32  (  0.0 %)
-
- PLLs                      0 /      4  (  0.0 %)
- GLBs                      1 /      4  ( 25.0 %)
- SerDes                    0 /      1  (  0.0 %)
+```bash
+$ make jtag
 ```
 
 UART0 is used as system and bootloader console. Connect a USB-UART bridge to the board's PMOD port:
