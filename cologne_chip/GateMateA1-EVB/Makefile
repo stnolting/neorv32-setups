@@ -25,7 +25,7 @@ OFL     = $(CCTOOLS)/openFPGALoader/openFPGALoader
 # neorv32 sources
 # -----------------------------------------------------------------------------
 NEORV32_HOME  = ../../neorv32
-VHDL_SRC     += $(NEORV32_HOME)/rtl/core/*.vhd $(NEORV32_HOME)/rtl/core/mem/*.default.vhd
+VHDL_SRC     += $(NEORV32_HOME)/rtl/core/*.vhd
 
 # -----------------------------------------------------------------------------
 # targets
