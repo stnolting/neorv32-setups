@@ -81,7 +81,7 @@
         <Source name="../../neorv32/rtl/core/neorv32_gptmr.vhd" type="VHDL" type_short="VHDL">
             <Options lib="neorv32"/>
         </Source>
-        <Source name="../../neorv32/rtl/core/neorv32_intercon.vhd" type="VHDL" type_short="VHDL">
+        <Source name="../../neorv32/rtl/core/neorv32_bus.vhd" type="VHDL" type_short="VHDL">
             <Options lib="neorv32"/>
         </Source>
         <Source name="../../neorv32/rtl/core/neorv32_mtime.vhd" type="VHDL" type_short="VHDL">
@@ -103,6 +103,9 @@
             <Options lib="neorv32"/>
         </Source>
         <Source name="../../neorv32/rtl/core/neorv32_spi.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_sys.vhd" type="VHDL" type_short="VHDL">
             <Options lib="neorv32"/>
         </Source>
         <Source name="../../neorv32/rtl/core/neorv32_sysinfo.vhd" type="VHDL" type_short="VHDL">
