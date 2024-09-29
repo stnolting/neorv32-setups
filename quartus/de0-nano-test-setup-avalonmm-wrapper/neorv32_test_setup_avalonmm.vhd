@@ -75,13 +75,13 @@ architecture neorv32_test_setup_avalonmm_rtl of neorv32_test_setup_avalonmm is
       ON_CHIP_DEBUGGER_EN          : boolean := false;  -- implement on-chip debugger
   
       -- RISC-V CPU Extensions --
-      CPU_EXTENSION_RISCV_B        : boolean := false;  -- implement bit-manipulation extension?
-      CPU_EXTENSION_RISCV_C        : boolean := false;  -- implement compressed extension?
-      CPU_EXTENSION_RISCV_E        : boolean := false;  -- implement embedded RF extension?
-      CPU_EXTENSION_RISCV_M        : boolean := false;  -- implement mul/div extension?
-      CPU_EXTENSION_RISCV_U        : boolean := false;  -- implement user mode extension?
-      CPU_EXTENSION_RISCV_Zfinx    : boolean := false;  -- implement 32-bit floating-point extension (using INT regs!)
-      CPU_EXTENSION_RISCV_Zmmul    : boolean := false;  -- implement multiply-only M sub-extension?
+      RISCV_ISA_B                  : boolean := false;  -- implement bit-manipulation extension?
+      RISCV_ISA_C                  : boolean := false;  -- implement compressed extension?
+      RISCV_ISA_E                  : boolean := false;  -- implement embedded RF extension?
+      RISCV_ISA_M                  : boolean := false;  -- implement mul/div extension?
+      RISCV_ISA_U                  : boolean := false;  -- implement user mode extension?
+      RISCV_ISA_Zfinx              : boolean := false;  -- implement 32-bit floating-point extension (using INT regs!)
+      RISCV_ISA_Zmmul              : boolean := false;  -- implement multiply-only M sub-extension?
   
       -- Extension Options --
       FAST_MUL_EN                  : boolean := false;  -- use DSPs for M extension's multiplier
@@ -258,9 +258,9 @@ begin
     CLOCK_FREQUENCY              => CLOCK_FREQUENCY,   -- clock frequency of clk_i in Hz
     INT_BOOTLOADER_EN            => false,              -- boot configuration: true = boot explicit bootloader; false = boot from int/ext (I)MEM
     -- RISC-V CPU Extensions --
-    CPU_EXTENSION_RISCV_C        => true,              -- implement compressed extension?
-    CPU_EXTENSION_RISCV_M        => true,              -- implement mul/div extension?
-    CPU_EXTENSION_RISCV_Zicsr    => true,              -- implement CSR system?
+    RISCV_ISA_C        => true,              -- implement compressed extension?
+    RISCV_ISA_M        => true,              -- implement mul/div extension?
+    RISCV_ISA_Zicsr    => true,              -- implement CSR system?
     -- Internal Instruction memory --
     MEM_INT_IMEM_EN              => true,              -- implement processor-internal instruction memory
     MEM_INT_IMEM_SIZE            => MEM_INT_IMEM_SIZE, -- size of processor-internal instruction memory in bytes

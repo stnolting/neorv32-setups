@@ -122,12 +122,12 @@ begin
     -- On-Chip Debugger (OCD) --
     ON_CHIP_DEBUGGER_EN          => false,       -- implement on-chip debugger
     -- RISC-V CPU Extensions --
-    CPU_EXTENSION_RISCV_C        => true,        -- implement compressed extension?
-    CPU_EXTENSION_RISCV_E        => false,       -- implement embedded RF extension?
-    CPU_EXTENSION_RISCV_M        => true,        -- implement muld/div extension?
-    CPU_EXTENSION_RISCV_U        => true,        -- implement user mode extension?
-    CPU_EXTENSION_RISCV_Zfinx    => false,       -- implement 32-bit floating-point extension (using INT reg!)
-    CPU_EXTENSION_RISCV_Zmmul    => false,  -- implement multiply-only M sub-extension?
+    RISCV_ISA_C                  => true,        -- implement compressed extension?
+    RISCV_ISA_E                  => false,       -- implement embedded RF extension?
+    RISCV_ISA_M                  => true,        -- implement muld/div extension?
+    RISCV_ISA_U                  => true,        -- implement user mode extension?
+    RISCV_ISA_Zfinx              => false,       -- implement 32-bit floating-point extension (using INT reg!)
+    RISCV_ISA_Zmmul              => false,  -- implement multiply-only M sub-extension?
     -- Extension Options --
     FAST_MUL_EN                  => false,       -- use DSPs for M extension's multiplier
     FAST_SHIFT_EN                => false,       -- use barrel shifter for shift operations
