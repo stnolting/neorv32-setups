@@ -9,7 +9,7 @@
 -- # permitted provided that the following conditions are met:                                     #
 -- #                                                                                               #
 -- # 1. Redistributions of source code must retain the above copyright notice, this list of        #
--- #    conditions and the following disclaimer.                                                    #
+-- #    conditions and the following disclaimer.                                                   #
 -- #                                                                                               #
 -- # 2. Redistributions in binary form must reproduce the above copyright notice, this list of     #
 -- #    conditions and the following disclaimer in the documentation and/or other materials        #
@@ -138,31 +138,31 @@ begin
   neorv32_inst: neorv32_top
   generic map (
     -- General --
-    CLOCK_FREQUENCY              => f_clock_c,   -- clock frequency of clk_i in Hz
-    INT_BOOTLOADER_EN            => true,        -- boot configuration: true = boot explicit bootloader; false = boot from int/ext (I)MEM
+    CLOCK_FREQUENCY    => f_clock_c,   -- clock frequency of clk_i in Hz
+    INT_BOOTLOADER_EN  => true,        -- boot configuration: true = boot explicit bootloader; false = boot from int/ext (I)MEM
 
     -- RISC-V CPU Extensions --
-    CPU_EXTENSION_RISCV_C        => true,        -- implement compressed extension?
-    CPU_EXTENSION_RISCV_M        => true,        -- implement mul/div extension?
-    CPU_EXTENSION_RISCV_U        => true,        -- implement user mode extension?
-    CPU_EXTENSION_RISCV_Zicntr   => true,        -- implement base counters?
+    RISCV_ISA_C        => true,        -- implement compressed extension?
+    RISCV_ISA_M        => true,        -- implement mul/div extension?
+    RISCV_ISA_U        => true,        -- implement user mode extension?
+    RISCV_ISA_Zicntr   => true,        -- implement base counters?
 
     -- Internal Instruction memory --
-    MEM_INT_IMEM_EN              => true,        -- implement processor-internal instruction memory
-    MEM_INT_IMEM_SIZE            => 64*1024,     -- size of processor-internal instruction memory in bytes
+    MEM_INT_IMEM_EN    => true,        -- implement processor-internal instruction memory
+    MEM_INT_IMEM_SIZE  => 64*1024,     -- size of processor-internal instruction memory in bytes
 
     -- Internal Data memory --
-    MEM_INT_DMEM_EN              => true,        -- implement processor-internal data memory
-    MEM_INT_DMEM_SIZE            => 64*1024,     -- size of processor-internal data memory in bytes
+    MEM_INT_DMEM_EN    => true,        -- implement processor-internal data memory
+    MEM_INT_DMEM_SIZE  => 64*1024,     -- size of processor-internal data memory in bytes
 
     -- Processor peripherals --
-    IO_GPIO_NUM                  => 4,           -- implement general purpose input/output port unit (GPIO)?
-    IO_MTIME_EN                  => true,        -- implement machine system timer (MTIME)?
-    IO_UART0_EN                  => true,        -- implement primary universal asynchronous receiver/transmitter (UART0)?
-    IO_SPI_EN                    => true,        -- implement serial peripheral interface (SPI)?
-    IO_TWI_EN                    => true,        -- implement two-wire interface (TWI)?
-    IO_PWM_NUM_CH                => 3,           -- number of PWM channels to implement (0..60); 0 = disabled
-    IO_WDT_EN                    => true         -- implement watch dog timer (WDT)?
+    IO_GPIO_NUM        => 4,           -- implement general purpose input/output port unit (GPIO)?
+    IO_MTIME_EN        => true,        -- implement machine system timer (MTIME)?
+    IO_UART0_EN        => true,        -- implement primary universal asynchronous receiver/transmitter (UART0)?
+    IO_SPI_EN          => true,        -- implement serial peripheral interface (SPI)?
+    IO_TWI_EN          => true,        -- implement two-wire interface (TWI)?
+    IO_PWM_NUM_CH      => 3,           -- number of PWM channels to implement (0..60); 0 = disabled
+    IO_WDT_EN          => true         -- implement watch dog timer (WDT)?
   )
   port map (
     -- Global control --
