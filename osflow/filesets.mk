@@ -1,6 +1,6 @@
 NEORV32_CORE_SRC :=                                 \
   ../neorv32/rtl/core/neorv32_package.vhd           \
-  ../neorv32/rtl/core/neorv32_bus.vhd               \
+  ../neorv32/rtl/core/neorv32_sys.vhd               \
   ../neorv32/rtl/core/neorv32_clockgate.vhd         \
   ../neorv32/rtl/core/neorv32_fifo.vhd              \
   ../neorv32/rtl/core/neorv32_cpu_decompressor.vhd  \
@@ -12,10 +12,12 @@ NEORV32_CORE_SRC :=                                 \
   ../neorv32/rtl/core/neorv32_cpu_cp_fpu.vhd        \
   ../neorv32/rtl/core/neorv32_cpu_cp_cfu.vhd        \
   ../neorv32/rtl/core/neorv32_cpu_cp_cond.vhd       \
+  ../neorv32/rtl/core/neorv32_cpu_cp_crypto.vhd     \
   ../neorv32/rtl/core/neorv32_cpu_alu.vhd           \
   ../neorv32/rtl/core/neorv32_cpu_lsu.vhd           \
   ../neorv32/rtl/core/neorv32_cpu_pmp.vhd           \
   ../neorv32/rtl/core/neorv32_cpu.vhd               \
+  ../neorv32/rtl/core/neorv32_bus.vhd               \
   ../neorv32/rtl/core/neorv32_cache.vhd             \
   ../neorv32/rtl/core/neorv32_dma.vhd               \
   ../neorv32/rtl/core/neorv32_boot_rom.vhd          \
@@ -37,7 +39,6 @@ NEORV32_CORE_SRC :=                                 \
   ../neorv32/rtl/core/neorv32_onewire.vhd           \
   ../neorv32/rtl/core/neorv32_slink.vhd             \
   ../neorv32/rtl/core/neorv32_crc.vhd               \
-  ../neorv32/rtl/core/neorv32_sys.vhd               \
   ../neorv32/rtl/core/neorv32_sysinfo.vhd           \
   ../neorv32/rtl/core/neorv32_debug_dtm.vhd         \
   ../neorv32/rtl/core/neorv32_debug_dm.vhd          \
