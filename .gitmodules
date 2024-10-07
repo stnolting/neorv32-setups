@@ -1,6 +1,8 @@
 [submodule "neorv32"]
 	path = neorv32
 	url = https://github.com/stnolting/neorv32
+	ignore = dirty
 [submodule "constraints"]
 	path = constraints
 	url = https://github.com/hdl/constraints
+	ignore = dirty
