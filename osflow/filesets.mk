@@ -41,6 +41,7 @@ NEORV32_CORE_SRC :=                                 \
   ../neorv32/rtl/core/neorv32_crc.vhd               \
   ../neorv32/rtl/core/neorv32_sysinfo.vhd           \
   ../neorv32/rtl/core/neorv32_debug_dtm.vhd         \
+  ../neorv32/rtl/core/neorv32_debug_auth.vhd        \
   ../neorv32/rtl/core/neorv32_debug_dm.vhd          \
   ../neorv32/rtl/core/neorv32_top.vhd               \
   ../neorv32/rtl/core/neorv32_application_image.vhd \
