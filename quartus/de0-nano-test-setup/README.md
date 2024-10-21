@@ -51,7 +51,7 @@ If not already available, this script will create a `work` folder in this direct
 
 1. start Quartus (in GUI mode)
 2. in the menu line click "View/Utility Windows/Tcl console" to open the Tcl console
-3. use the console to naviagte to **this** folder: `cd .../neorv32/boards/de0-nano-test-setup`
+3. use the console to naviagte to **this** folder: `cd .../neorv32-setups/quartus/de0-nano-test-setup`
 4. execute `source create_project.tcl` - this will create and open the actual Quartus project in this folder
 5. if a "select family" prompt appears select the "Cyclone IV E" family and click OK
 6. double click on "Compile Design" in the "Tasks" window. This will synthesize, map and place & route your design and will also generate the actual FPGA bitstream
