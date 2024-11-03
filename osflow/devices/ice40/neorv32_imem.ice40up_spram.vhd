@@ -22,8 +22,8 @@ use iCE40.components.all;
 
 entity neorv32_imem is
   generic (
-    IMEM_SIZE    : natural; -- processor-internal instruction memory size in bytes, has to be a power of 2
-    IMEM_AS_IROM : boolean  -- implement IMEM as pre-initialized read-only memory?
+    IMEM_SIZE : natural; -- processor-internal instruction memory size in bytes, has to be a power of 2
+    IMEM_INIT : boolean  -- implement IMEM as pre-initialized read-only memory?
   );
   port (
     clk_i     : in  std_ulogic; -- global clock line
@@ -66,7 +66,7 @@ begin
   -- Sanity Checks --------------------------------------------------------------------------
   -- -------------------------------------------------------------------------------------------
   assert false report "NEORV32 PROCESSOR CONFIG NOTE: Using iCE40up SPRAM-based IMEM." severity note;
-  assert not (IMEM_AS_IROM = true) report "NEORV32 PROCESSOR CONFIG ERROR: ICE40 Ultra Plus SPRAM cannot be initialized by bitstream!" severity failure;
+  assert not (IMEM_INIT = true) report "NEORV32 PROCESSOR CONFIG ERROR: ICE40 Ultra Plus SPRAM cannot be initialized by bitstream!" severity failure;
   assert not (IMEM_SIZE /= 64*1024) report "NEORV32 PROCESSOR CONFIG NOTE: IMEM SPRAM has a fixed physical size of 64kB." severity note;
 
 
