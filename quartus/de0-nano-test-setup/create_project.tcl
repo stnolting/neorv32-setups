@@ -1,6 +1,6 @@
 # make a local copy of original "./../../rtl/test_setups/neorv32_test_setup_bootloader.vhd " file
 # and modify the default clock frequency: set to 50MHz
-set shell_script "cp -f ./../../NEORV32/rtl/test_setups/neorv32_test_setup_bootloader.vhd  . && sed -i 's/100000000/50000000/g' neorv32_test_setup_bootloader.vhd "
+set shell_script "cp -f ./../../neorv32/rtl/test_setups/neorv32_test_setup_bootloader.vhd  . && sed -i 's/100000000/50000000/g' neorv32_test_setup_bootloader.vhd "
 exec sh -c $shell_script
 
 # Copyright (C) 2020  Intel Corporation. All rights reserved.
@@ -58,12 +58,10 @@ if {$make_assignments} {
   set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 1
 
   # core VHDL files
-  set core_src_dir [glob ./../../NEORV32/rtl/core/*.vhd]
+  set core_src_dir [glob ./../../neorv32/rtl/core/*.vhd]
   foreach core_src_file $core_src_dir {
     set_global_assignment -name VHDL_FILE $core_src_file -library neorv32
   }
-  set_global_assignment -name VHDL_FILE ./../../NEORV32/rtl/core/mem/neorv32_dmem.default.vhd -library neorv32
-  set_global_assignment -name VHDL_FILE ./../../NEORV32/rtl/core/mem/neorv32_imem.default.vhd -library neorv32
 
   # top entity: use local modified copy of the original test setup
   set_global_assignment -name VHDL_FILE "neorv32_test_setup_bootloader.vhd"

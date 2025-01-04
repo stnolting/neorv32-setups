@@ -24,14 +24,14 @@ jobs:
     steps:
 
     - name: '🧰 Repository Checkout'
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: '⛴️ Build neorv32/${{ matrix.image }}'
       run: docker build -t ghcr.io/stnolting/neorv32/${{ matrix.image }} - < .github/${{ matrix.image }}.dockerfile
 
     - name: '🔑 Login to ghcr.io'
       if: github.event_name != 'pull_request'
-      uses: docker/login-action@v1
+      uses: docker/login-action@v3
       with:
         registry: ghcr.io
         username: gha

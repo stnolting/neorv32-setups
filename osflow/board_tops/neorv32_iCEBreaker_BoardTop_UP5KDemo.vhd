@@ -3,7 +3,7 @@
 -- # ********************************************************************************************* #
 -- # BSD 3-Clause License                                                                          #
 -- #                                                                                               #
--- # Copyright (c) 2021, Stephan Nolting. All rights reserved.                                     #
+-- # Copyright (c) 2023, Stephan Nolting. All rights reserved.                                     #
 -- #                                                                                               #
 -- # Redistribution and use in source and binary forms, with or without modification, are          #
 -- # permitted provided that the following conditions are met:                                     #
@@ -58,7 +58,10 @@ entity neorv32_iCEBreaker_BoardTop_UP5KDemo is
     -- TWI --
     iCEBreaker_TWI_SDA     : inout std_logic;
     iCEBreaker_TWI_SCL     : inout std_logic;
-    -- GPIO --
+	-- on-board GPIO --
+    --iCEBreaker_BOARD_LED_G : out  std_ulogic; -- iCEBreaker on-board LEDs
+	--iCEBreaker_BOARD_LED_R : out  std_ulogic; -- iCEBreaker on-board LEDs
+    -- GPIO External --
     iCEBreaker_GPIO_I      : in  std_ulogic_vector(3 downto 0);
     iCEBreaker_GPIO_O      : out std_ulogic_vector(3 downto 0);
     -- PWM (to on-board RGB power LED) --
@@ -151,8 +154,6 @@ begin
     -- primary UART --
     uart_txd_o  => iCEBreaker_TX,
     uart_rxd_i  => iCEBreaker_RX,
-    uart_rts_o  => open,
-    uart_cts_i  => '0',
 
     -- SPI to on-board flash --
     flash_sck_o => iCEBreaker_FLASH_SCK,

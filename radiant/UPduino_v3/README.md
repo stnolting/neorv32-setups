@@ -1,33 +1,28 @@
 # NEORV32 Example Setup for the tinyVision.ai Inc. "UPduino v3.0" FPGA Board
 
+> [!WARNING]
+> This setup **requires** Lattice Radiant version **2022.1**!
 
-This example setup turns the UPduino v3.0 board, which features a Lattice iCE40 UltraPlus FPGA, into a medium-scale NEORV32 *microcontroller*.
+This example setup turns the UPduino v3.0 board, which features a Lattice iCE40 UltraPlus FPGA, into a tiny-scale NEORV32 microcontroller.
 The processor setup provides 64kB of data and instruction memory, an RTOS-capable CPU (privileged architecture)
 and a set of standard peripherals like UART, TWI and SPI.
-
 
 * FPGA Board: :books: [tinyVision.ai Inc. UPduino v3 FPGA Board (GitHub)](https://github.com/tinyvision-ai-inc/UPduino-v3.0/),
 :credit_card: buy on [Tindie](https://www.tindie.com/products/tinyvision_ai/upduino-v30-low-cost-lattice-ice40-fpga-board/)
 * FPGA: Lattice iCE40 UltraPlus 5k `iCE40UP5K-SG48I`
-* Toolchain: Lattice Radiant (tested with Radiant version 3.0.0), using *Lattice Synthesis Engine (LSE)*
-* Top entity: [`neorv32_upduino_v3_top.vhd`](https://github.com/stnolting/neorv32/blob/master/boards/UPduino_v3/neorv32_upduino_v3_top.vhd) (instantiates NEORV32 top entity)
+* Toolchain: Lattice Radiant (tested with version 2022.1), using **Synplify Pro** synthesis engine
+* Top entity: `neorv32_upduino_v3_top.vhd`
 
 
 ### Processor Configuration
 
-- [x] CPU: `rv32imacu_Zicsr_Zicntr` (reduced CPU `[m]instret` & `[m]cycle` counter width!)
-- [x] Memory: 64 kB instruction memory (internal IMEM), 64 kB data memory (internal DMEM), 4 kB bootloader ROM
-- [x] Peripherals: `GPIO`, `MTIME`, `UART0`, `SPI`, `TWI`, `PWM`, `WDT`, `TRNG`
-- [x] Clock: 24 MHz from on-chip HF oscillator (via PLL)
-- [x] Reset: via PLL "locked" signal; external "reset" via FPGA re-reconfiguration pin (`creset_n`)
-- [x] Tested with processor version [`1.6.1.6`](https://github.com/stnolting/neorv32/blob/master/CHANGELOG.md)
-- [x] On-board FPGA bitstream flash storage can also be used to store/load NEORV32 application software (via the bootloader)
-
-:information_source: This setup uses optimized platform-specific memory modules for the internal data and instruction memories (DMEM & IMEM). Each memory uses two
-UltraPlus SPRAM primitives (total memory size per memory = 2 x 32kB = 64kB). VHDL source file for platform-specific IMEM:
-[`neorv32_imem.ice40up_spram.vhd`](https://github.com/stnolting/neorv32/blob/master/boards/UPduino_v3/neorv32_imem.ice40up_spram.vhd);
-VHDL source file for platform-specific DMEM: [`neorv32_dmem.ice40up_spram.vhd`](https://github.com/stnolting/neorv32/blob/master/boards/UPduino_v3/neorv32_dmem.ice40up_spram.vhd).
-These platform-specific memories are used *instead* of the default platform-agnostic modules from the core's `rtl/core/mem` folder.
+* CPU: `rv32imcu_Zicsr_Zicntr`
+* Memory: 64kB instruction memory (internal IMEM), 64kB data memory (internal DMEM), 4kB bootloader ROM
+* Peripherals: `GPIO`, `MTIME`, `UART0`, `SPI`, `TWI`, `PWM`, `WDT`
+* Clock: 24 MHz from on-chip HF oscillator
+* Reset: indirect reset via FPGA re-reconfiguration pin (`creset_n`)
+* Tested with processor version [`1.9.4.10`](https://github.com/stnolting/neorv32/blob/master/CHANGELOG.md)
+* On-board FPGA bitstream flash storage can also be used to store/load NEORV32 application software (via the bootloader)
 
 
 ### Interface Signals
@@ -67,26 +62,6 @@ for the FPGA pin mapping.
 GPIO output 0 (`gpio_o(0)`, also connected to the RGB drive) is used as output for a high-active **status LED** driven by the bootloader.
 
 
-### FPGA Utilization
-
-```
-Number of slice registers: 1754 out of 5280  (33%)
-Number of I/O registers:     11 out of  117   (9%)
-Number of LUT4s:           4882 out of 5280  (92%)
-Number of DSPs:               0 out of    8   (0%)
-Number of I2Cs:               0 out of    2   (0%)
-Number of High Speed OSCs:    1 out of    1 (100%)
-Number of Low Speed OSCs:     0 out of    1   (0%)
-Number of RGB PWM:            0 out of    1   (0%)
-Number of RGB Drivers:        1 out of    1 (100%)
-Number of SCL FILTERs:        0 out of    2   (0%)
-Number of SRAMs:              4 out of    4 (100%)
-Number of WARMBOOTs:          0 out of    1   (0%)
-Number of SPIs:               0 out of    2   (0%)
-Number of EBRs:              15 out of   30  (50%)
-Number of PLLs:               1 out of    1 (100%)
-```
-
 ### FPGA Setup
 
 1. start Lattice Radiant (in GUI mode)
@@ -100,4 +75,3 @@ you can use the pre-build configuration `source/impl_1.xcf`
 8. select "W25Q32" under "SPI Flash Options / Device"
 9. close the dialog by clicking "ok"
 10. click on "Program Device"
-

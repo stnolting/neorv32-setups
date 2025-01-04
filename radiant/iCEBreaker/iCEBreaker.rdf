@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RadiantProject version="4.2" radiant="2022.1.0.52.3" title="iCEBreaker" device="iCE40UP5K-SG48I" performance_grade="High-Performance_1.2V" default_implementation="impl_1">
+    <Options/>
+    <Implementation title="impl_1" dir="impl_1" description="impl_1" synthesis="synplify" default_strategy="Strategy1">
+        <Options def_top="icebreaker_top" top="icebreaker_top"/>
+        <Source name="../../neorv32/rtl/core/neorv32_package.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_application_image.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_bootloader_image.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_boot_rom.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_fifo.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_cfs.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_clockgate.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_cpu.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_cpu_alu.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_cpu_control.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_cpu_cp_bitmanip.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_cpu_cp_cfu.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_cpu_cp_cond.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_cpu_cp_fpu.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_cpu_cp_muldiv.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_cpu_cp_shifter.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_cpu_decompressor.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_cpu_lsu.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_cpu_pmp.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_cpu_regfile.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_crc.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_debug_dm.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_debug_dtm.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_dma.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_gpio.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_gptmr.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_bus.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_mtime.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_neoled.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_onewire.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_pwm.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_sdi.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_slink.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_spi.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_sys.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_sysinfo.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_trng.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_twi.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_uart.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_wdt.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_xip.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_xirq.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_cache.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_xbus.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="neorv32_dmem.ice40up_spram.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="neorv32_imem.ice40up_spram.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="../../neorv32/rtl/core/neorv32_top.vhd" type="VHDL" type_short="VHDL">
+            <Options lib="neorv32"/>
+        </Source>
+        <Source name="system_pll/system_pll.ipx" type="IPX_Module" type_short="IPX">
+            <Options/>
+        </Source>
+        <Source name="icebreaker_top.vhd" type="VHDL" type_short="VHDL">
+            <Options top_module="icebreaker_top"/>
+        </Source>
+        <Source name="icebreaker.pdc" type="Physical Constraints File" type_short="PDC">
+            <Options/>
+        </Source>
+        <Source name="source/impl_1.xcf" type="Programming Project File" type_short="Programming">
+            <Options/>
+        </Source>
+    </Implementation>
+    <Strategy name="Strategy1" file="iCEBreaker1.sty"/>
+</RadiantProject>

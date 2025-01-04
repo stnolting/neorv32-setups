@@ -18,7 +18,7 @@ jobs:
     steps:
 
     - name: '🧰 Repository Checkout'
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: '🔧 Generate examples matrix'
       id: generate
@@ -37,7 +37,7 @@ jobs:
     steps:
 
     - name: '🧰 Repository Checkout'
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         fetch-depth: 0
         submodules: recursive
@@ -48,7 +48,7 @@ jobs:
         args: make -C osflow BOARD=${{ matrix.board }} ${{ matrix.design }}
 
     - name: '📤 Upload Artifact: ${{ matrix.board }} ${{ matrix.design }} bitstream and reports'
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: ${{ matrix.board }}-${{ matrix.design }}
         path: |
@@ -56,40 +56,40 @@ jobs:
           osflow/${{ matrix.board }}/*-report.txt
 
 
-  Windows:
-    needs: Matrix
-    runs-on: windows-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        include: ${{ fromJson(needs.Matrix.outputs.matrix) }}
-    name: '🟦 MINGW64 | ${{ matrix.board }} · ${{ matrix.design }}'
-    defaults:
-      run:
-        shell: msys2 {0}
-    steps:
-
-    - name: '🟦 Setup MSYS2'
-      uses: msys2/setup-msys2@v2
-      with:
-        msystem: MINGW64
-        update: true
-        install: make
-        pacboy: >
-          yosys:p
-          nextpnr:p
-          icestorm:p
-          prjtrellis:p
-
-    - name: '⚙️ git config'
-      run: git config --global core.autocrlf input
-      shell: bash
-
-    - name: '🧰 Checkout'
-      uses: actions/checkout@v3
-      with:
-        fetch-depth: 0
-        submodules: recursive
-
-    - name: '🚧 Generate ${{ matrix.board }} ${{ matrix.design }} bitstream'
-      run: make -C osflow BOARD=${{ matrix.board }} ${{ matrix.design }}
+# Windows:
+#   needs: Matrix
+#   runs-on: windows-latest
+#   strategy:
+#     fail-fast: false
+#     matrix:
+#       include: ${{ fromJson(needs.Matrix.outputs.matrix) }}
+#   name: '🟦 MINGW64 | ${{ matrix.board }} · ${{ matrix.design }}'
+#   defaults:
+#     run:
+#       shell: msys2 {0}
+#   steps:
+#
+#   - name: '🟦 Setup MSYS2'
+#     uses: msys2/setup-msys2@v2
+#     with:
+#       msystem: MINGW64
+#       update: true
+#       install: make
+#       pacboy: >
+#         yosys:p
+#         nextpnr:p
+#         icestorm:p
+#         prjtrellis:p
+#
+#   - name: '⚙️ git config'
+#     run: git config --global core.autocrlf input
+#     shell: bash
+#
+#   - name: '🧰 Checkout'
+#     uses: actions/checkout@v4
+#     with:
+#       fetch-depth: 0
+#       submodules: recursive
+#
+#   - name: '🚧 Generate ${{ matrix.board }} ${{ matrix.design }} bitstream'
+#     run: make -C osflow BOARD=${{ matrix.board }} ${{ matrix.design }}
