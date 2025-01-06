@@ -38,7 +38,7 @@ set fileset_design ./../../neorv32/rtl/test_setups/neorv32_test_setup_bootloader
 set fileset_constraints [glob ./*.xdc]
 
 ## Simulation-only sources
-set fileset_sim [list ./../../neorv32/sim/simple/neorv32_tb.simple.vhd ./../../neorv32/sim/simple/uart_rx.simple.vhd]
+set fileset_sim [list ./../../neorv32/sim/neorv32_tb.vhd ./../../neorv32/sim/sim_uart_rx.vhd]
 
 # Add source files
 
