@@ -6,7 +6,7 @@ It uses the simplified
 top entity that provides a minimalistic interface (clock, reset, UART and 8 IO's).
 
 * FPGA Board: :books: [Microphase Z7 Nano FPGA Board](https://github.com/MicroPhase/fpga-docs/blob/master/schematic/Z7-NANO_R21.pdf)
-* FPGA: Xilinx Artix-7 `c7z020clg400-2`
+* FPGA: Xilinx ZynQ 7000 `c7z020clg400-2`
 * Toolchain: Xilinx Vivado (tested with Vivado 2023.1)
 
 ### FPGA Utilization
