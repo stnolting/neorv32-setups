@@ -1,32 +1,32 @@
 # NEORV32 Test Setup for the Terasic DE10-Nano FPGA Board
 
-This setup provides a very simple script-based "demo setup" that allows to check out the 
+This setup provides a very simple script-based "demo setup" that allows to check out the
 NEORV32 processor on the Terasic DE10-Nano board.
-It uses the simplified [`neorv32_test_setup_bootloader.vhd`](https://github.com/stnolting/neorv32/blob/master/rtl/test_setups/neorv32_test_setup_bootloader.vhd) 
+It uses the simplified [`neorv32_test_setup_bootloader.vhd`](https://github.com/stnolting/neorv32/blob/master/rtl/test_setups/neorv32_test_setup_bootloader.vhd)
 top entity, which is a wrapper for the actual processor
 top entity that provides a minimalistic interface (clock, reset, UART and 8 LEDs).
 
 * FPGA Board: :books: [Terasic DE10-Nano FPGA Board](https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&CategoryNo=167&No=1046)
 * FPGA: Intel Cyclone-V `5CSEBA6U23I7`
-* Toolchain: Intel Quartus Lite (tested with Quartus Prime Lite 21.1.0)
+* Toolchain: Intel Quartus Lite (tested with Quartus Prime Lite 22.1.2)
 
 
 ### NEORV32 Configuration
 
-:information_source: See the top entity 
-[`\neorv32-setups\quartus\de10-nano-test-setup\neorv32_test_setup_bootloader.vhd`](/neorv32-setups/quartus/de10-nano-test-setup/neorv32_test_setup_bootloader.vhd) 
+:information_source: See the top entity
+[`\neorv32-setups\quartus\de10-nano-test-setup\neorv32_test_setup_bootloader.vhd`](/neorv32-setups/quartus/de10-nano-test-setup/neorv32_test_setup_bootloader.vhd)
 for configuration and entity details and `create_project.tcl` for the according FPGA pin mapping.
 
-* CPU: `rv32imcu_Zicsr` + 4 `HPM` (hardware performance monitors, 40-bit wide)
-* Memory: 
+* CPU: `rv32imc_Zicsr`
+* Memory:
   * 16kB instruction memory (internal IMEM)
-  * 16kB data memory (internal DMEM)
+  *  8kB data memory (internal DMEM)
   * bootloader ROM
-* Peripherals: 
-  *`GPIO`
-  *`MTIME`
-  *`UART0`
-* Tested with version `1.5.9.9`
+* Peripherals:
+  * `GPIO`
+  * `CLINT`
+  * `UART0`
+* Tested with version `1.10.8.8`
 * Clock: 50MHz from on-board oscillator
 * Reset: via on-board button "KEY0"
 * GPIO output port `gpio_o` (8-bit) connected to the 8 green user LEDs ("LED7" - "LED0")
@@ -38,12 +38,12 @@ for configuration and entity details and `create_project.tcl` for the according 
 ### FPGA Utilization
 
 ```
-Logic utilization (in ALMs)	1,448 / 41,910 ( 4 % )
-Total registers	1675
+Logic utilization (in ALMs)	1,335 / 41,910 ( 3 % )
+Total registers	1694
 Total pins	12 / 314 ( 4 % )
 Total virtual pins	0
-Total block memory bits	296,960 / 5,662,720 ( 5 % )
-Total DSP Blocks	0 / 112 ( 3 % )
+Total block memory bits	231,424 / 5,662,720 ( 4 % )
+Total DSP Blocks	0 / 112 ( 0 % )
 ```
 
 ## How To Run
@@ -60,7 +60,7 @@ If not already available, this script will create a `work` folder in this direct
 7. When the process is done open the programmer (for example via "Tools/Programmer") and click "Start" in the programmer window to upload the bitstream to your FPGA
 8. Use a serial terminal (like :earth_asia: [Tera Term](https://ttssh2.osdn.jp/index.html.en)) to connect to the USB-UART interface using the following configuration:
     19200 Baud, 8 data bits, 1 stop bit, no parity bits, no transmission / flow control protocol (raw bytes only), newline on `\r\n` (carriage return & newline)
-9. now you can communicate with the bootloader console and upload a new program. 
+9. now you can communicate with the bootloader console and upload a new program.
 Check out the [example programs](https://github.com/stnolting/neorv32/tree/master/sw/example)
 and see section "Let's Get It Started" of the :page_facing_up: [NEORV32 data sheet](https://raw.githubusercontent.com/stnolting/neorv32/master/docs/NEORV32.pdf) for further resources.
 
