@@ -34,7 +34,7 @@ set_property library neorv32 [get_files [glob ./../../neorv32/rtl/core/*.vhd]]
 add_files [glob ./../../neorv32/rtl/test_setups/neorv32_test_setup_bootloader.vhd]
 
 # add source files: simulation-only
-add_files -fileset sim_1 [list ./../../neorv32/sim/simple/neorv32_tb.simple.vhd ./../../neorv32/sim/simple/uart_rx.simple.vhd]
+add_files -fileset sim_1 [list ./../../neorv32/sim/neorv32_tb.vhd ./../../neorv32/sim/sim_uart_rx.vhd]
 
 # add source files: constraints
 add_files -fileset constrs_1 [glob ./*.xdc]
