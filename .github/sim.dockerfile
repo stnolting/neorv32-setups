@@ -12,8 +12,8 @@ RUN apt-get update -qq \
  && pip3 install wheel setuptools \
  && pip3 install doit \
  && mkdir -p /opt/riscv \
- && curl -fsSL https://github.com/stnolting/riscv-gcc-prebuilt/releases/download/rv32i-131023/riscv32-unknown-elf.gcc-13.2.0.tar.gz | \
+ && curl -fsSL https://github.com/xpack-dev-tools/riscv-none-elf-gcc-xpack/releases/download/v14.2.0-3/xpack-riscv-none-elf-gcc-14.2.0-3-linux-x64.tar.gz | \
  tar -xzf - -C /opt/riscv \
  && ls -al /opt/riscv
 
-ENV PATH $PATH:/opt/riscv/bin
+ENV PATH $PATH:/opt/riscv/xpack-riscv-none-elf-gcc-14.2.0-3/bin
