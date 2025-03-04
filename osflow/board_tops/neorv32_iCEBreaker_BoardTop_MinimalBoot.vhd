@@ -41,6 +41,7 @@ use iCE40.components.all; -- for device primitives and macros
 
 entity neorv32_iCEBreaker_BoardTop_MinimalBoot is
   port (
+    iCEBreaker_USR_RST_BTN : in std_ulogic;
     -- UART (uart0) --
     iCEBreaker_TX      : out std_ulogic;
     iCEBreaker_RX      : in  std_ulogic;
@@ -111,7 +112,7 @@ begin
     DYNAMICDELAY    => x"00",
     LOCK            => pll_rstn,
     BYPASS          => '0',
-    RESETB          => '1',
+    RESETB          => iCEBreaker_USR_RST_BTN,
     LATCHINPUTVALUE => '0',
     SDO             => open,
     SDI             => '0',
