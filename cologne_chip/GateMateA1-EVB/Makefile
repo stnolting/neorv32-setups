@@ -1,6 +1,6 @@
 # Cologne Chip GateMate Makefile
-# (c) based on the original config.sh by Cologne Chip
-# (c) adapted for neorv32-setups by Stephan Nolting
+# (c) 2024 Cologne Chip, based on the original config.sh
+# (c) 2025 S. Nolting, adapted for neorv32-setups
 
 # -----------------------------------------------------------------------------
 # project setup
@@ -8,18 +8,18 @@
 TOP       = neorv32_gatemate
 VHDL_SRC  = $(TOP).vhd
 GHDLFLAGS = --work=neorv32 --warn-no-binding -C --ieee=synopsys
-SYNFLAGS  = -nomx8 -retime
-PRFLAGS   = -ccf $(TOP).ccf -cCP
+SYNFLAGS  = -nomx8
+PRFLAGS   = -uCIO -ccf $(TOP).ccf -cCP
 OFLFLAGS  = -c dirtyJtag
 NETLIST   = $(TOP).synth.v
 
 # -----------------------------------------------------------------------------
 # cologne chip toolchain
 # -----------------------------------------------------------------------------
-CCTOOLS = ../../bin
-YOSYS   = $(CCTOOLS)/yosys/yosys
-PR      = $(CCTOOLS)/p_r/p_r
-OFL     = $(CCTOOLS)/openFPGALoader/openFPGALoader
+CCTOOLS = /opt/cc-toolchain
+YOSYS   = $(CCTOOLS)/bin/yosys/yosys
+PR      = $(CCTOOLS)/bin/p_r/p_r
+OFL     = $(CCTOOLS)/bint/openFPGALoader/openFPGALoader
 
 # -----------------------------------------------------------------------------
 # neorv32 sources

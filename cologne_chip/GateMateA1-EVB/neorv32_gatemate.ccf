@@ -1,7 +1,7 @@
 # Pin mapping for the Olimex GateMateA1-EVB(-2M) FPGA board
 
 # on-board clock generator, 10MHz
-Net "clk_i" Loc = "IO_SB_A8" | SCHMITT_TRIGGER=true;
+Net "clk_i" Loc = "IO_SB_A8";
 
 # user button, low-active
 Net "rstn_i" Loc = "IO_SB_B7" | SCHMITT_TRIGGER=true;
