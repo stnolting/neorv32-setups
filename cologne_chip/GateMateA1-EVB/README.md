@@ -6,7 +6,7 @@ powered by a Cologne Chip GateMate `CCGM1A1` FPGA.
 * Board: [olimex.com/Products/FPGA/GateMate/GateMateA1-EVB](https://www.olimex.com/Products/FPGA/GateMate/GateMateA1-EVB)
 * Board sources: [github.com/OLIMEX/GateMateA1-EVB](https://github.com/OLIMEX/GateMateA1-EVB)
 
-#### System Configuration
+#### Setup Configuration
 
 * CPU: RISC-V `rv32imcx_zicntr_zicsr_zifencei`
 * Tuning options: none
@@ -119,7 +119,8 @@ $ make jtag
 
 ### UART Console
 
-UART0 is used as bootloader and system console. Connect a USB-UART bridge to the board's PMOD port:
+UART0 is used as bootloader and system console. Unfortunately, I was not able to make the on-board "debug"
+UART. Hence, I used an external USB-UART bridge connected to the board's PMOD port:
 
 ```
 PMOD front-view:
