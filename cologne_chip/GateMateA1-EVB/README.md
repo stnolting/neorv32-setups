@@ -10,14 +10,16 @@ powered by a Cologne Chip GateMate `CCGM1A1` FPGA.
 
 * CPU: RISC-V `rv32imcx_zicntr_zicsr_zifencei`
 * Tuning options: none
-* Peripherals: `IMEM`, `DMEM`, `GPIO`, `CLINT`, `UART0` (RX and TX FIFOs, 128 entries each)
+* Peripherals: `IMEM`, `DMEM`, `GPIO` (heart beat LED "FPGA_LED"), `CLINT`, `UART0`, `SPI`
 * Bootmode: 0 = boot via build-in bootloader
 * Memory: 16kB IMEM, 8kB DMEM, 4kB bootloader ROM
-* Clock: 50Mhz via CC_PLL from 10MHz on-board oscillator
+* Clock: 25Mhz via CC_PLL from 10MHz on-board oscillator
 * Reset: on-board button ("FPGA_BUT1")
 * FPGA operation mode: "speed"
 
-Pin 0 of the processor's GPIO output port is inverted and connected to the on-board user LED ("FPGA_LED").
+> [!TIP]
+> The SPI port is connected to the on-board bitstream flash (using SPI.CSn0)
+and can be used to store/load application firmware via the NEORV32 bootloader.
 
 ## How-To
 
@@ -169,40 +171,50 @@ Available CMDs:
 CMD:>
 ```
 
-### Utilization Report
+### Implementation Reports
 
-Generated for NEORV32 version v1.11.1.9.
+> [!NOTE]
+> Generated for NEORV32 version v1.11.2.1.
+
+#### Timing
 
 ```
-CPEs                   4103 /  20480  ( 20.0 %)
+Longest Path from Q of Component 5107_2 to D-Input of Component 3054/3 Delay: 30768 ps
+Maximum Clock Frequency on CLK 3828 (3828/1):   32.50 MHz
+```
+
+#### Utilization
+
+```
+CPEs                   4031 /  20480  ( 19.7 %)
 -----------------------------------------------
-  CPE Registers        1638 /  40960  (  4.0 %)
-    Flip-flops         1638
+  CPE Registers        1681 /  40960  (  4.1 %)
+    Flip-flops         1681
     Latches               0
 
-GPIOs                     5 /    144  (  3.5 %)
+GPIOs                     9 /    162  (  5.6 %)
 -----------------------------------------------
-  Single-ended            5 /    144  (  3.5 %)
-    IBF                   3
-    OBF                   2
+  Single-ended            9 /    162  (  5.6 %)
+    IBF                   4
+    OBF                   5
     TOBF                  0
     IOBF                  0
-  LVDS pairs              0 /     72  (  0.0 %)
+  LVDS pairs              0 /     81  (  0.0 %)
     IBF                   0
     OBF                   0
     TOBF                  0
     IOBF                  0
 
-GPIO Registers            0 /    288  (  0.0 %)
+GPIO Registers            0 /    324  (  0.0 %)
 -----------------------------------------------
   FF_IBF                  0
   FF_OBF                  0
   IDDR                    0
   ODDR                    0
 
-Block RAMs             10.0 /     32  ( 31.3 %)
+Block RAMs              8.0 /     32  ( 25.0 %)
 -----------------------------------------------
-  BRAM_20K                2 /     64  (  3.1 %)
+  BRAM_20K                0 /     64  (  0.0 %)
   BRAM_40K                8 /     32  ( 25.0 %)
   FIFO_40K                0 /     32  (  0.0 %)
 

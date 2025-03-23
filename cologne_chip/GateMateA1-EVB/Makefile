@@ -9,7 +9,7 @@ TOP       = neorv32_gatemate
 VHDL_SRC  = $(TOP).vhd
 GHDLFLAGS = --work=neorv32 --warn-no-binding -C --ieee=synopsys
 SYNFLAGS  = -nomx8
-PRFLAGS   = -uCIO -ccf $(TOP).ccf -cCP
+PRFLAGS   = -ccf $(TOP).ccf -cCP +uCIO
 OFLFLAGS  = -c dirtyJtag
 NETLIST   = $(TOP).synth.v
 
@@ -37,7 +37,7 @@ all: clean synth impl
 
 info:
 	$(YOSYS) -V
-	$(PR) -V
+	$(PR) -h
 
 synth: $(VHDL_SRC)
 	$(YOSYS) -ql synth.log -p 'ghdl $(GHDLFLAGS) $^ -e $(TOP); synth_gatemate -top $(TOP) $(SYNFLAGS) -vlog $(NETLIST)'

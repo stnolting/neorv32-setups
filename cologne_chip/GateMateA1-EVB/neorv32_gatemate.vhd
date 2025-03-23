@@ -1,6 +1,6 @@
 -- ================================================================================ --
 -- NEORV32 Setup for the Olimex GateMateA1-EVB-2M development board                 --
--- featuring the Cologne Chip Gate Mate CCGM1A1 FPGA                                --
+-- featuring the Cologne Chip GateMate CCGM1A1 FPGA.                                --
 -- -------------------------------------------------------------------------------- --
 -- The NEORV32 RISC-V Processor - https://github.com/stnolting/neorv32              --
 -- Copyright (c) NEORV32 contributors.                                              --
@@ -20,6 +20,11 @@ entity neorv32_gatemate is
     -- clock and reset --
     clk_i  : in  std_ulogic;
     rstn_i : in  std_ulogic;
+    -- spi flash --
+    sck_o  : out std_ulogic;
+    csn_o  : out std_ulogic;
+    sdo_o  : out std_ulogic;
+    sdi_i  : in  std_ulogic;
     -- status led --
     led_o  : out std_ulogic;
     -- uart --
@@ -56,6 +61,7 @@ architecture neorv32_gatemate_rtl of neorv32_gatemate is
 
   signal clk_sys : std_logic;
   signal con_gpio_out : std_ulogic_vector(31 downto 0);
+  signal con_spi_csn : std_ulogic_vector(7 downto 0);
 
 begin
 
@@ -64,7 +70,7 @@ begin
   socket_pll: CC_PLL
   generic map (
     REF_CLK         => "10.0",
-    OUT_CLK         => "50.0",
+    OUT_CLK         => "25.0",
     PERF_MD         => "SPEED",
     LOW_JITTER      => 1,
     CI_FILTER_CONST => 2,
@@ -84,13 +90,12 @@ begin
     CLK_REF_OUT         => open
   );
 
-
   -- The Core Of The Problem ----------------------------------------------------------------
   -- -------------------------------------------------------------------------------------------
   neorv32_top_inst: neorv32_top
   generic map (
     -- Processor Clocking --
-    CLOCK_FREQUENCY   => 50_000_000, -- core frequency in Hz
+    CLOCK_FREQUENCY   => 25_000_000, -- core frequency in Hz
     BOOT_MODE_SELECT  => 0, -- boot via build-in bootloader
     -- RISC-V CPU Extensions --
     RISCV_ISA_C       => true,
@@ -106,8 +111,7 @@ begin
     IO_GPIO_NUM       => 1,
     IO_CLINT_EN       => true,
     IO_UART0_EN       => true,
-    IO_UART0_RX_FIFO  => 128,
-    IO_UART0_TX_FIFO  => 128
+    IO_SPI_EN         => true
   )
   port map (
     -- Global control --
@@ -118,11 +122,18 @@ begin
     gpio_i      => (others => '0'),
     -- primary UART0 (available if IO_UART0_EN = true) --
     uart0_txd_o => txd_o,
-    uart0_rxd_i => rxd_i
+    uart0_rxd_i => rxd_i,
+    -- SPI (available if IO_SPI_EN = true) --
+    spi_clk_o   => sck_o,
+    spi_dat_o   => sdo_o,
+    spi_dat_i   => sdi_i,
+    spi_csn_o   => con_spi_csn
   );
 
   -- low-active status LED --
   led_o <= not con_gpio_out(0);
 
+  -- on-board SPI flash --
+  csn_o <= con_spi_csn(0);
 
 end architecture;
