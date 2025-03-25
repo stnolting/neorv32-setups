@@ -36,3 +36,4 @@ foreach corefile $corefiles {
     set_file_prop -lib neorv32 $project_dir/src/[file tail $corefile]
     # TODO: verify set_file_prop call is refering to the files correctly
 }
+
