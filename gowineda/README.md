@@ -18,7 +18,7 @@ As of version 1.9.9, trying to create the project from the Gowin IDE GUI will re
 
 1. start the Gowin IDE
 2. click on the TCL Console text box at the bottom, next to the "%" symbol
-3. use the console to navigate to the board's folder. For example `cd somewhere/neord32-setups/gowineda/tang-nano-9k`
+3. use the console to navigate to the board's folder. For example `cd somewhere/neord32-setups/gowineda/tang-nano-20k`
 4. execute `source create_project.tcl`  —this will create the actual project in the `work` directory. As of version 1.9.9, this will launch a new instance of the Gowin IDE, with the project open.
 5. move over to the TCL console on the new Gowin IDE window that just opened
 6. execute `set nrv_skip_creation true`
@@ -30,10 +30,10 @@ As of version 1.9.9, trying to create the project from the Gowin IDE GUI will re
 
 1. open the Programmer by clicking on its icon in the toolbar.
 2. select the appropriate cable and click save.
-  * **note**: under Linux, you must not be running the `ftdi_sio` kernel module for some Gowin programmers to work (e.g. Tang Nano 9K's built-in BL702 microcontroller). To stop this module, run `sudo modprobe -r ftdi_sio`, and "query the cables" again on the programmer software. The port will change from "USB Debugger A/0/0/null" to something like "USB Debugger A/0/4177/null". To restore the board's serial port functionallity, add `ftdi_sio` again: run `sudo modprobe ftdi_sio`. There is no need to unplug the device from the USB port. 
+  * **note**: under Linux, you must not be running the `ftdi_sio` kernel module for some Gowin programmers to work (e.g. Tang Nano 20K's built-in BL702 microcontroller). To stop this module, run `sudo modprobe -r ftdi_sio`, and "query the cables" again on the programmer software. The port will change from "USB Debugger A/0/0/null" to something like "USB Debugger A/0/4177/null". To restore the board's serial port functionallity, add `ftdi_sio` again: run `sudo modprobe ftdi_sio`. There is no need to unplug the device from the USB port. 
 3. select the correct FPGA part number.
 4. the .fs bitstream file should be automatically loaded, if not, click on the blank cell below the "FS file" header, and click the ellipsis (...). The file is at `work/impl/pnr/work.fs`.
-5. adjust any other settings you want and click the "Program/Configue" icon.
+5. adjust any other settings you want and click the "Program/Configure" icon.
 6. at this point you should see the board flashing the LED number 1 (at the top) for a few seconds. Congratulations! This means the processor and bootloader are working.
   * **note**: under Linux, make sure you add the `ftdi_sio` kernel module again, to allow communication with the board. You should see two new serial ports if you run `ls /dev/ttyUSB*`. Use the highest numbered out of the two.
 7. use a serial terminal (like :earth_asia: [Tera Term](https://ttssh2.osdn.jp/index.html.en)) to connect to the USB-UART interface using the following configuration:
