@@ -10,7 +10,7 @@ powered by a Cologne Chip GateMate `CCGM1A1` FPGA.
 
 * CPU: RISC-V `rv32imcx_zicntr_zicsr_zifencei`
 * Tuning options: none
-* Peripherals: `IMEM`, `DMEM`, `GPIO` (heart beat LED "FPGA_LED"), `CLINT`, `UART0`, `SPI`
+* Peripherals: `IMEM`, `DMEM`, `GPIO` (heart beat LED "FPGA_LED"), `CLINT`, `UART0`, `SPI`, `TWI`
 * Bootmode: 0 = boot via build-in bootloader
 * Memory: 16kB IMEM, 8kB DMEM, 4kB bootloader ROM
 * Clock: 25Mhz via CC_PLL from 10MHz on-board oscillator
@@ -135,12 +135,14 @@ PMOD front-view:
 +---+---+---+---+---+---+/
 ```
 
-| PMOD pin | Signal  | FPGA pin | Description    |
-|:--------:|:-------:|:--------:|:--------------:|
-| 1        | `txd_o` | IO_EA_A4 | UART TX output |
-| 7        | `rxd_i` | IO_EA_B4 | UART RX input  |
-| GND      | -       | -        | ground         |
-| 3.3      | -       | -        | 3.3V output    |
+| PMOD pin | Signal   | FPGA pin | Description    |
+|:--------:|:--------:|:--------:|:--------------:|
+| 1        | `txd_o`  | IO_EA_A4 | UART TX output |
+| 2        | `scl_io` | IO_EA_A5 | TWI clock      |
+| 7        | `rxd_i`  | IO_EA_B4 | UART RX input  |
+| 8        | `sda_io` | IO_EA_B5 | TWI data       |
+| GND      | -        | -        | ground         |
+| 3.3      | -        | -        | 3.3V output    |
 
 Open a serial terminal using the following configuration: `19200-8-N-1`; linebreak on `/r/n` (carriage
 return + newline). When you press the reset button ("FPGA_BUT1") the on-board LED should start flashing
@@ -179,26 +181,26 @@ CMD:>
 #### Timing
 
 ```
-Longest Path from Q of Component 5107_2 to D-Input of Component 3054/3 Delay: 30768 ps
-Maximum Clock Frequency on CLK 3828 (3828/1):   32.50 MHz
+Longest Path from Q of Component 724_2 to D-Input of Component 2455/8 Delay: 34765 ps
+Maximum Clock Frequency on CLK 3953 (3953/1):   28.76 MHz
 ```
 
 #### Utilization
 
 ```
-CPEs                   4031 /  20480  ( 19.7 %)
+CPEs                   4188 /  20480  ( 20.4 %)
 -----------------------------------------------
-  CPE Registers        1681 /  40960  (  4.1 %)
-    Flip-flops         1681
+  CPE Registers        1770 /  40960  (  4.3 %)
+    Flip-flops         1770
     Latches               0
 
-GPIOs                     9 /    162  (  5.6 %)
+GPIOs                    11 /    162  (  6.8 %)
 -----------------------------------------------
-  Single-ended            9 /    162  (  5.6 %)
+  Single-ended           11 /    162  (  6.8 %)
     IBF                   4
     OBF                   5
     TOBF                  0
-    IOBF                  0
+    IOBF                  2
   LVDS pairs              0 /     81  (  0.0 %)
     IBF                   0
     OBF                   0
@@ -212,10 +214,10 @@ GPIO Registers            0 /    324  (  0.0 %)
   IDDR                    0
   ODDR                    0
 
-Block RAMs              8.0 /     32  ( 25.0 %)
+Block RAMs              9.0 /     32  ( 28.1 %)
 -----------------------------------------------
-  BRAM_20K                0 /     64  (  0.0 %)
-  BRAM_40K                8 /     32  ( 25.0 %)
+  BRAM_20K                2 /     64  (  3.1 %)
+  BRAM_40K                7 /     32  ( 21.9 %)
   FIFO_40K                0 /     32  (  0.0 %)
 
 PLLs                      1 /      4  ( 25.0 %)

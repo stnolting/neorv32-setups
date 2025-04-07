@@ -18,13 +18,16 @@ use neorv32.neorv32_package.all;
 entity neorv32_gatemate is
   port (
     -- clock and reset --
-    clk_i  : in  std_ulogic;
-    rstn_i : in  std_ulogic;
+    clk_i   : in  std_ulogic;
+    rstn_i  : in  std_ulogic;
     -- spi flash --
     sck_o  : out std_ulogic;
     csn_o  : out std_ulogic;
     sdo_o  : out std_ulogic;
     sdi_i  : in  std_ulogic;
+    -- i2c host --
+    scl_io : inout std_logic;
+    sda_io : inout std_logic;
     -- status led --
     led_o  : out std_ulogic;
     -- uart --
@@ -62,6 +65,7 @@ architecture neorv32_gatemate_rtl of neorv32_gatemate is
   signal clk_sys : std_logic;
   signal con_gpio_out : std_ulogic_vector(31 downto 0);
   signal con_spi_csn : std_ulogic_vector(7 downto 0);
+  signal twi_sda_i, twi_sda_o, twi_scl_i, twi_scl_o : std_ulogic;
 
 begin
 
@@ -111,7 +115,8 @@ begin
     IO_GPIO_NUM       => 1,
     IO_CLINT_EN       => true,
     IO_UART0_EN       => true,
-    IO_SPI_EN         => true
+    IO_SPI_EN         => true,
+    IO_TWI_EN         => true
   )
   port map (
     -- Global control --
@@ -127,7 +132,12 @@ begin
     spi_clk_o   => sck_o,
     spi_dat_o   => sdo_o,
     spi_dat_i   => sdi_i,
-    spi_csn_o   => con_spi_csn
+    spi_csn_o   => con_spi_csn,
+    -- TWI (available if IO_TWI_EN = true) --
+    twi_sda_i   => twi_sda_i,
+    twi_sda_o   => twi_sda_o,
+    twi_scl_i   => twi_scl_i,
+    twi_scl_o   => twi_scl_o
   );
 
   -- low-active status LED --
@@ -135,5 +145,11 @@ begin
 
   -- on-board SPI flash --
   csn_o <= con_spi_csn(0);
+
+  -- TWI tri-state drivers --
+  scl_io    <= '0' when (twi_scl_o = '0') else 'Z';
+  sda_io    <= '0' when (twi_sda_o = '0') else 'Z';
+  twi_scl_i <= std_ulogic(scl_io);
+  twi_sda_i <= std_ulogic(sda_io);
 
 end architecture;

@@ -1,20 +1,22 @@
 # Pin mapping for the Olimex GateMateA1-EVB(-2M) FPGA board
 
 # on-board clock generator, 10MHz
-Net "clk_i" Loc = "IO_SB_A8";
+Pin_in "clk_i" Loc = "IO_SB_A8";
 
 # on-board user button, low-active
-Net "rstn_i" Loc = "IO_SB_B7" | SCHMITT_TRIGGER=true;
+Pin_in "rstn_i" Loc = "IO_SB_B7" | SCHMITT_TRIGGER=true;
 
 # on-board user LED, low-active
-Net "led_o" Loc = "IO_SB_B6";
+Pin_out "led_o" Loc = "IO_SB_B6";
 
 # on-board SPI flash (requires +uCIO PR flag)
-Net "sck_o" Loc = "IO_WA_B8";
-Net "csn_o" Loc = "IO_WA_A8";
-Net "sdo_o" Loc = "IO_WA_B7";
-Net "sdi_i" Loc = "IO_WA_A7";
+Pin_out "sck_o" Loc = "IO_WA_B8";
+Pin_out "csn_o" Loc = "IO_WA_A8";
+Pin_out "sdo_o" Loc = "IO_WA_B7";
+Pin_in  "sdi_i" Loc = "IO_WA_A7";
 
 # PMOD connector
-Net "txd_o" Loc = "IO_EA_A4"; # pin 1
-Net "rxd_i" Loc = "IO_EA_B4" | SCHMITT_TRIGGER=true; # pin 7
+Pin_out "txd_o" Loc = "IO_EA_A4"; # pin 1
+Pin_in "rxd_i" Loc = "IO_EA_B4" | SCHMITT_TRIGGER=true; # pin 7
+Pin_inout "scl_io" Loc = "IO_EA_A5" | SCHMITT_TRIGGER=true | DRIVE=6; # pin 2
+Pin_inout "sda_io" Loc = "IO_EA_B5" | SCHMITT_TRIGGER=true | DRIVE=6; # pin 8
