@@ -18,5 +18,5 @@ Pin_in  "sdi_i" Loc = "IO_WA_A7";
 # PMOD connector
 Pin_out "txd_o" Loc = "IO_EA_A4"; # pin 1
 Pin_in "rxd_i" Loc = "IO_EA_B4" | SCHMITT_TRIGGER=true; # pin 7
-Pin_inout "scl_io" Loc = "IO_EA_A5" | SCHMITT_TRIGGER=true | DRIVE=6; # pin 2
-Pin_inout "sda_io" Loc = "IO_EA_B5" | SCHMITT_TRIGGER=true | DRIVE=6; # pin 8
+Pin_inout "scl_io" Loc = "IO_EA_A5"; # pin 2
+Pin_inout "sda_io" Loc = "IO_EA_B5"; # pin 8
