@@ -138,11 +138,11 @@ begin
     HPM_NUM_CNTS                 => 4,           -- number of implemented HPM counters (0..29)
     HPM_CNT_WIDTH                => 40,          -- total size of HPM counters (0..64)
     -- Internal Instruction memory --
-    MEM_INT_IMEM_EN              => integer2bool(GUI_EMABLE_INTERNAL_IMEM),        -- implement processor-internal instruction memory
-    MEM_INT_IMEM_SIZE            => GUI_IMEM_SIZE*1024,     -- size of processor-internal instruction memory in bytes
+    IMEM_EN              => integer2bool(GUI_EMABLE_INTERNAL_IMEM),        -- implement processor-internal instruction memory
+    IMEM_SIZE            => GUI_IMEM_SIZE*1024,     -- size of processor-internal instruction memory in bytes
     -- Internal Data memory --
-    MEM_INT_DMEM_EN              => integer2bool(GUI_EMABLE_INTERNAL_DMEM),        -- implement processor-internal data memory
-    MEM_INT_DMEM_SIZE            => GUI_DMEM_SIZE*1024,      -- size of processor-internal data memory in bytes
+    DMEM_EN              => integer2bool(GUI_EMABLE_INTERNAL_DMEM),        -- implement processor-internal data memory
+    DMEM_SIZE            => GUI_DMEM_SIZE*1024,      -- size of processor-internal data memory in bytes
     -- Internal Cache memory --
     ICACHE_EN                    => false,       -- implement instruction cache
     ICACHE_NUM_BLOCKS            => 4,           -- i-cache: number of blocks (min 1), has to be a power of 2

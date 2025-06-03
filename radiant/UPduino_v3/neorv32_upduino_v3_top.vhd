@@ -148,12 +148,12 @@ begin
     RISCV_ISA_Zicntr   => true,        -- implement base counters?
 
     -- Internal Instruction memory --
-    MEM_INT_IMEM_EN    => true,        -- implement processor-internal instruction memory
-    MEM_INT_IMEM_SIZE  => 64*1024,     -- size of processor-internal instruction memory in bytes
+    IMEM_EN    => true,        -- implement processor-internal instruction memory
+    IMEM_SIZE  => 64*1024,     -- size of processor-internal instruction memory in bytes
 
     -- Internal Data memory --
-    MEM_INT_DMEM_EN    => true,        -- implement processor-internal data memory
-    MEM_INT_DMEM_SIZE  => 64*1024,     -- size of processor-internal data memory in bytes
+    DMEM_EN    => true,        -- implement processor-internal data memory
+    DMEM_SIZE  => 64*1024,     -- size of processor-internal data memory in bytes
 
     -- Processor peripherals --
     IO_GPIO_NUM        => 4,           -- implement general purpose input/output port unit (GPIO)?

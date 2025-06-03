@@ -146,12 +146,12 @@ begin
     RISCV_ISA_Zicond  => true,      -- implement integer conditional operations?
 
     -- Internal Instruction memory (IMEM) --
-    MEM_INT_IMEM_EN   => true,      -- implement processor-internal instruction memory
-    MEM_INT_IMEM_SIZE => 64*1024,   -- size of processor-internal instruction memory in bytes
+    IMEM_EN   => true,      -- implement processor-internal instruction memory
+    IMEM_SIZE => 64*1024,   -- size of processor-internal instruction memory in bytes
 
     -- Internal Data memory (DMEM) --
-    MEM_INT_DMEM_EN   => true,      -- implement processor-internal data memory
-    MEM_INT_DMEM_SIZE => 64*1024,   -- size of processor-internal data memory in bytes
+    DMEM_EN   => true,      -- implement processor-internal data memory
+    DMEM_SIZE => 64*1024,   -- size of processor-internal data memory in bytes
 
     -- Processor peripherals --
     IO_GPIO_NUM       => 32,        -- number of GPIO input/output pairs (0..64)

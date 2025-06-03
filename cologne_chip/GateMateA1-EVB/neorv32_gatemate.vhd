@@ -106,11 +106,11 @@ begin
     RISCV_ISA_M       => true,
     RISCV_ISA_Zicntr  => true,
     -- Internal instruction memory --
-    MEM_INT_IMEM_EN   => true,
-    MEM_INT_IMEM_SIZE => 16*1024,
+    IMEM_EN   => true,
+    IMEM_SIZE => 16*1024,
     -- Internal data memory --
-    MEM_INT_DMEM_EN   => true,
-    MEM_INT_DMEM_SIZE => 8*1024,
+    DMEM_EN   => true,
+    DMEM_SIZE => 8*1024,
     -- Processor peripherals --
     IO_GPIO_NUM       => 1,
     IO_CLINT_EN       => true,

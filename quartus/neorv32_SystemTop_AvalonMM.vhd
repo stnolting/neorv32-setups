@@ -51,12 +51,12 @@ entity neorv32_top_avalonmm is
     HPM_CNT_WIDTH                : natural := 40;     -- total size of HPM counters (0..64)
 
     -- Internal Instruction memory (IMEM) --
-    MEM_INT_IMEM_EN              : boolean := false;  -- implement processor-internal instruction memory
-    MEM_INT_IMEM_SIZE            : natural := 16*1024; -- size of processor-internal instruction memory in bytes
+    IMEM_EN              : boolean := false;  -- implement processor-internal instruction memory
+    IMEM_SIZE            : natural := 16*1024; -- size of processor-internal instruction memory in bytes
 
     -- Internal Data memory (DMEM) --
-    MEM_INT_DMEM_EN              : boolean := false;  -- implement processor-internal data memory
-    MEM_INT_DMEM_SIZE            : natural := 8*1024; -- size of processor-internal data memory in bytes
+    DMEM_EN              : boolean := false;  -- implement processor-internal data memory
+    DMEM_SIZE            : natural := 8*1024; -- size of processor-internal data memory in bytes
 
     -- Internal Cache memory (iCACHE) --
     ICACHE_EN                    : boolean := false;  -- implement instruction cache
@@ -233,12 +233,12 @@ begin
     HPM_CNT_WIDTH => HPM_CNT_WIDTH,
 
     -- Internal Instruction memory (IMEM) --
-    MEM_INT_IMEM_EN => MEM_INT_IMEM_EN,
-    MEM_INT_IMEM_SIZE => MEM_INT_IMEM_SIZE,
+    IMEM_EN => IMEM_EN,
+    IMEM_SIZE => IMEM_SIZE,
 
     -- Internal Data memory (DMEM) --
-    MEM_INT_DMEM_EN => MEM_INT_IMEM_EN,
-    MEM_INT_DMEM_SIZE => MEM_INT_DMEM_SIZE,
+    DMEM_EN => IMEM_EN,
+    DMEM_SIZE => DMEM_SIZE,
 
     -- Internal Cache memory (iCACHE) --
     ICACHE_EN => ICACHE_EN,
