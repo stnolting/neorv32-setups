@@ -19,7 +19,7 @@ use iCE40.components.all;
 
 entity neorv32_dmem is
   generic (
-    DMEM_SIZE : natural; -- memory size in bytes, has to be a power of 2, min 4
+    MEM_SIZE  : natural; -- memory size in bytes, has to be a power of 2, min 4
     OUTREG_EN : boolean  -- implement output register stage
   );
   port (
@@ -38,7 +38,7 @@ architecture neorv32_dmem_rtl of neorv32_dmem is
 
   -- IO space: module base address --
   constant hi_abb_c : natural := 31; -- high address boundary bit
-  constant lo_abb_c : natural := index_size_f(DMEM_SIZE); -- low address boundary bit
+  constant lo_abb_c : natural := index_size_f(MEM_SIZE); -- low address boundary bit
 
   -- local signals --
   signal mem_cs : std_ulogic;
@@ -62,8 +62,8 @@ begin
 
   -- Sanity Checks --------------------------------------------------------------------------
   -- -------------------------------------------------------------------------------------------
-  assert false report "NEORV32 PROCESSOR CONFIG NOTE: Using iCE40up SPRAM-based DMEM." severity note;
-  assert not (DMEM_SIZE /= 64*1024) report "NEORV32 PROCESSOR CONFIG NOTE: DMEM SPRAM has a fixed physical size of 64kB." severity note;
+  assert not (MEM_SIZE /= 64*1024)
+    report "[NEORV32] DMEM SPRAM has a fixed physical size of 64kB." severity note;
 
 
   -- Access Control -------------------------------------------------------------------------
