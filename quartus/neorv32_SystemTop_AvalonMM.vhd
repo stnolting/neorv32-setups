@@ -252,7 +252,6 @@ begin
 
     -- External bus interface (XBUS) --
     XBUS_EN => true,
-    XBUS_TIMEOUT => 0,
     XBUS_REGSTAGE_EN => true,
 
     -- Execute in-place module (XIP) --
