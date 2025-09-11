@@ -24,7 +24,7 @@ jobs:
     steps:
 
     - name: '🧰 Repository Checkout'
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     - name: '⛴️ Build neorv32/${{ matrix.image }}'
       run: docker build -t ghcr.io/stnolting/neorv32/${{ matrix.image }} - < .github/${{ matrix.image }}.dockerfile
