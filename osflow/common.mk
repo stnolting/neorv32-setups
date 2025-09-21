@@ -16,9 +16,7 @@ endif
 
 include tools.mk
 
-ifdef GHDL_PLUGIN_MODULE
 YOSYSFLAGS += -m $(GHDL_PLUGIN_MODULE)
-endif
 
 include synthesis.mk
 include PnR_Bit.mk

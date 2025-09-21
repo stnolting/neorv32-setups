@@ -7,5 +7,3 @@ RUN apt-get update -qq \
  && pip3 install doit \
  && apt-get autoclean && apt-get clean && apt-get -y autoremove \
  && rm -rf /var/lib/apt/lists/*
-
-ENV GHDL_PLUGIN_MODULE=ghdl
