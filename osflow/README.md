@@ -25,7 +25,8 @@ that can be used as starting point to build more complex user-defined SoCs.
 
 The Makefiles in this subdir require the following tools:
 
-* [GHDL](https://hdl.github.io/awesome/items/ghdl/)
+* [GHDL](https://hdl.github.io/awesome/items/ghdl/) / [ghdl-yosys-plugin](https://github.com/ghdl/ghdl-yosys-plugin)
+(see the project's installation notes)
 * [Yosys](https://hdl.github.io/awesome/items/yosys/)
 * [Nextpnr](https://hdl.github.io/awesome/items/nextpnr/)
 
