@@ -48,7 +48,7 @@ jobs:
         args: make -C osflow BOARD=${{ matrix.board }} ${{ matrix.design }}
 
     - name: '📤 Upload Artifact: ${{ matrix.board }} ${{ matrix.design }} bitstream and reports'
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       with:
         name: ${{ matrix.board }}-${{ matrix.design }}
         path: |
