@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-print('::set-output name=matrix::' + str([
+print('matrix=' + str([
 {
   'board': 'UPDuino-v3.0',
   'design': 'MinimalBoot',
@@ -57,4 +57,4 @@ print('::set-output name=matrix::' + str([
   'board': 'iCE40CW312',
   'design': 'MinimalBoot',
   'bitstream': 'neorv32_iCE40CW312_MinimalBoot.bit'
-}]))
+}]) + ' >> $GITHUB_OUTPUT')
