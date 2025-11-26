@@ -85,7 +85,7 @@ begin
   neorv32_inst: entity work.neorv32_ProcessorTop_MinimalBoot
   generic map (
     CLOCK_FREQUENCY => f_clock_c, -- clock frequency of clk_i in Hz
-    IO_PWM_NUM_CH => 0
+    IO_PWM_NUM => 0
   )
   port map (
     -- Global control --
