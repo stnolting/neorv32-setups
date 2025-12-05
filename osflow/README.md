@@ -71,9 +71,7 @@ where:
 
 * `<FPGA_board>` specifies the actual FPGA board and implicitly sets the FPGA type. The currently supported FPGA board
   targets are listed in the `boards/` folder where each partial-makefile corresponds to a supported platform.
-
-* `<System_Top_HDL>` is used to define the actual SoC top. Available SoCs are located in
-  [`rtl/processor_templates`](https://github.com/stnolting/neorv32/tree/master/rtl/processor_templates).
+* `<System_Top_HDL>` is used to define the actual SoC top. Available SoCs are located in `processor_templates`.
 
 The default tasks are `clean *.bit`.
 However, users can override then through `TASK`.

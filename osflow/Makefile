@@ -1,5 +1,5 @@
 RTL_CORE_SRC := ../neorv32/rtl/core
-TEMPLATES := ../neorv32/rtl/processor_templates
+TEMPLATES := processor_templates
 MV := mv
 
 .DEFAULT_GOAL := help
