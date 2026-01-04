@@ -152,6 +152,14 @@ MixedLanguage:
 	  NEORV32_VERILOG_SRC="$(NEORV32_VERILOG_SRC)" \
 	  $(BOARD)
 
+TangNanoDemo:
+	$(eval DESIGN ?= $@)
+	$(eval DESIGN_SRC ?= $(TEMPLATES)/neorv32_ProcessorTop_TangNanoDemo.vhd)
+	$(MAKE) \
+	  DESIGN="$(DESIGN)" \
+	  DESIGN_SRC="$(DESIGN_SRC)" \
+	  $(BOARD)
+
 # Help
 
 help:
