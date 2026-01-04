@@ -23,7 +23,7 @@ endif
 include synthesis.mk
 include PnR_Bit.mk
 
-.PHONY: syn impl bit svf clean
+.PHONY: syn impl bit svf fs clean
 
 syn: ${IMPL}.json
 impl: ${IMPL}.${PNR2BIT_EXT}
@@ -33,7 +33,11 @@ ifeq ($(DEVICE_SERIES),ecp5)
 svf: ${IMPL}.svf
 endif
 
+ifeq ($(DEVICE_SERIES),gowin)
+fs: ${IMPL}.fs
+endif
+
 clean:
-	rm -rf build *.{${PNR2BIT_EXT},bit,cf,dfu,history,json,o,svf} *-report.txt
+	rm -rf build *.{${PNR2BIT_EXT},bit,cf,dfu,history,json,o,svf,fs} *-report.txt
 
 include boards/$(BOARD).mk

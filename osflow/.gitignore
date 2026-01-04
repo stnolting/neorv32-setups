@@ -3,6 +3,7 @@
 *.cf
 *.cfg
 *.dfu
+*.fs
 *.history
 *.json
 *.o

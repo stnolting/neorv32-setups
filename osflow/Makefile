@@ -10,7 +10,7 @@ FOMU_REV ?= pvt
 OrangeCrab_REV ?= r02-25F
 
 #ifndef BOARD
-#$(error BOARD needs to be set to 'Fomu', 'iCESugar-v1.5', 'UPDuino-v3.0', 'iCEBreaker' or 'OrangeCrab' !)
+#$(error BOARD needs to be set to 'Fomu', 'iCESugar-v1.5', 'UPDuino-v3.0', 'iCEBreaker', 'OrangeCrab' or TangNano20k !)
 #endif
 
 run:
@@ -102,6 +102,14 @@ iCEBreaker:
 iCE40CW312:
 	$(eval BITSTREAM ?= neorv32_$(BOARD)_$(DESIGN).bit)
 	$(eval NEORV32_MEM_SRC ?= devices/ice40/neorv32_imem.ice40up_spram.vhd devices/ice40/neorv32_dmem.ice40up_spram.vhd)
+	$(MAKE) \
+	  BITSTREAM="$(BITSTREAM)" \
+	  NEORV32_MEM_SRC="$(NEORV32_MEM_SRC)" \
+	  run
+
+TangNano20k:
+	$(eval BITSTREAM ?= neorv32_$(BOARD)_$(DESIGN).fs)
+	$(eval NEORV32_MEM_SRC ?= $(RTL_CORE_SRC)/neorv32_imem.vhd)
 	$(MAKE) \
 	  BITSTREAM="$(BITSTREAM)" \
 	  NEORV32_MEM_SRC="$(NEORV32_MEM_SRC)" \
