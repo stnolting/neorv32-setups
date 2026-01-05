@@ -20,7 +20,7 @@ NEXTPNR_OUT        ?= asc
 PNR2BIT_EXT        ?= asc
 PACKTOOL           ?= $(ICEPACK)
 PACKARGS           ?=
-else ifeq($(DEVICE_SERIES),gowin)
+else ifeq ($(DEVICE_SERIES),gowin)
 NEXTPNR            = nextpnr-himbaechel
 CONSTRAINTS_FORMAT ?= cst
 NEXTPNR_OUT        ?= write
