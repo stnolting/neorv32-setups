@@ -70,6 +70,7 @@ there for more information how to run a specific setup and how to add new target
 | :file_folder: [`GateMateA1-EVB`](https://github.com/stnolting/neorv32-setups/tree/main/cologne_chip/GateMateA1-EVB) | GHDL, Yosys, CC P_R | [GateMateA1-EVB(-2M)](https://www.olimex.com/Products/FPGA/GateMate/GateMateA1-EVB/)             | Cologne Chip GateMate `CCGM1A1`           | [stnolting](https://github.com/stnolting) |
 | :file_folder: ChipWhisperer [`iCE40CW312`](https://github.com/stnolting/neorv32-setups/tree/main/osflow) | GHDL, Yosys, nextPNR | [CW312T_ICE40UP](https://github.com/newaetech/chipwhisperer-target-cw308t/tree/main/CW312T_ICE40UP) | Lattice iCE40 UltraPlus `iCE40UP5K-UWG30` | [colinoflynn](https://github.com/colinoflynn) |
 | :earth_africa: [`ULX3S-SDRAM`](https://github.com/zipotron/neorv32-complex-setups)          | GHDL, Yosys, nextPNR | [ULX3S](https://radiona.org/ulx3s/)                                                                           | Lattice ECP5 `LFE5U-85F-6BG381C`          | [zipotron](https://github.com/zipotron) |
+| :file_folder: [`TangNano20k`](https://github.com/stnolting/neorv32-setups/tree/main/osflow) | GHDL, Yosys, nextPNR | [Tang Nano 20K](https://wiki.sipeed.com/hardware/en/tang/tang-nano-20k/nano-20k.html)                         | GOWIN GW2AR `GW2AR-18 QN88`          | [d-orthofer](https://github.com/d-orthofer) |
 
 
 ------------------------------------------------------
