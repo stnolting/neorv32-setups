@@ -4,6 +4,7 @@ GHDLSYNTH  ?= ghdl
 YOSYS      ?= yosys
 ICEPACK    ?= icepack
 ECPPACK    ?= ecppack
+GOWINPACK  ?= gowin_pack
 OPENOCD    ?= openocd
 COPY       ?= cp -a
 
@@ -19,6 +20,13 @@ NEXTPNR_OUT        ?= asc
 PNR2BIT_EXT        ?= asc
 PACKTOOL           ?= $(ICEPACK)
 PACKARGS           ?=
+else ifeq ($(DEVICE_SERIES),gowin)
+NEXTPNR            = nextpnr-himbaechel
+CONSTRAINTS_FORMAT ?= cst
+NEXTPNR_OUT        ?= write
+PNR2BIT_EXT        ?= out.json
+PACKTOOL           ?= $(GOWINPACK)
+PACKARGS           ?= --device $(DEVICE_FAMILY)
 else
 CONSTRAINTS_FORMAT ?= lpf
 NEXTPNR_OUT        ?= textcfg

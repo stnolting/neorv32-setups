@@ -125,3 +125,15 @@ PNRFLAGS    ?= --up5k --package uwg30 --ignore-loops --timing-allow-fail
 IMPL        ?= neorv32_$(BOARD)_$(ID)
 
 endif
+
+
+ifeq ($(BOARD),TangNano20k)
+$(info Setting constraints and implementation args for BOARD TangNano20k)
+
+DEVICE_SERIES ?= gowin
+DEVICE_FAMILY ?= GW2A-18C
+CONSTRAINTS   ?= $(PCF_PATH)/$(BOARD).cst
+PNRFLAGS      ?= --device GW2AR-LV18QN88C8/I7 --vopt family=$(DEVICE_FAMILY) --ignore-loops --timing-allow-fail
+IMPL          ?= neorv32_$(BOARD)_$(ID)
+
+endif

@@ -31,3 +31,9 @@ The setup provides 8 GPIO outputs and the UART communication lines as IO.
 This is a more complex template that implements a small microcontroller-like NEORV32.
 It was originally designed for _UPDuino V3_ board, which features a Lattice iCE40up5k FPGA, but has
 also been ported to other boards that provide the same FPGA.
+
+### > `neorv32_ProcessorTop_TangNanoDemo.vhd`
+
+This is a more complex template that implements a small microcontroller-like NEORV32.
+It makes use of the on-board SPI flash for loading program binaries from flash. 
+The WS2812 RGB LED is connected to the NEORV32 NeoLED controller.

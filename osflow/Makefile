@@ -10,7 +10,7 @@ FOMU_REV ?= pvt
 OrangeCrab_REV ?= r02-25F
 
 #ifndef BOARD
-#$(error BOARD needs to be set to 'Fomu', 'iCESugar-v1.5', 'UPDuino-v3.0', 'iCEBreaker' or 'OrangeCrab' !)
+#$(error BOARD needs to be set to 'Fomu', 'iCESugar-v1.5', 'UPDuino-v3.0', 'iCEBreaker', 'OrangeCrab' or TangNano20k !)
 #endif
 
 run:
@@ -107,6 +107,14 @@ iCE40CW312:
 	  NEORV32_MEM_SRC="$(NEORV32_MEM_SRC)" \
 	  run
 
+TangNano20k:
+	$(eval BITSTREAM ?= neorv32_$(BOARD)_$(DESIGN).fs)
+	$(eval NEORV32_MEM_SRC ?= $(RTL_CORE_SRC)/neorv32_imem.vhd)
+	$(MAKE) \
+	  BITSTREAM="$(BITSTREAM)" \
+	  NEORV32_MEM_SRC="$(NEORV32_MEM_SRC)" \
+	  run
+
 
 # Designs
 
@@ -142,6 +150,14 @@ MixedLanguage:
 	  DESIGN="$(DESIGN)" \
 	  DESIGN_SRC="$(DESIGN_SRC)" \
 	  NEORV32_VERILOG_SRC="$(NEORV32_VERILOG_SRC)" \
+	  $(BOARD)
+
+TangNanoDemo:
+	$(eval DESIGN ?= $@)
+	$(eval DESIGN_SRC ?= $(TEMPLATES)/neorv32_ProcessorTop_TangNanoDemo.vhd)
+	$(MAKE) \
+	  DESIGN="$(DESIGN)" \
+	  DESIGN_SRC="$(DESIGN_SRC)" \
 	  $(BOARD)
 
 # Help
