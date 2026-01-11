@@ -22,9 +22,6 @@ switch $board {
 # Create project
 create_project -part $a7part $a7prj $outputdir
 
-set_property board_part digilentinc.com:${board}:part0:1.0 [current_project]
-set_property target_language VHDL [current_project]
-
 # Define filesets
 
 ## Core: NEORV32
