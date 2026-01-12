@@ -3,7 +3,7 @@
 -- -------------------------------------------------------------------------------- --
 -- The NEORV32 RISC-V Processor - https://github.com/stnolting/neorv32              --
 -- Copyright (c) NEORV32 contributors.                                              --
--- Copyright (c) 2020 - 2025 Stephan Nolting. All rights reserved.                  --
+-- Copyright (c) 2020 - 2026 Stephan Nolting. All rights reserved.                  --
 -- Licensed under the BSD-3-Clause license, see LICENSE for details.                --
 -- SPDX-License-Identifier: BSD-3-Clause                                            --
 -- ================================================================================ --
@@ -19,8 +19,8 @@ use iCE40.components.all;
 
 entity neorv32_dmem is
   generic (
-    MEM_SIZE  : natural; -- memory size in bytes, has to be a power of 2, min 4
-    OUTREG_EN : boolean  -- implement output register stage
+    MEM_SIZE : natural; -- memory size in bytes, has to be a power of 2, min 4
+    OUTREG   : boolean  -- implement output register stage
   );
   port (
     clk_i     : in  std_ulogic; -- global clock line
