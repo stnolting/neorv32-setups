@@ -28,6 +28,8 @@ This list shows projects that focus on custom hard- or software modifications, s
 | :earth_africa: [neorv32-examples](https://github.com/emb4fun/neorv32-examples) | NEORV32 setups/projects for different Intel/Terasic boards | [emb4fun](https://github.com/emb4fun) |
 | :earth_africa: [neorv32-xmodem-bootloader](https://www.emb4fun.de/riscv/neorv32xboot/index.html) | A XModem Bootloader for the DE0-Nano board | [emb4fun](https://github.com/emb4fun) |
 | :earth_africa: [neorv32-xip-bootloader](https://github.com/betocool-prog/neorv32-xip-bootloader) | A XIP (eXecute In Place) Bootloader for the NEORV32| [betocool-prog](https://github.com/betocool-prog) |
+| :earth_africa: [FPGA-Based AI Accelerator with NEORV32 CFS](https://github.com/AbdulrahmanGhaleb/FPGA-Based-AI-Accelerator-) | Custom FPGA-based neural network inference accelerator integrated with the NEORV32 RISC-V soft-core via the Custom Functions Subsystem (CFS). | [Abdulrahman Ghaleb](https://github.com/AbdulrahmanGhaleb) |
+
 
 
 ## Setups using Commercial Toolchains
