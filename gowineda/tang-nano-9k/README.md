@@ -24,3 +24,30 @@ for the according FPGA pin mapping.
 * GPIO output port `gpio_o` bits 0..5 are connected to the orange on-board LEDs (LED1 - LED6); LED6 is the bootloader status LED
 * UART0 signals `uart0_txd_o` and `uart0_rxd_i` are connected to the on-board USB-UART chip
   * Under Linux, run `sudo modprobe ftdi_sio` for the on-board UART to appear under `/dev/ttyUSB*` (the higher of the two ports that will appear). Run `sudo modprobe -r ftdi_sio` to be able to program the device on the Gowin Programmer. There is no need to unplug the device from the USB port.
+
+## Windows Setup (No TCL Shell Required)
+
+This setup can also be built on **Windows** using the Gowin EDA GUI directly,
+without using the Gowin shell or any TCL scripts. Tested with Gowin EDA 1.9.12 on Windows.
+
+### Creating the Project
+
+1. Open **Gowin FPGA Designer**
+2. **File → New Project**, select device `GW1NR-LV9QN88PC6/I5`
+3. Add all `.vhd` files from `neorv32/rtl/core/` and `neorv32/rtl/core/mem/*.default.vhd`
+   - Select all added files → right-click → **Properties** → set **Library** = `neorv32`
+4. Add `neorv32/rtl/test_setups/neorv32_test_setup_bootloader.vhd` (leave in default `work` library)
+5. Add `tang-nano-9k_test_setup_bootloader.cst` as constraints file
+6. Go to **Project → Configuration → Synthesis** → set **Top Module** = `neorv32_testsetup_bootloader`
+7. Run **Synthesize → Place & Route → Generate Bitstream** in the Process panel
+8. Flash via **Gowin Programmer**
+
+### Uploading Programs on Windows
+
+Use the PowerShell upload script from `gowineda/tools/uart_upload.ps1`:
+```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+.\uart_upload.ps1 COM4 path\to\neorv32_exe.bin
+```
+
+Connect a serial terminal at **19200 baud, 8N1** to interact with the bootloader.
