@@ -24,6 +24,7 @@ This list shows projects that focus on custom hard- or software modifications, s
 
 | Link | Description | Author(s) |
 |:-----|:------------|:----------|
+| :earth_africa: [RISC-V Lab](https://github.com/Fraunhofer-IMS/riscv_lab) | RISC-V student lab by Fraunhofer IMS and University of Duisburg-Essen | [Fraunhofer IMS](https://github.com/Fraunhofer-IMS) |
 | :earth_africa: [github.com/motius](https://github.com/motius/neorv32/tree/add-custom-crc32-module) | **tutorial:** custom CRC32 processor module for the nexys-a7 boards | [motius](https://github.com/motius) ([ikstvn](https://github.com/ikstvn), [turbinenreiter](https://github.com/turbinenreiter)) |
 | :earth_africa: [neorv32-examples](https://github.com/emb4fun/neorv32-examples) | NEORV32 setups/projects for different Intel/Terasic boards | [emb4fun](https://github.com/emb4fun) |
 | :earth_africa: [neorv32-xmodem-bootloader](https://www.emb4fun.de/riscv/neorv32xboot/index.html) | A XModem Bootloader for the DE0-Nano board | [emb4fun](https://github.com/emb4fun) |
