@@ -81,8 +81,8 @@ begin
     -- Boot Configuration --
     BOOT_MODE_SELECT => 0,               -- boot via internal bootloader
     -- RISC-V CPU Extensions --
-    RISCV_ISA_M      => true,            -- implement mul/div extension?
     RISCV_ISA_Zicntr => true,            -- implement base counters?
+    RISCV_ISA_Zmmul  => true,            -- multiplication-only ISA extension
     -- Internal Instruction memory --
     IMEM_EN          => IMEM_EN,         -- implement processor-internal instruction memory
     IMEM_SIZE        => IMEM_SIZE,       -- size of processor-internal instruction memory in bytes
