@@ -1,9 +1,9 @@
 -- ================================================================================ --
 -- NEORV32 Templates - Example setup for boards with UP5K devices                   --
 -- -------------------------------------------------------------------------------- --
--- The NEORV32 RISC-V Processor - https://github.com/stnolting/neorv32              --
+-- The NEORV32 RISC-V Processor - https://github.com/stnolting/neorv32-setups       --
 -- Copyright (c) NEORV32 contributors.                                              --
--- Copyright (c) 2020 - 2025 Stephan Nolting. All rights reserved.                  --
+-- Copyright (c) 2020 - 2026 Stephan Nolting. All rights reserved.                  --
 -- Licensed under the BSD-3-Clause license, see LICENSE for details.                --
 -- SPDX-License-Identifier: BSD-3-Clause                                            --
 -- ================================================================================ --
@@ -58,7 +58,6 @@ end entity;
 
 architecture neorv32_ProcessorTop_UP5KDemo_rtl of neorv32_ProcessorTop_UP5KDemo is
 
-  -- internal IO connection --
   signal con_gpio_o    : std_ulogic_vector(31 downto 0);
   signal con_gpio_i    : std_ulogic_vector(31 downto 0);
   signal con_pwm_o     : std_ulogic_vector(31 downto 0);
@@ -78,26 +77,25 @@ begin
   neorv32_inst: entity neorv32.neorv32_top
   generic map (
     -- Clocking --
-    CLOCK_FREQUENCY => CLOCK_FREQUENCY, -- clock frequency of clk_i in Hz
+    CLOCK_FREQUENCY  => CLOCK_FREQUENCY, -- clock frequency of clk_i in Hz
     -- Boot Configuration --
-    BOOT_MODE_SELECT => 0,              -- boot via internal bootloader
+    BOOT_MODE_SELECT => 0,               -- boot via internal bootloader
     -- RISC-V CPU Extensions --
-    RISCV_ISA_M      => true,           -- implement mul/div extension?
-    RISCV_ISA_U      => true,           -- implement user mode extension?
-    RISCV_ISA_Zicntr => true,           -- implement base counters?
+    RISCV_ISA_M      => true,            -- implement mul/div extension?
+    RISCV_ISA_Zicntr => true,            -- implement base counters?
     -- Internal Instruction memory --
-    IMEM_EN          => IMEM_EN,        -- implement processor-internal instruction memory
-    IMEM_SIZE        => IMEM_SIZE,      -- size of processor-internal instruction memory in bytes
+    IMEM_EN          => IMEM_EN,         -- implement processor-internal instruction memory
+    IMEM_SIZE        => IMEM_SIZE,       -- size of processor-internal instruction memory in bytes
     -- Internal Data memory --
-    DMEM_EN          => DMEM_EN,        -- implement processor-internal data memory
-    DMEM_SIZE        => DMEM_SIZE,      -- size of processor-internal data memory in bytes
+    DMEM_EN          => DMEM_EN,         -- implement processor-internal data memory
+    DMEM_SIZE        => DMEM_SIZE,       -- size of processor-internal data memory in bytes
     -- Processor peripherals --
-    IO_GPIO_NUM      => IO_GPIO_NUM,    -- number of GPIO input/output pairs (0..32)
-    IO_CLINT_EN      => true,           -- implement core local interruptor (CLINT)?
-    IO_UART0_EN      => true,           -- implement primary universal asynchronous receiver/transmitter (UART0)?
-    IO_SPI_EN        => true,           -- implement serial peripheral interface (SPI)?
-    IO_TWI_EN        => true,           -- implement two-wire interface (TWI)?
-    IO_PWM_NUM       => IO_PWM_NUM      -- number of PWM channels to implement (0..32); 0 = disabled
+    IO_GPIO_NUM      => IO_GPIO_NUM,     -- number of GPIO input/output pairs (0..32)
+    IO_CLINT_EN      => true,            -- implement core local interruptor (CLINT)?
+    IO_UART0_EN      => true,            -- implement primary universal asynchronous receiver/transmitter (UART0)?
+    IO_SPI_EN        => true,            -- implement serial peripheral interface (SPI)?
+    IO_TWI_EN        => true,            -- implement two-wire interface (TWI)?
+    IO_PWM_NUM       => IO_PWM_NUM       -- number of PWM channels to implement (0..32); 0 = disabled
   )
   port map (
     -- Global control --
@@ -148,6 +146,5 @@ begin
   twi_scl_io    <= '0' when (con_twi_scl_o = '0') else 'Z';
   con_twi_sda_i <= std_ulogic(twi_sda_io);
   con_twi_scl_i <= std_ulogic(twi_scl_io);
-
 
 end architecture;
