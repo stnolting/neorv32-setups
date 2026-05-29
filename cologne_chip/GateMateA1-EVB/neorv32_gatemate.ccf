@@ -15,8 +15,9 @@ Pin_out "csn_o" Loc = "IO_WA_A8";
 Pin_out "sdo_o" Loc = "IO_WA_B7";
 Pin_in  "sdi_i" Loc = "IO_WA_A7";
 
+# uart over USB-C connector
+Net "txd_o" Loc = "IO_SA_B6"; # IO South R9
+Net "rxd_i" Loc = "IO_SA_A6"; # IO South T9
 # PMOD connector
-Pin_out "txd_o" Loc = "IO_EA_A4"; # pin 1
-Pin_in "rxd_i" Loc = "IO_EA_B4" | SCHMITT_TRIGGER=true; # pin 7
 Pin_inout "scl_io" Loc = "IO_EA_A5"; # pin 2
 Pin_inout "sda_io" Loc = "IO_EA_B5"; # pin 8

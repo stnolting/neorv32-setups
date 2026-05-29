@@ -51,15 +51,15 @@ Targets:
 
 ### Toolchain
 
-Download and unpack the [Cologne Chip toolchain](https://www.colognechip.com/programmable-logic/gatemate/gatemate-download)
-to some system folder. Adjust the Makefile's `CCTOOLS` variable to point to the Cologne Chip toolchain home folder:
+Setup the toolchain as noted here: [Cologne Chip Toolchain](https://www.colognechip.com/programmable-logic/gatemate/).
+If your yosys tools are not in your `$PATH` then you have to add it to the toolchain commands
 
 ```makefile
-CCTOOLS = /opt/cc-toolchain
+YOSYS   ?= /your/path/to/yosys
+GMPACK  ?= /your/path/to/gmpack
+NEXTPNR ?= /your/path/to/nextpnr-himbaechel
+OFL     ?= /your/path/to/openFPGALoader
 ```
-
-> [!NOTE]
-> The `bin` folder contains three sub folder: `openFPGALoader`, `p_r` and `yosys`.
 
 ### GHDL Installation Issues
 
@@ -89,7 +89,7 @@ for processing the VHDL sources. Note that all VHDL sources are added to the `ne
 $ make all
 ```
 
-This will generate the bitstream final file (`neorv32_gatemate_00.cfg`).
+This will generate the bitstream final file (`neorv32_gatemate.bit`).
 Synthesis and implementations logs are available in `synth.log` and `impl.log`, respectively.
 
 ### Bitstream Programming
@@ -119,108 +119,83 @@ $ make jtag
 > [!NOTE]
 > Better press the "FPGA_RST1" button before uploading the bitstream. I am not sure why this is required.
 
+To write the bitstream to flash you can run this:
+```
+openFPGALoader -c dirtyJtag -b gatemate_evb_jtag -v -f neorv32_gatemate.bit
+```
+
+Afterwards the DIP switches should be set to all zero:
+```
++-+-+-+-+
+| | | | | ON
+|#|#|#|#| OFF
++-+-+-+-+
+ 1 2 3 4
+```
+Now your board should boot from flash after the next power-cycle.
+
+
 ### UART Console
 
-UART0 is used as bootloader and system console. Unfortunately, I was not able to make the on-board "debug"
-UART. Hence, I used an external USB-UART bridge connected to the board's PMOD port:
-
-```
-PMOD front-view:
-  ________________________
- /                       /|
-+---+---+---+---+---+---+ |
-|3.3|GND| 4 | 3 | 2 | 1 | |
-+---+---+---+---+---+---+ |
-|3.3|GND|10 | 9 | 8 | 7 | |
-+---+---+---+---+---+---+/
-```
-
-| PMOD pin | Signal   | FPGA pin | Description    |
-|:--------:|:--------:|:--------:|:--------------:|
-| 1        | `txd_o`  | IO_EA_A4 | UART TX output |
-| 2        | `scl_io` | IO_EA_A5 | TWI clock      |
-| 7        | `rxd_i`  | IO_EA_B4 | UART RX input  |
-| 8        | `sda_io` | IO_EA_B5 | TWI data       |
-| GND      | -        | -        | ground         |
-| 3.3      | -        | -        | 3.3V output    |
-
+UART0 output should now be present on the USB-C connector (for me it's on `/dev/ttyACM0` usually).
 Open a serial terminal using the following configuration: `19200-8-N-1`; linebreak on `/r/n` (carriage
 return + newline). When you press the reset button ("FPGA_BUT1") the on-board LED should start flashing
 and the bootloader prompt should show up in the terminal:
 
 ```
-<< NEORV32 Bootloader >>
+NEORV32 Bootloader
+build: May  1 2026
 
-BLDV: Feb  1 2025
-HWV:  0x01110109
-CLK:  0x02faf080
-MISA: 0x40801104
-XISA: 0x00000083
-SOC:  0x0003800d
-IMEM: 0x00004000
-DMEM: 0x00002000
-
-Autoboot in 10s. Press any key to abort.
+Auto-boot in 8s. Press any key to abort.
 Aborted.
 
+Type 'h' for help.
+CMD:> h
 Available CMDs:
- h: Help
- r: Restart
- u: Upload
- s: Store to flash
- l: Load from flash
- e: Execute
-CMD:>
+h: Help
+i: System info
+r: Restart
+u: Upload via UART
+l: SPI flash - load
+s: SPI flash - program
+e: Start executable
+x: Exit
+CMD:> i
+HWV:  0x01130100
+CLK:  0x017D7840
+MISA: 0x40801104
+XISA: 0x00000000:0x10000083
+SOC:  0x000F800D
+MISC: 0x59010D0E
 ```
 
 ### Implementation Reports
 
 > [!NOTE]
-> Generated for NEORV32 version v1.11.2.1.
+> Generated for NEORV32 version v1.13.1.
 
 #### Timing
 
 ```
-Longest Path from Q of Component 724_2 to D-Input of Component 2455/8 Delay: 34765 ps
-Maximum Clock Frequency on CLK 3953 (3953/1):   28.76 MHz
+Info: Max frequency for clock 'clk_sys': 29.45 MHz (PASS at 25.00 MHz)
 ```
 
 #### Utilization
 
 ```
-CPEs                   4188 /  20480  ( 20.4 %)
------------------------------------------------
-  CPE Registers        1770 /  40960  (  4.3 %)
-    Flip-flops         1770
-    Latches               0
-
-GPIOs                    11 /    162  (  6.8 %)
------------------------------------------------
-  Single-ended           11 /    162  (  6.8 %)
-    IBF                   4
-    OBF                   5
-    TOBF                  0
-    IOBF                  2
-  LVDS pairs              0 /     81  (  0.0 %)
-    IBF                   0
-    OBF                   0
-    TOBF                  0
-    IOBF                  0
-
-GPIO Registers            0 /    324  (  0.0 %)
------------------------------------------------
-  FF_IBF                  0
-  FF_OBF                  0
-  IDDR                    0
-  ODDR                    0
-
-Block RAMs              9.0 /     32  ( 28.1 %)
------------------------------------------------
-  BRAM_20K                2 /     64  (  3.1 %)
-  BRAM_40K                7 /     32  ( 21.9 %)
-  FIFO_40K                0 /     32  (  0.0 %)
-
-PLLs                      1 /      4  ( 25.0 %)
-GLBs                      1 /      4  ( 25.0 %)
-SerDes                    0 /      1  (  0.0 %)
+Info: Device utilisation:
+Info: 	            USR_RSTN:       0/      1     0%
+Info: 	            CPE_COMP:       0/  20480     0%
+Info: 	         CPE_CPLINES:      31/  20480     0%
+Info: 	               IOSEL:      11/    162     6%
+Info: 	                GPIO:      11/    162     6%
+Info: 	               CLKIN:       1/      1   100%
+Info: 	              GLBOUT:       1/      1   100%
+Info: 	                 PLL:       1/      4    25%
+Info: 	            CFG_CTRL:       0/      1     0%
+Info: 	              SERDES:       0/      1     0%
+Info: 	              CPE_LT:    6239/  40960    15%
+Info: 	              CPE_FF:    1906/  40960     4%
+Info: 	           CPE_RAMIO:     720/  40960     1%
+Info: 	            RAM_HALF:      16/     64    25%
 ```
