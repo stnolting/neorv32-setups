@@ -169,6 +169,26 @@ SOC:  0x000F800D
 MISC: 0x59010D0E
 ```
 
+### TWI Connection
+
+```
+PMOD front-view:
+  ________________________
+ /                       /|
++---+---+---+---+---+---+ |
+|3.3|GND| 4 | 3 | 2 | 1 | |
++---+---+---+---+---+---+ |
+|3.3|GND|10 | 9 | 8 | 7 | |
++---+---+---+---+---+---+/
+```
+
+| PMOD pin | Signal   | FPGA pin | Description    |
+|:--------:|:--------:|:--------:|:--------------:|
+| 2        | `scl_io` | IO_EA_A5 | TWI clock      |
+| 8        | `sda_io` | IO_EA_B5 | TWI data       |
+| GND      | -        | -        | ground         |
+| 3.3      | -        | -        | 3.3V output    |
+
 ### Implementation Reports
 
 > [!NOTE]
