@@ -1,5 +1,5 @@
 -- #################################################################################################
--- # << NEORV32 - Example setup for using Intel FPGAs internal JTAG atom. >>                       #
+-- # << NEORV32 - Example setup for using Altera FPGAs internal JTAG atom. >>                      #
 -- # ********************************************************************************************* #
 -- # BSD 3-Clause License                                                                          #
 -- #                                                                                               #
@@ -39,7 +39,7 @@ use ieee.numeric_std.all;
 library neorv32;
 use neorv32.neorv32_package.all;
 
-entity neorv32_on_chip_debugger_intel is
+entity neorv32_on_chip_debugger_altera is
   generic (
     -- adapt these for your setup --
     CLOCK_FREQUENCY   : natural := 50000000; -- clock frequency of clk_i in Hz
@@ -60,7 +60,7 @@ entity neorv32_on_chip_debugger_intel is
   );
 end entity;
 
-architecture neorv32_on_chip_debugger_intel_rtl of neorv32_on_chip_debugger_intel is
+architecture neorv32_on_chip_debugger_altera_rtl of neorv32_on_chip_debugger_altera is
 
   -- Cyclone IV E specific atom for indirect access to physical JTAG --
   --

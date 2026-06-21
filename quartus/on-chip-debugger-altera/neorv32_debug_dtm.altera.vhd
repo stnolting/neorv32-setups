@@ -1,11 +1,11 @@
 -- #################################################################################################
 -- # << NEORV32 - RISC-V Debug Transport Module (DTM) >>                                           #
 -- # ********************************************************************************************* #
--- # Provides an Intel specific JTAG-compatible TAP to access the DMI register interface.          #
+-- # Provides an Altera specific JTAG-compatible TAP to access the DMI register interface.         #
 -- # Compatible to the RISC-V debug specification version 1.0.                                     #
 -- # Functionally identical to the default dtm implementation but modified to listen only on USR0  #
--- # (0x00c) and USR1 (0x00e) ir addresses that are "free to use" in Intel FPGA user designs. This #
--- # expects that the JTAG I/Os are wired to an Intel atom like cycloneive_jtag or similar.        #
+-- # (0x00c) and USR1 (0x00e) ir addresses that are "free to use" in Altera FPGA user designs.     #
+-- # This expects that the JTAG I/Os are wired to an Altera atom like cycloneive_jtag or similar.  #
 -- # This principle of operation is based on the excellent blog post of tomverbeure, see:          #
 -- # --> https://tomverbeure.github.io/2021/10/30/Intel-JTAG-Primitive.html.                       #
 -- # ********************************************************************************************* #
@@ -38,7 +38,7 @@
 -- # OF THE POSSIBILITY OF SUCH DAMAGE.                                                            #
 -- # ********************************************************************************************* #
 -- # Original content by Stephan Nolting.                                                          #
--- # Modified by Niklaus Leuenberger to support Intel FPGA JTAG atom.                              #
+-- # Modified by Niklaus Leuenberger to support Altera FPGA JTAG atom.                             #
 -- # ********************************************************************************************* #
 -- # The NEORV32 Processor - https://github.com/stnolting/neorv32              (c) Stephan Nolting #
 -- #################################################################################################
@@ -71,14 +71,14 @@ entity neorv32_debug_dtm is
   );
 end neorv32_debug_dtm;
 
-architecture neorv32_debug_dtm_intel_rtl of neorv32_debug_dtm is
+architecture neorv32_debug_dtm_altera_rtl of neorv32_debug_dtm is
 
   -- DMI Configuration (fixed!) --
   constant dmi_idle_c    : std_ulogic_vector(02 downto 0) := "000";    -- no idle cycles required
   constant dmi_version_c : std_ulogic_vector(03 downto 0) := "0001";   -- debug spec. version (0.13 & 1.0)
   constant dmi_abits_c   : std_ulogic_vector(05 downto 0) := "000111"; -- number of DMI address bits (7)
 
-  -- TAP data register addresses, adapted for Intel USR0 and USR1 register addresses --
+  -- TAP data register addresses, adapted for Altera USR0 and USR1 register addresses --
   -- OpenOCD needs to be informed of these addresses:
   -- > riscv set_ir dtmcs 0x00c
   -- > riscv set_ir dmi 0x00e
@@ -109,8 +109,8 @@ architecture neorv32_debug_dtm_intel_rtl of neorv32_debug_dtm is
 
   -- tap registers --
   type tap_reg_t is record
-    -- do not implement bypass register, that is handled by the Intel atom
-    ireg             : std_ulogic_vector(09 downto 0); -- size = 10, default on all intel fpgas
+    -- do not implement bypass register, that is handled by the Altera atom
+    ireg             : std_ulogic_vector(09 downto 0); -- size = 10, default on all Altera fpgas
     idcode           : std_ulogic_vector(31 downto 0);
     dtmcs, dtmcs_nxt : std_ulogic_vector(31 downto 0);
     dmi,   dmi_nxt   : std_ulogic_vector((7+32+2)-1 downto 0); -- 7-bit address + 32-bit data + 2-bit operation
@@ -348,4 +348,4 @@ begin
   dmi_req_o.addr <= dmi_ctrl.addr;
 
 
-end neorv32_debug_dtm_intel_rtl;
+end neorv32_debug_dtm_altera_rtl;

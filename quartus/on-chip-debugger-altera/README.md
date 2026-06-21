@@ -1,11 +1,11 @@
-# NEORV32 Test Setup for using Intel FPGA integrated JTAG as On-Chip Debugger
+# NEORV32 Test Setup for using Altera FPGA integrated JTAG as On-Chip Debugger
 
 This setup provides a way to use the FPGAs own JTAG connection as on chip debugger with OpenOCD & GDB.
 Instead of requiring additional four I/O pins to implement a custom JTAG TAP, the JTAG connection used
 to program the FPGA itself can be used within the user design. The basic principle of operation is based
 on the excellent blog of [tomverbeure](https://tomverbeure.github.io/2021/10/30/Intel-JTAG-Primitive.html).
 
-Please refer to the blog post for an in-depth explanation of the topic. But basically Intel FPGAs allows the user to use two special ir addresses (10 bit) for their own purpose. USR0 at `0x00c`
+Please refer to the blog post for an in-depth explanation of the topic. But basically Altera FPGAs allows the user to use two special ir addresses (10 bit) for their own purpose. USR0 at `0x00c`
 and USR1 at `0x00e`. For those (and only those) addresses a user can supply the `tdo` signals that then are
 outputted from the FPGA. OpenOCD as debugger can be configured to use those addresses instead of the default RISC-V ones with following commands:
 
@@ -15,11 +15,11 @@ riscv set_ir dmi 0x00e
 ```
 
 The top entity is a modified version of [`neorv32_test_setup_on_chip_debugger.vhd`](https://github.com/stnolting/neorv32/blob/master/rtl/test_setups/neorv32_test_setup_on_chip_debugger.vhd)
-that uses Intel specific entities to get access to the FPGAs own JTAG TAP. An additional modified `dtm` implementation replaces the default `neorv32_debug_dtm` entity, listens for the Intel specific ir addresses and acts as usual translator for DMI access to the core.
+that uses Altera specific entities to get access to the FPGAs own JTAG TAP. An additional modified `dtm` implementation replaces the default `neorv32_debug_dtm` entity, listens for the Altera specific ir addresses and acts as usual translator for DMI access to the core.
 
 * FPGA Board: :books: [Gecko4Education Cyclone-IV E FPGA Board](https://gecko-wiki.ti.bfh.ch/gecko4education:start)
-* FPGA: Intel Cyclone-IV E `EP4CE15F23C8`
-* Toolchain: Intel Quartus Prime (tested with Quartus Prime 21.1 - Lite Edition)
+* FPGA: Altera Cyclone-IV E `EP4CE15F23C8`
+* Toolchain: Altera Quartus Prime (tested with Quartus Prime 21.1 - Lite Edition)
 
 
 ### NEORV32 Configuration
@@ -66,8 +66,8 @@ Peak interconnect usage (total/H/V)     39.7% / 37.3% / 43.1%
 The `create_project.tcl` TCL script in this directory can be used to create a complete Quartus project.
 
 1. run `quartus_sh -t create_project.tcl` once to generate the Quartus project
-2. start Quartus (in GUI mode) and open the `neorv32_on_chip_debugger_intel.qpf` file
+2. start Quartus (in GUI mode) and open the `neorv32_on_chip_debugger_altera.qpf` file
 3. double click on "Compile Design" in the "Tasks" window. This will synthesize, map and place & route your design and will also generate the actual FPGA bitstream
 4. when the process is done open the programmer (for example via "Tools/Programmer") and click "Start" in the programmer window to upload the bitstream to your FPGA
-5. open a debug connection with OpenOCD with the command `openocd -f openocd_neorv32_intel.cfg`
+5. open a debug connection with OpenOCD with the command `openocd -f openocd_neorv32_altera.cfg`
 6. upload a program or debug existing one as described in section "Debugging with GDB" of the :page_facing_up: [NEORV32 User Guide](https://stnolting.github.io/neorv32/ug/#_debugging_with_gdb)
