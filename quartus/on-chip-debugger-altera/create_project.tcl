@@ -42,6 +42,8 @@ set_location_assignment PIN_J15 -to gpio_o[3]
 set_location_assignment PIN_K15 -to gpio_o[2]
 set_location_assignment PIN_L16 -to gpio_o[1]
 set_location_assignment PIN_L15 -to gpio_o[0]
+set_location_assignment PIN_AA16 -to uart0_txd_o
+set_location_assignment PIN_AB16 -to uart0_rxd_i
 
 # Close project
 export_assignments
