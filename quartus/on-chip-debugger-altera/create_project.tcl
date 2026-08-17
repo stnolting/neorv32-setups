@@ -2,12 +2,12 @@
 package require ::quartus::project
 
 # Create project
-project_new "neorv32_on_chip_debugger_intel" -overwrite
+project_new "neorv32_on_chip_debugger_altera" -overwrite
 
 # Assign family, device, and top-level entity
 set_global_assignment -name FAMILY "Cyclone IV E"
 set_global_assignment -name DEVICE EP4CE15F23C8
-set_global_assignment -name TOP_LEVEL_ENTITY neorv32_on_chip_debugger_intel
+set_global_assignment -name TOP_LEVEL_ENTITY neorv32_on_chip_debugger_altera
 
 # Default settings
 set_global_assignment -name RESERVE_ALL_UNUSED_PINS "AS INPUT TRI-STATED"
@@ -25,11 +25,11 @@ foreach core_src_file $core_src_files {
   set_global_assignment -name VHDL_FILE $core_src_file -library neorv32
 }
 
-# add Intel specific DTM implementation, replaces default one
-set_global_assignment -name VHDL_FILE ./neorv32_debug_dtm.intel.vhd -library neorv32
+# add Altera specific DTM implementation, replaces default one
+set_global_assignment -name VHDL_FILE ./neorv32_debug_dtm.altera.vhd -library neorv32
 
 # Toplevel
-set_global_assignment -name VHDL_FILE ./neorv32_on_chip_debugger_intel_top.vhd
+set_global_assignment -name VHDL_FILE ./neorv32_on_chip_debugger_altera_top.vhd
 
 # Pin assignments. (Source: https://gecko-wiki.ti.bfh.ch/gecko4education:start)
 set_location_assignment PIN_T1 -to clk_i
@@ -42,6 +42,8 @@ set_location_assignment PIN_J15 -to gpio_o[3]
 set_location_assignment PIN_K15 -to gpio_o[2]
 set_location_assignment PIN_L16 -to gpio_o[1]
 set_location_assignment PIN_L15 -to gpio_o[0]
+set_location_assignment PIN_AA16 -to uart0_txd_o
+set_location_assignment PIN_AB16 -to uart0_rxd_i
 
 # Close project
 export_assignments
