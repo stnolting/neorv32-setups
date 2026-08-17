@@ -1,6 +1,6 @@
 # read default SoC file-list file
 NEORV32_HOME ?= ../neorv32
-NEORV32_SOC_FILE := $(shell cat $(NEORV32_HOME)/rtl/file_list_soc.f)
+NEORV32_SOC_FILE := $(shell cat $(NEORV32_HOME)/rtl/file_list_core.f)
 NEORV32_CORE_SRC := $(subst $$NEORV32_HOME,$(NEORV32_HOME),$(NEORV32_SOC_FILE))
 
 # Before including this partial makefile, NEORV32_MEM_SRC needs to be set
