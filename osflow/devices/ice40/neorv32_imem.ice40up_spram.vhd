@@ -47,7 +47,7 @@ architecture neorv32_imem_rtl of neorv32_imem is
   -- -------------------------------------------------------------------------------------------------------
 
   -- memory size in bytes --
-  constant mem_size_c_c : natural := 2**AWIDTH;
+  constant mem_size_c : natural := 2**AWIDTH;
 
   -- IO space: module base address --
   constant hi_abb_c : natural := 31; -- high address boundary bit
