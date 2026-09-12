@@ -40,10 +40,18 @@ jobs:
         fetch-depth: 0
         submodules: recursive
 
+    - name: '📦 Install OSS-CAD-Suite'
+      uses: ghdl/setup-ghdl@v1
+      run: |
+        wget https://github.com/YosysHQ/oss-cad-suite-build/releases/download/2026-09-12/oss-cad-suite-linux-x64-20260912.tgz
+        mkdir $GITHUB_WORKSPACE/oss_cad
+        tar -xzf oss-cad-suite-linux-x64-20260912.tgz -C $GITHUB_WORKSPACE/oss_cad
+        echo "$GITHUB_WORKSPACE/oss_cad/oss-cad-suite//bin" >> $GITHUB_PATH
+
+
     - name: '🚧 Generate ${{ matrix.board }} ${{ matrix.design }} bitstream'
-      uses: docker://ghcr.io/stnolting/neorv32/impl
-      with:
-        args: make -C osflow BOARD=${{ matrix.board }} ${{ matrix.design }}
+      run: |
+        make -C osflow BOARD=${{ matrix.board }} ${{ matrix.design }}
 
     - name: '📤 Upload Artifact: ${{ matrix.board }} ${{ matrix.design }} bitstream and reports'
       uses: actions/upload-artifact@v7
