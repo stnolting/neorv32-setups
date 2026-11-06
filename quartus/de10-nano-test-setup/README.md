@@ -6,9 +6,10 @@ It uses the simplified [`neorv32_test_setup_bootloader.vhd`](https://github.com/
 top entity, which is a wrapper for the actual processor
 top entity that provides a minimalistic interface (clock, reset, UART and 8 LEDs).
 
-* FPGA Board: :books: [Terasic DE10-Nano FPGA Board](https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&CategoryNo=167&No=1046)
+* FPGA Board: :books: [Terasic DE10-Nano FPGA Board]
+(https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&CategoryNo=167&No=1046)
 * FPGA: Intel Cyclone-V `5CSEBA6U23I7`
-* Toolchain: Intel Quartus Lite (ersion 25.1std.0 Build 1129 10/21/2025 SC Lite Edition)
+* Toolchain: Intel Quartus Lite (Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition)
 
 
 ### NEORV32 Configuration
@@ -38,13 +39,17 @@ for configuration and entity details and `create_project.tcl` for the according 
 ### FPGA Utilization
 
 ```
-Logic utilization (in ALMs) : 1,435 / 41,910 ( 3 % )
-Total registers : 1729
+Logic utilization (in ALMs) : 1,418 / 41,910 ( 3 % )
+Total registers : 1726
 Total pins : 12 / 314 ( 4 % )
 Total virtual pins : 0
 Total block memory bits : 231,424 / 5,662,720 ( 4 % )
 Total RAM Blocks : 30 / 553 ( 5 % )
 ```
+### FPGA CLK report
+| Fmax      | Restricted Fmax | Clock Name | Note |
+|-----------|-----------------|------------|------|
+| 88.38 MHz | 88.38 MHz       | clk_i      |      |
 
 ## How To Run
 

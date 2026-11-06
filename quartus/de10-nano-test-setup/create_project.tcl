@@ -47,6 +47,7 @@ if {$make_assignments} {
 	set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 	set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 	set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 1
+	set_global_assignment -name SDC_FILE constraints/neorv32_test_setup_bootloader.sdc
 
   # core VHDL files
   set core_src_dir [glob ./../../NEORV32/rtl/core/*.vhd]
