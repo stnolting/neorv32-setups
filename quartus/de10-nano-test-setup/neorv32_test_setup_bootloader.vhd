@@ -36,7 +36,7 @@ end entity;
 
 architecture neorv32_test_setup_bootloader_rtl of neorv32_test_setup_bootloader is
 
-  signal con_gpio_out : std_ulogic_vector(63 downto 0);
+  signal con_gpio_out : std_ulogic_vector(31 downto 0);
 
 begin
 

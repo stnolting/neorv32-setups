@@ -7,6 +7,14 @@
 # Load Quartus Prime Tcl Project package
 package require ::quartus::project
 
+set script_dir [file dirname [file normalize [info script]]]
+if {[is_project_open]} {
+  puts "Skipping workspace cleanup because a Quartus project is already open"
+} else {
+  source [file join $script_dir clean_workspace.tcl]
+  cd $script_dir
+}
+
 set need_to_close_project 0
 set make_assignments 1
 
