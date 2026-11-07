@@ -7,6 +7,14 @@
 # Load Quartus Prime Tcl Project package
 package require ::quartus::project
 
+set script_dir [file dirname [file normalize [info script]]]
+if {[is_project_open]} {
+  puts "Skipping workspace cleanup because a Quartus project is already open"
+} else {
+  source [file join $script_dir clean_workspace.tcl]
+  cd $script_dir
+}
+
 set need_to_close_project 0
 set make_assignments 1
 
@@ -39,6 +47,7 @@ if {$make_assignments} {
 	set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 	set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 	set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 1
+	set_global_assignment -name SDC_FILE constraints/neorv32_test_setup_bootloader.sdc
 
   # core VHDL files
   set core_src_dir [glob ./../../NEORV32/rtl/core/*.vhd]

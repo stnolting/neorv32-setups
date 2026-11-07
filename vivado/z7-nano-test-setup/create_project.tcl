@@ -1,3 +1,14 @@
+# -----------------------------------------------------------------------------
+# Z7-Nano NEORV32 test setup - Vivado project creation and implementation
+#
+# Creates the Zynq-7020 project, adds the NEORV32 design, simulation sources
+# and constraints, then runs implementation through bitstream generation.
+# Run from Vivado Tcl mode with:
+#   vivado -mode batch -source create_project.tcl
+# author: Provoost Kris
+# date: 2026-11-06
+# -----------------------------------------------------------------------------
+
 set board "z7-nano"
 
 # Create and clear output directory
